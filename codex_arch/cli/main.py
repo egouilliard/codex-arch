@@ -489,6 +489,52 @@ def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
         help="Format for compression if --compress is used (default: zip)"
     )
     
+    # API server command
+    api_parser = subparsers.add_parser(
+        "api",
+        help="Start the REST API service",
+        description="Launch a server providing REST API access to Codex-Arch functionality"
+    )
+    
+    api_parser.add_argument(
+        "--host",
+        type=str,
+        default="0.0.0.0",
+        help="Host to bind the server to (default: 0.0.0.0)"
+    )
+    
+    api_parser.add_argument(
+        "--port",
+        type=int,
+        default=5000,
+        help="Port to bind the server to (default: 5000)"
+    )
+    
+    api_parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Run the server in debug mode"
+    )
+    
+    api_parser.add_argument(
+        "--env",
+        choices=["dev", "test", "prod"],
+        default="dev",
+        help="Environment to run the server in (default: dev)"
+    )
+    
+    api_parser.add_argument(
+        "--output-dir",
+        type=str,
+        help="Base directory for analysis output files (default: './output')"
+    )
+    
+    api_parser.add_argument(
+        "--cors-origins",
+        type=str,
+        help="CORS allowed origins (comma-separated, default: '*')"
+    )
+    
     # Analyze command (run everything)
     analyze_parser = subparsers.add_parser(
         "analyze",
@@ -620,6 +666,11 @@ def main(args: Optional[List[str]] = None) -> int:
             from codex_arch.cli import bundle_cmd
             bundle_args = sys.argv[2:] if args is None else args[1:]
             return bundle_cmd.main(bundle_args)
+        elif parsed_args.command == "api":
+            # Import here to avoid circular imports
+            from codex_arch.cli import api_cmd
+            api_args = sys.argv[2:] if args is None else args[1:]
+            return api_cmd.main(api_args)
         elif parsed_args.command == "analyze":
             # Import here to avoid circular imports
             from codex_arch.cli import analyze_cmd

@@ -85,6 +85,9 @@ def parse_file(file_path: str) -> List[Dict[str, Any]]:
         logger.error(f"Error parsing {file_path}: {str(e)}")
         raise
 
+# Add alias for compatibility with other modules
+parse_python_file = parse_file
+
 
 def extract_imports_from_files(file_paths: List[str]) -> Dict[str, List[Dict[str, Any]]]:
     """
