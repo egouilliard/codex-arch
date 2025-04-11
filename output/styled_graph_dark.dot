@@ -1,0 +1,16 @@
+// Styled Dependency Graph
+digraph {
+	graph [bgcolor="#2D2D2D" compound=true concentrate=true fontname=Arial fontsize=16 label="Styled Dependency Graph" labelloc=t newrank=true nodesep=0.5 overlap=false rankdir=LR ranksep=0.75 sep="+10" splines=polyline]
+	node [fontname=Arial fontsize=12 margin="0.2,0.1" shape=box style=filled]
+	edge [fontname=Arial fontsize=10]
+	"app/main.py" [label="📄 Main App" color="#FFFFFF" fillcolor="#B71C1C" fontsize=14 penwidth=2.0 shape=box style=filled]
+	"app/models/user.py" [label="🔷 user.py\nComplexity: 8" color="#FFFFFF" fillcolor="#E65100" shape=box style=filled]
+	"app/controllers/auth.py" [label="📚 auth.py\nSize: 45KB" color="#FFFFFF" fillcolor="#F57F17" shape=box style=filled]
+	"app/utils/helpers.py" [label="🔸 helpers.py\nDeps: 5" color="#FFFFFF" fillcolor="#4A148C" shape=box style=filled]
+	"app/views/dashboard.py" [label="📄 dashboard.py" color="#FFFFFF" fillcolor="#1B5E20" shape=box style=filled]
+	"app/main.py" -> "app/controllers/auth.py" [label=imports color="#2196F3" lhead=cluster_app_controllers ltail="cluster_app_main.py" style=solid]
+	"app/main.py" -> "app/views/dashboard.py" [color="#2196F3" lhead=cluster_app_views ltail="cluster_app_main.py" style=solid]
+	"app/controllers/auth.py" -> "app/models/user.py" [color="#4CAF50" lhead=cluster_app_models ltail=cluster_app_controllers penwidth=5.0 style=dashed]
+	"app/models/user.py" -> "app/utils/helpers.py" [color="#4CAF50" lhead=cluster_app_utils ltail=cluster_app_models style=dashed]
+	"app/views/dashboard.py" -> "app/models/user.py" [color="#F44336" lhead=cluster_app_models ltail=cluster_app_views penwidth=2.0 style=dashed]
+}
