@@ -1,0 +1,200 @@
+<context>
+# Overview  
+CodeX Architect is a system designed to extract, visualize, and package code repository metadata as context for large language models. It addresses the problem of LLMs lacking structural understanding of codebases by providing rich, pre-processed context. This tool is valuable for developers using AI programming assistants like Cursor, helping both humans and AI better understand complex code architecture.
+
+# Core Features  
+- **Repository Analysis**: Extracts file tree, dependency maps, and code metrics from repositories.
+  - Provides comprehensive structural understanding of codebases
+  - Helps identify key architectural patterns and relationships
+  - Works by scanning repository files and parsing language-specific constructs
+
+- **Visualization Pipeline**: Transforms raw code metadata into visual graphs and summaries.
+  - Makes code architecture visually interpretable
+  - Highlights important relationships that might be missed in text-only analysis
+  - Generates SVG graphs from dependency data using Graphviz
+
+- **LLM Context Packaging**: Bundles analysis artifacts into machine-readable formats.
+  - Prepares metadata in formats optimized for LLM consumption
+  - Enables AI tools to provide more contextually aware assistance
+  - Creates standardized pre-prompt templates that enhance LLM understanding
+
+# User Experience  
+- **User Personas**:
+  - Developer using AI assistants who wants better code-aware responses
+  - DevOps engineer integrating codebase analysis into CI/CD pipelines
+  - Team lead needing to onboard new developers with architectural insights
+
+- **Key User Flows**:
+  - Run analysis on local or remote repository
+  - View generated visualizations and summaries
+  - Package and send context to LLM interfaces
+  - Automated analysis triggered by code commits
+
+- **UI/UX Considerations**:
+  - Command-line interface for developer-friendly integration
+  - Minimal configuration requirements
+  - Visualization outputs that are both human and machine readable
+  - Incremental analysis to minimize processing time
+</context>
+<PRD>
+# Technical Architecture  
+## Overview
+The system is built to extract repository metadata (file tree, dependency map, metrics) and visualize it in a rich format (graphs, annotated summaries) that can be fed as context to an LLM (e.g., Cursor). It will integrate multiple parsers and visualization tools into a unified analysis pipeline.
+
+## System Components
+- **Repository Crawler/Parser**:
+  - File Tree Extraction Module: Uses Python's os.walk or pathlib to traverse a designated code directory and generate a Markdown or JSON-based file tree.
+  - Dependency Extraction Module: Employs language-specific parsers (e.g., Python's ast for Python files, Madge for JS/TS) to output dependencies as JSON.
+  - Metrics Collector: Uses static analysis tools (such as radon for Python or custom scripts) to collect metrics (e.g., line counts, complexity, test coverage).
+
+- **Visualization Engine**:
+  - Graph Generation: Uses Graphviz (via its Python API) to translate dependency data (in DOT format) into interactive, embeddable SVG files.
+  - Annotation and Summary Builder: Aggregates information (file tree, dependency highlights, metrics) into a human-readable summary (Markdown) and a machine-readable JSON bundle.
+
+- **Context Packaging Layer**:
+  - Bundle Generator: Assembles outputs from the analysis modules into a "context bundle" (files such as file_tree.md, dependency_graph.svg, summary.md, metrics.json), which is directly ingestible by LLM interfaces.
+  - Pre-Prompt Template: Provides a structured text prompt that combines these artifacts with key annotations to help LLMs grasp repository structure immediately.
+
+- **Incremental Update System**:
+  - Change Detection Module: Uses Git diffs or file system events to identify modified, added, or deleted files.
+  - Dependency Cache & Patch Updates: Maintains a cache of file dependencies and performs surgical updates to the dependency graph.
+  - Metrics Diff Engine: Stores per-file metrics and recalculates global metrics incrementally.
+  - Smart Graph Re-render: Regenerates SVGs only when source data changes.
+  - Patch Summary Generator: Creates changelogs of repository modifications.
+
+- **APIs and Integrations**:
+  - REST endpoints for triggering analysis and fetching output files.
+  - Integration with version control (Git hooks) or CI/CD pipelines to automatically regenerate context bundles on commits.
+  - Optional LLM API integration to directly pass the bundle context into an LLM query interface.
+
+## Data Models
+- File Tree Model: Hierarchical JSON object mapping directories to files.
+- Dependency Graph Model: Node-edge representation, stored in JSON (and DOT for visualization).
+- Metrics Model: JSON object with aggregate metrics (file count, LOC, complexity scores, test coverage, etc.).
+- Context Bundle: Structured directory containing the above artifacts, along with optional pre-prompt template.
+
+## Infrastructure Requirements
+- A backend server (e.g., Python-based Flask or Node.js) to manage analysis requests.
+- Graphviz installed on the host (or containerized) for graph rendering.
+- Access to Git repositories (local or remote) for file system analysis.
+- Cloud storage (optional) to archive or share generated context bundles.
+
+# Development Roadmap  
+## Phase 1: MVP Requirements
+- **File Tree Generation Module**:
+  - Implement a basic recursive directory walker.
+  - Output the file hierarchy in Markdown and JSON.
+- **Dependency Extraction for Primary Language (e.g., Python)**:
+  - Use the ast module to scan Python files for import statements.
+  - Output a dependency map in JSON.
+- **Basic Metrics Collector**:
+  - Count total number of files and lines of code.
+  - Optionally incorporate a basic complexity metric.
+- **Graph Generation**:
+  - Create a DOT file from the dependency JSON.
+  - Render an SVG graph using Graphviz.
+- **Summary Builder**:
+  - Automatically generate a Markdown summary merging file tree, dependency highlights, and metrics.
+- **Context Bundle Assembler**:
+  - Bundle generated artifacts into a repo_meta/ folder.
+- **CLI Script to Run the MVP Pipeline**:
+  - A simple shell or Python script that runs the analysis modules consecutively.
+
+## Phase 2: Enhanced Analysis and Visualization
+- **Multi-Language Support**:
+  - Add dependency extraction support for additional languages (e.g., JavaScript using Madge).
+- **Advanced Metrics**:
+  - Integrate additional metrics such as cyclomatic complexity, test coverage, and dependency cycles.
+- **Interactive Visualization**:
+  - Enhance the SVG output or create an HTML-based interactive view (using D3.js or Mermaid) with zoom and filtering options.
+- **REST API**:
+  - Expose endpoints for triggering analyses and fetching updated context bundles.
+- **Automation**:
+  - Integrate with Git hooks or CI/CD pipelines so that analysis runs automatically on commit or merge.
+- **Git-based Incremental Diff Engine**:
+  - Create and manage a deps_cache.json for fast updates.
+  - Introduce patch-based metrics tracking.
+  - Build changelog and diff-summary writer.
+
+## Phase 3: LLM Integration and Workflow Optimization
+- **Pre-Prompt Template Integration**:
+  - Define a standardized pre-prompt structure that includes context bundle content.
+- **Direct LLM API Integration**:
+  - Allow the system to pass the bundle context directly to an LLM interface (e.g., through a plugin to Cursor).
+- **User Interface (Optional)**:
+  - Build a simple web dashboard for viewing the generated context bundle (file tree, dependency graph, metrics summary).
+- **Optimization and Scalability**:
+  - Optimize for large codebases using incremental analysis and caching strategies.
+  - Extend API functionality to support bulk analyses and historical comparisons.
+- **Smart Bundle Regeneration**:
+  - Allow trigger-by-diff CLI: analyze --diff HEAD~1.
+  - Add --watch mode for real-time updates during development.
+  - Enable regeneration of only changed SVGs, updated summaries, and metrics.
+  - Bundle change logs and highlight diffs in LLM pre-prompts.
+
+# Logical Dependency Chain
+## 1. Foundation
+- File Tree Module & Dependency Extraction: Build and test these modules first. They serve as the raw data source.
+- Metrics Collector: Implement basic metrics to enrich raw data.
+
+## 2. Front-End Visibility
+- Graph Generation: Convert the JSON dependency data into a visual graph. This provides immediate visual feedback.
+- Summary Builder: Create an annotated report that combines file structure, dependency highlights, and metrics.
+
+## 3. Atomic Feature Development
+- Each module (file tree, dependency extraction, metrics, visualization) is developed independently as atomic units but integrated via a simple CLI script.
+- Begin with a CLI-driven output to ensure the entire pipeline works end-to-end.
+
+## 4. Incremental Improvements
+- Once the MVP is operational, integrate additional languages, more advanced metrics, and automated bundling.
+- Follow up with the LLM pre-prompt packaging and further UI/UX enhancements.
+- Introduce per-file analysis caching and dependency tracking for faster front-end feedback during development.
+- Enable frequent and lightweight updates to LLM context without rerunning full analysis.
+
+## 5. Integration & Automation
+- Gradually add REST APIs and CI integration once core functionality is stable.
+
+# Risks and Mitigations  
+## Technical Challenges
+- **Risk**: Parsing dependencies accurately for all language constructs can be complex.
+  **Mitigation**: Start with one language (e.g., Python) using well-documented libraries (like ast), then incrementally add support.
+
+## Scope Definition for the MVP
+- **Risk**: Overestimating the MVP might lead to feature creep.
+  **Mitigation**: Clearly limit the MVP scope to a single language and basic metrics. Ensure additional features are planned in later phases.
+
+## Integration with LLM Tools
+- **Risk**: LLMs might not immediately interpret raw graph data without careful annotation.
+  **Mitigation**: Create a pre-prompt template and test extensively with the target LLM (e.g., Cursor) to ensure context clarity.
+
+## Performance and Scalability
+- **Risk**: Large codebases may slow down analysis.
+  **Mitigation**: Introduce caching and incremental analysis techniques once the core pipeline is functioning.
+
+## Resource Constraints
+- **Risk**: Limited developer resources could delay development of the automated pipeline or LLM integration.
+  **Mitigation**: Prioritize core components in the MVP and plan for incremental, modular enhancements.
+
+## Incremental Update Consistency
+- **Risk**: Managing consistency between partial updates and full repo state.
+  **Mitigation**: Introduce periodic full refresh checkpoints. Use hash-based integrity checks for cache validation.
+
+# Appendix  
+## Research Findings
+- Evaluation of tools like CodeSee, Madge, and Sourcetrail informed the choice of technologies and the layered approach.
+- Academic articles (e.g., on Semantic Code Graphs and code visualization techniques) provided insights on structuring dependency data for LLMs.
+
+## Technical Specifications
+- **Language**: Primarily Python (extendable to other languages).
+- **Tools/Libraries**:
+  - Python's ast, Graphviz, networkx or D3.js for visualization
+  - REST frameworks (Flask/Django) for APIs
+  - watchdog for file change detection
+  - gitpython or direct CLI Git calls for diff-based tracking
+  - JSON diff libraries (jsondiff, deepdiff) for patch summaries
+- **Output Formats**: Markdown, JSON, SVG/DOT.
+
+## Additional Information
+- Consider using containerization (Docker) for consistent environment setup.
+- Future research might involve integrating semantic analysis or dynamic runtime metrics.
+</PRD> 

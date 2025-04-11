@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "generatedAt": "2025-04-11T10:45:37.715Z",
+    "tasksAnalyzed": 10,
+    "thresholdScore": 5,
+    "projectName": "Your Project Name",
+    "usedResearch": true
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Implement File Tree Extraction Module",
+      "complexityScore": 7,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down the task into subtasks for directory traversal, data filtering, JSON output generation, and Markdown output formatting.",
+      "reasoning": "The task's complexity arises from implementing recursive traversal with filtering and generating two different output formats, which requires modular design and careful testing."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Build Python Dependency Extraction Module",
+      "complexityScore": 8,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Decompose the task into parsing Python files, resolving imports, creating a dependency graph, and implementing error handling.",
+      "reasoning": "This task involves handling complex Python import structures and creating an accurate dependency graph, which adds to its complexity."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Develop Basic Metrics Collector",
+      "complexityScore": 6,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Divide the task into subtasks for calculating basic metrics (file count, lines of code), language distribution, and integrating complexity measures.",
+      "reasoning": "While straightforward, the task requires integrating metrics calculation tools and ensuring compatibility with different file types."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Implement Graph Generation Module",
+      "complexityScore": 8,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Split into tasks for transforming dependency data into DOT files, applying visual styles, optimizing readability, and generating SVG outputs.",
+      "reasoning": "The complexity stems from visualizing large dependency graphs with styling and clustering to maintain readability."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Create Summary Builder Module",
+      "complexityScore": 7,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down into compiling file tree data, integrating dependencies and metrics, designing templates, and implementing configuration options.",
+      "reasoning": "This task requires combining outputs from multiple modules into cohesive summaries, which involves careful integration and formatting."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Build Context Bundle Assembler",
+      "complexityScore": 6,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Divide into subtasks for collecting artifacts, creating a manifest file, and implementing cleanup and compression features.",
+      "reasoning": "Relatively straightforward, but requires attention to detail in bundling diverse outputs and ensuring compatibility for LLM consumption."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Develop CLI Interface",
+      "complexityScore": 7,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Split into tasks for creating subcommands, implementing progress indicators, adding logging, and error handling.",
+      "reasoning": "Designing a user-friendly interface with robust error handling and logging adds moderate complexity."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Implement Change Detection Module",
+      "complexityScore": 8,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break into detecting file changes, implementing caching, updating analysis artifacts, and summarizing changes.",
+      "reasoning": "The complexity lies in integrating Git change detection and ensuring partial updates work seamlessly with cached results."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Create REST API Service",
+      "complexityScore": 8,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Decompose into tasks for designing endpoints, implementing authentication, adding caching, and creating API documentation.",
+      "reasoning": "Building a secure and scalable REST API with proper caching and documentation adds significant complexity."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Implement Git Hook Integration",
+      "complexityScore": 6,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down into creating hook scripts, configuring analysis triggers, and implementing throttling and notifications.",
+      "reasoning": "This task mainly involves scripting and configuration, making it less complex but still requiring careful integration."
+    }
+  ]
+}
