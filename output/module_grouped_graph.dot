@@ -1,0 +1,66 @@
+// Module Grouped Dependency Graph
+digraph {
+	graph [bgcolor="#FFFFFF" compound=true concentrate=true fontname=Arial fontsize=16 label="Module Grouped Dependency Graph" labelloc=t newrank=true nodesep=0.5 overlap=false rankdir=LR ranksep=0.75 sep="+10" splines=polyline]
+	node [fontname=Arial fontsize=12 margin="0.2,0.1" shape=box style=filled]
+	edge [fontname=Arial fontsize=10]
+	"app/core/app.py" [label="📄 app.py" color="#000000" fillcolor="#FFEBEE" fontsize=14 penwidth=2.0 shape=box style=filled]
+	"app/core/config.py" [label="📄 config.py" color="#000000" fillcolor="#E8F5E9" shape=box style=filled]
+	"app/core/exceptions.py" [label="📄 exceptions.py" color="#000000" fillcolor="#E8F5E9" shape=box style=filled]
+	"app/models/user.py" [label="🔷 user.py" color="#000000" fillcolor="#FFF3E0" shape=box style=filled]
+	"app/models/product.py" [label="🔷 product.py" color="#000000" fillcolor="#FFF3E0" shape=box style=filled]
+	"app/models/order.py" [label="🔷 order.py" color="#000000" fillcolor="#FFF3E0" shape=box style=filled]
+	"app/models/base.py" [label="🔷 base.py" color="#000000" fillcolor="#FFF3E0" shape=box style=filled]
+	"app/controllers/auth.py" [label="📚 auth.py" color="#000000" fillcolor="#FFF9C4" shape=box style=filled]
+	"app/controllers/products.py" [label="📚 products.py" color="#000000" fillcolor="#FFF9C4" shape=box style=filled]
+	"app/controllers/orders.py" [label="📚 orders.py" color="#000000" fillcolor="#FFF9C4" shape=box style=filled]
+	"app/utils/helpers.py" [label="🔸 helpers.py" color="#000000" fillcolor="#F3E5F5" shape=box style=filled]
+	"app/utils/validators.py" [label="🔸 validators.py" color="#000000" fillcolor="#F3E5F5" shape=box style=filled]
+	"app/utils/formatters.py" [label="🔸 formatters.py" color="#000000" fillcolor="#F3E5F5" shape=box style=filled]
+	"external/db_connector.py" [label="📦 db_connector.py" color="#000000" fillcolor="#E0F7FA" shape=box style=filled]
+	subgraph cluster_app_core {
+		color="#DDDDDD" fillcolor="#F5F5F5" fontcolor="#333333" label="app/core" style="filled,rounded"
+		"app/core/exceptions.py"
+		"app/core/app.py"
+		"app/core/config.py"
+	}
+	subgraph cluster_app_models {
+		color="#DDDDDD" fillcolor="#F5F5F5" fontcolor="#333333" label="app/models" style="filled,rounded"
+		"app/models/product.py"
+		"app/models/base.py"
+		"app/models/order.py"
+		"app/models/user.py"
+	}
+	subgraph cluster_app_controllers {
+		color="#DDDDDD" fillcolor="#F5F5F5" fontcolor="#333333" label="app/controllers" style="filled,rounded"
+		"app/controllers/products.py"
+		"app/controllers/orders.py"
+		"app/controllers/auth.py"
+	}
+	subgraph cluster_app_utils {
+		color="#DDDDDD" fillcolor="#F5F5F5" fontcolor="#333333" label="app/utils" style="filled,rounded"
+		"app/utils/formatters.py"
+		"app/utils/helpers.py"
+		"app/utils/validators.py"
+	}
+	"app/core/app.py" -> "app/core/config.py" [color="#2196F3"]
+	"app/core/app.py" -> "app/controllers/auth.py" [color="#2196F3" lhead=cluster_app_controllers ltail=cluster_app_core]
+	"app/core/app.py" -> "app/controllers/products.py" [color="#2196F3" lhead=cluster_app_controllers ltail=cluster_app_core]
+	"app/core/app.py" -> "app/controllers/orders.py" [color="#2196F3" lhead=cluster_app_controllers ltail=cluster_app_core]
+	"app/core/app.py" -> "external/db_connector.py" [color="#F44336" penwidth=2.0]
+	"app/core/config.py" -> "app/utils/helpers.py" [color="#4CAF50" lhead=cluster_app_utils ltail=cluster_app_core]
+	"app/controllers/auth.py" -> "app/models/user.py" [color="#4CAF50" lhead=cluster_app_models ltail=cluster_app_controllers penwidth=5.0]
+	"app/controllers/auth.py" -> "app/core/exceptions.py" [color="#4CAF50" lhead=cluster_app_core ltail=cluster_app_controllers]
+	"app/controllers/auth.py" -> "app/utils/validators.py" [color="#4CAF50" lhead=cluster_app_utils ltail=cluster_app_controllers]
+	"app/controllers/products.py" -> "app/models/product.py" [color="#4CAF50" lhead=cluster_app_models ltail=cluster_app_controllers penwidth=4.0]
+	"app/controllers/products.py" -> "app/utils/formatters.py" [color="#4CAF50" lhead=cluster_app_utils ltail=cluster_app_controllers]
+	"app/controllers/orders.py" -> "app/models/order.py" [color="#4CAF50" lhead=cluster_app_models ltail=cluster_app_controllers penwidth=4.0]
+	"app/controllers/orders.py" -> "app/models/product.py" [color="#4CAF50" lhead=cluster_app_models ltail=cluster_app_controllers]
+	"app/controllers/orders.py" -> "app/models/user.py" [color="#4CAF50" lhead=cluster_app_models ltail=cluster_app_controllers]
+	"app/controllers/orders.py" -> "app/utils/formatters.py" [color="#4CAF50" lhead=cluster_app_utils ltail=cluster_app_controllers]
+	"app/models/user.py" -> "app/models/base.py" [color="#FF9800" style=bold]
+	"app/models/user.py" -> "app/utils/validators.py" [color="#4CAF50" lhead=cluster_app_utils ltail=cluster_app_models]
+	"app/models/product.py" -> "app/models/base.py" [color="#FF9800" style=bold]
+	"app/models/order.py" -> "app/models/base.py" [color="#FF9800" style=bold]
+	"app/models/order.py" -> "app/utils/helpers.py" [color="#4CAF50" lhead=cluster_app_utils ltail=cluster_app_models]
+	"app/models/base.py" -> "external/db_connector.py" [color="#F44336" penwidth=2.0]
+}
