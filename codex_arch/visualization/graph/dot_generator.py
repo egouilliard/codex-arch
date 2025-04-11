@@ -545,6 +545,9 @@ class DotGenerator:
         if format not in supported_formats:
             raise ValueError(f"Unsupported format: {format}. Use one of: {', '.join(supported_formats)}")
         
+        # Check if Graphviz is installed
+        self._check_graphviz_installed()
+        
         # Render the graph
         try:
             rendered = self.dot.pipe(format=format, encoding='utf-8' if format == 'svg' else None)
@@ -553,6 +556,45 @@ class DotGenerator:
         except Exception as e:
             logger.error(f"Error rendering graph: {str(e)}")
             raise
+
+    def _check_graphviz_installed(self) -> bool:
+        """
+        Check if Graphviz executables are installed.
+        
+        Returns:
+            True if Graphviz is installed, raises an exception otherwise
+        """
+        import shutil
+        import subprocess
+        
+        # Check if the 'dot' executable is in the PATH
+        dot_path = shutil.which('dot')
+        
+        if not dot_path:
+            logger.warning("Graphviz 'dot' executable not found in PATH")
+            
+            # Try to get version to provide a more helpful error message
+            try:
+                # Try running dot -V to get version info
+                subprocess.run(['dot', '-V'], 
+                               stdout=subprocess.PIPE, 
+                               stderr=subprocess.PIPE, 
+                               check=False)
+            except FileNotFoundError:
+                installation_instructions = """
+                Graphviz executables are required for rendering graphs.
+                
+                Installation instructions:
+                - macOS: brew install graphviz
+                - Ubuntu/Debian: sudo apt install graphviz
+                - Windows: Download installer from https://graphviz.org/download/
+                
+                After installation, ensure the 'dot' executable is in your system PATH.
+                """
+                logger.error(installation_instructions)
+                raise RuntimeError(f"Graphviz executables not found. {installation_instructions}")
+        
+        return True
 
     def save_svg_file(self, filename: str = "dependency_graph") -> str:
         """

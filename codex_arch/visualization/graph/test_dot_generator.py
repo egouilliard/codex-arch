@@ -278,10 +278,76 @@ def test_with_module_grouping():
     logger.info(f"Optimized large graph generated at: {dot_file}")
 
 
+def test_svg_rendering_and_output_options():
+    """Test SVG rendering and output format options."""
+    logger.info("Testing SVG rendering and output options...")
+    
+    # Create a simple dependency graph for testing
+    dependency_graph = {
+        "metadata": {
+            "title": "Output Options Test Graph"
+        },
+        "nodes": {
+            "module_a": {"type": "module", "label": "Module A"},
+            "module_b": {"type": "module", "label": "Module B"},
+            "module_c": {"type": "module", "label": "Module C"}
+        },
+        "edges": {
+            "module_a": ["module_b", "module_c"],
+            "module_b": ["module_c"]
+        }
+    }
+    
+    # Set up the output directory
+    output_dir = os.path.join(project_root, "output", "svg_test")
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Initialize the DOT generator
+    dot_generator = DotGenerator(output_dir=output_dir)
+    
+    # Generate the graph
+    digraph = dot_generator.generate_from_dependency_graph(dependency_graph)
+    
+    try:
+        # Test SVG rendering
+        svg_data = dot_generator.render_graph(format='svg')
+        logger.info(f"SVG data generated (length: {len(svg_data)} bytes)")
+        
+        # Test saving as SVG file
+        svg_file = dot_generator.save_svg_file("output_test_svg")
+        logger.info(f"SVG file saved at: {svg_file}")
+        
+        # Test other output formats (if Graphviz supports them)
+        try:
+            # Try PNG format
+            png_file = dot_generator.save_rendered_file("output_test_png", format='png')
+            logger.info(f"PNG file saved at: {png_file}")
+            
+            # Try PDF format
+            pdf_file = dot_generator.save_rendered_file("output_test_pdf", format='pdf')
+            logger.info(f"PDF file saved at: {pdf_file}")
+        except Exception as e:
+            logger.warning(f"Skipping some output formats due to error: {str(e)}")
+        
+        # Verify files exist
+        assert os.path.exists(svg_file), f"SVG file was not created at {svg_file}"
+        logger.info("SVG rendering test completed successfully")
+    except RuntimeError as e:
+        if "Graphviz executables not found" in str(e):
+            logger.warning("Skipping SVG rendering tests because Graphviz is not installed")
+            logger.warning(str(e))
+        else:
+            raise
+    except Exception as e:
+        logger.error(f"Unexpected error in SVG rendering test: {str(e)}")
+        raise
+
+
 if __name__ == "__main__":
     # Run all tests
     test_with_simple_graph()
     test_with_styled_graph()
     test_with_module_grouping()
+    test_svg_rendering_and_output_options()
     
     logger.info("All tests completed successfully!") 

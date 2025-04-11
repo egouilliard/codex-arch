@@ -19,27 +19,27 @@ digraph {
 	"external/db_connector.py" [label="📦 db_connector.py" color="#000000" fillcolor="#E0F7FA" shape=box style=filled]
 	subgraph cluster_app_core {
 		color="#DDDDDD" fillcolor="#F5F5F5" fontcolor="#333333" label="app/core" style="filled,rounded"
-		"app/core/exceptions.py"
 		"app/core/app.py"
 		"app/core/config.py"
+		"app/core/exceptions.py"
 	}
 	subgraph cluster_app_models {
 		color="#DDDDDD" fillcolor="#F5F5F5" fontcolor="#333333" label="app/models" style="filled,rounded"
-		"app/models/product.py"
 		"app/models/base.py"
 		"app/models/order.py"
 		"app/models/user.py"
+		"app/models/product.py"
 	}
 	subgraph cluster_app_controllers {
 		color="#DDDDDD" fillcolor="#F5F5F5" fontcolor="#333333" label="app/controllers" style="filled,rounded"
+		"app/controllers/auth.py"
 		"app/controllers/products.py"
 		"app/controllers/orders.py"
-		"app/controllers/auth.py"
 	}
 	subgraph cluster_app_utils {
 		color="#DDDDDD" fillcolor="#F5F5F5" fontcolor="#333333" label="app/utils" style="filled,rounded"
-		"app/utils/formatters.py"
 		"app/utils/helpers.py"
+		"app/utils/formatters.py"
 		"app/utils/validators.py"
 	}
 	"app/core/app.py" -> "app/core/config.py" [color="#2196F3"]
