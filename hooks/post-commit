@@ -1,0 +1,12 @@
+#!/bin/sh
+# Codex-Arch post-commit hook
+# This script triggers incremental analysis after a commit
+
+# Get the absolute path to the Python interpreter
+PYTHON_PATH=$(which python3 || which python)
+
+# Execute the hook implementation
+$PYTHON_PATH -m codex_arch.hooks.hook_scripts post-commit
+
+# Exit with the same status as the hook implementation
+exit $? 

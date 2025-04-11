@@ -1,0 +1,12 @@
+#!/bin/sh
+# Codex-Arch pre-push hook
+# This script checks for significant changes before pushing
+
+# Get the absolute path to the Python interpreter
+PYTHON_PATH=$(which python3 || which python)
+
+# Execute the hook implementation
+$PYTHON_PATH -m codex_arch.hooks.hook_scripts pre-push
+
+# Exit with the same status as the hook implementation
+exit $? 

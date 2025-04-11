@@ -6,9 +6,18 @@ import argparse
 import logging
 import sys
 from typing import List, Optional
+import click
+from pathlib import Path
 
 from codex_arch import __version__
 from codex_arch.cli import file_tree_cmd
+from codex_arch.analyzer import run_analysis
+from codex_arch.indexer import index_repository
+from codex_arch.storage import get_storage
+from codex_arch.query import query_architecture
+from codex_arch.report import generate_report
+from codex_arch.change_detection import detect_changes, summarize_changes
+from codex_arch.hooks import install_hooks, uninstall_hooks
 
 
 def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
@@ -684,6 +693,34 @@ def main(args: Optional[List[str]] = None) -> int:
         logging.error(f"Error executing command {parsed_args.command}: {str(e)}", exc_info=True)
         print(f"Error: {str(e)}")
         return 1
+
+
+# Git hooks commands
+@click.group()
+def hooks():
+    """Manage Git hooks integration."""
+    pass
+
+@hooks.command('install')
+@click.option('--force', is_flag=True, help='Force override existing hooks')
+def install_git_hooks(force):
+    """Install Git hooks into the current repository."""
+    install_hooks(force=force)
+    click.echo("Git hooks installed successfully.")
+
+@hooks.command('uninstall')
+def uninstall_git_hooks():
+    """Remove Git hooks from the current repository."""
+    uninstall_hooks()
+    click.echo("Git hooks uninstalled successfully.")
+
+
+def create_cli() -> click.Group:
+    """Factory function to create the CLI."""
+    cli = click.Group()
+    cli.add_command(file_tree_cmd)
+    cli.add_command(hooks)
+    return cli
 
 
 if __name__ == "__main__":
