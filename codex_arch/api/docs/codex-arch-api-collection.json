@@ -1,0 +1,277 @@
+{
+    "info": {
+        "name": "Codex-Arch API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": "Collection of endpoints for the Codex-Arch API"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "description": "Authentication and user management endpoints",
+            "item": [
+                {
+                    "name": "Get Token",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"your_username\",\n    \"password\": \"your_password\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/token",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "token"]
+                        },
+                        "description": "Authenticate and get a JWT token"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Register User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"new_user\",\n    \"password\": \"secure_password\",\n    \"email\": \"user@example.com\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/register",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "register"]
+                        },
+                        "description": "Register a new user account"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Verify Token",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/verify",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["auth", "verify"]
+                        },
+                        "description": "Verify that a token is valid"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Analysis",
+            "description": "Start and manage code analysis jobs",
+            "item": [
+                {
+                    "name": "Start Analysis",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"repository_url\": \"https://github.com/user/repo\",\n    \"branch\": \"main\",\n    \"options\": {\n        \"include_metrics\": true,\n        \"include_dependencies\": true,\n        \"include_summary\": true\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/analysis/repo",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["analysis", "repo"]
+                        },
+                        "description": "Start a new code analysis job"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Analysis Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/analysis/{{analysis_id}}",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["analysis", "{{analysis_id}}"]
+                        },
+                        "description": "Check the status of an analysis job"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Analysis Results",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/analysis/{{analysis_id}}/results",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["analysis", "{{analysis_id}}", "results"]
+                        },
+                        "description": "Get the full results of a completed analysis"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Artifacts",
+            "description": "Access visualization and analysis artifacts",
+            "item": [
+                {
+                    "name": "Get Dependency Graph",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/artifacts/{{analysis_id}}/dependency-graph?format=svg",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["artifacts", "{{analysis_id}}", "dependency-graph"],
+                            "query": [
+                                {
+                                    "key": "format",
+                                    "value": "svg"
+                                }
+                            ]
+                        },
+                        "description": "Get the dependency graph visualization"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Code Metrics",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/artifacts/{{analysis_id}}/metrics",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["artifacts", "{{analysis_id}}", "metrics"]
+                        },
+                        "description": "Get code metrics from the analysis"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Code Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/artifacts/{{analysis_id}}/summary?format=markdown",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["artifacts", "{{analysis_id}}", "summary"],
+                            "query": [
+                                {
+                                    "key": "format",
+                                    "value": "markdown"
+                                }
+                            ]
+                        },
+                        "description": "Get the code architecture summary"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Info",
+            "description": "API information and status endpoints",
+            "item": [
+                {
+                    "name": "Get API Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/info/status",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["info", "status"]
+                        },
+                        "description": "Check the current API status"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get API Version",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/info/version",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["info", "version"]
+                        },
+                        "description": "Get the current API version information"
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:5000/api/v1",
+            "type": "string"
+        },
+        {
+            "key": "token",
+            "value": "your_jwt_token_here",
+            "type": "string"
+        },
+        {
+            "key": "analysis_id",
+            "value": "analysis_id_here",
+            "type": "string"
+        }
+    ]
+} 
