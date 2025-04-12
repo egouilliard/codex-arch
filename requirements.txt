@@ -10,3 +10,9 @@ flask-swagger-ui==4.11.1
 apispec==6.3.0
 apispec-webframeworks==0.5.2
 GitPython==3.1.44
+
+# Testing dependencies
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-mock==3.11.1
+coverage==7.3.2

@@ -94,6 +94,19 @@ class GitChangeDetector:
             logger.error(f"Error getting changes between {from_commit} and {to_commit}: {str(e)}")
             return {'added': set(), 'modified': set(), 'deleted': set()}
     
+    def detect_changes(self, from_commit: str = 'HEAD~1', to_commit: str = 'HEAD') -> Dict[str, Set[str]]:
+        """
+        Alias for get_changes() method to maintain backward compatibility.
+        
+        Args:
+            from_commit: The base commit to compare from. Defaults to the previous commit.
+            to_commit: The target commit to compare to. Defaults to the current HEAD.
+            
+        Returns:
+            Dictionary containing sets of added, modified, and deleted files.
+        """
+        return self.get_changes(from_commit, to_commit)
+    
     def get_affected_modules(self, changes: Dict[str, Set[str]], 
                              file_extensions: List[str] = None) -> Set[str]:
         """

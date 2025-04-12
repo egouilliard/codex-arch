@@ -57,5 +57,14 @@ codex_arch/visualization/__init__.py
 codex_arch/visualization/graph/__init__.py
 codex_arch/visualization/graph/dot_generator.py
 codex_arch/visualization/graph/test_dot_generator.py
+tests/test_api.py
+tests/test_api_config.py
+tests/test_api_e2e.py
+tests/test_api_integrations.py
+tests/test_change_detection.py
+tests/test_cli_integration.py
+tests/test_end_to_end.py
 tests/test_file_tree_extractor.py
 tests/test_hook_throttling_notification.py
+tests/test_integration.py
+tests/test_metrics_collector.py

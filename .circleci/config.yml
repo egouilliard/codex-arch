@@ -1,0 +1,157 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@2.1.1
+  codecov: codecov/codecov@3.2.4
+  slack: circleci/slack@4.12.5
+
+commands:
+  install_dependencies:
+    description: "Install project dependencies"
+    steps:
+      - python/install-packages:
+          pkg-manager: pip
+          packages:
+            - -e .[test]
+  
+  store_test_results_command:
+    description: "Store test results"
+    parameters:
+      path:
+        type: string
+        default: test-results
+    steps:
+      - store_test_results:
+          path: << parameters.path >>
+      - store_artifacts:
+          path: << parameters.path >>
+
+jobs:
+  unit-tests:
+    docker:
+      - image: cimg/python:3.10
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: Create test results directory
+          command: mkdir -p test-results/unit
+      - run:
+          name: Run unit tests
+          command: |
+            python -m pytest tests/ -k "not integration and not e2e" \
+              --junitxml=test-results/unit/junit.xml \
+              --cov=codex_arch \
+              --cov-report=xml:test-results/unit/coverage.xml
+      - store_test_results_command:
+          path: test-results/unit
+      - persist_to_workspace:
+          root: .
+          paths:
+            - test-results/unit
+  
+  integration-tests:
+    docker:
+      - image: cimg/python:3.10
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: Create test results directory
+          command: mkdir -p test-results/integration
+      - run:
+          name: Run integration tests
+          command: |
+            python -m pytest tests/ -m "integration" \
+              --junitxml=test-results/integration/junit.xml \
+              --cov=codex_arch \
+              --cov-report=xml:test-results/integration/coverage.xml
+      - store_test_results_command:
+          path: test-results/integration
+      - persist_to_workspace:
+          root: .
+          paths:
+            - test-results/integration
+  
+  e2e-tests:
+    docker:
+      - image: cimg/python:3.10
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: Install additional dependencies
+          command: pip install pytest-html pytest-cov
+      - run:
+          name: Create test results directory
+          command: mkdir -p test-results/e2e
+      - run:
+          name: Run end-to-end tests
+          command: |
+            chmod +x tests/run_e2e_tests.sh
+            ./tests/run_e2e_tests.sh
+      - run:
+          name: Copy E2E test results
+          command: |
+            mkdir -p test-results/e2e
+            find tests/output -name "junit.xml" -exec cp {} test-results/e2e/ \;
+            find tests/output -name "report.html" -exec cp {} test-results/e2e/ \;
+      - store_test_results_command:
+          path: test-results/e2e
+      - persist_to_workspace:
+          root: .
+          paths:
+            - test-results/e2e
+  
+  coverage-report:
+    docker:
+      - image: cimg/python:3.10
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Install coverage
+          command: pip install coverage
+      - run:
+          name: Combine coverage reports
+          command: |
+            coverage combine test-results/*/coverage.xml || true
+            coverage report
+            coverage xml -o coverage.xml
+      - codecov/upload:
+          file: coverage.xml
+      - store_artifacts:
+          path: coverage.xml
+  
+  notify:
+    docker:
+      - image: cimg/base:current
+    steps:
+      - slack/notify:
+          event: always
+          template: basic_success_1
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - unit-tests
+      - integration-tests:
+          requires:
+            - unit-tests
+      - e2e-tests:
+          requires:
+            - integration-tests
+      - coverage-report:
+          requires:
+            - unit-tests
+            - integration-tests
+            - e2e-tests
+      - notify:
+          requires:
+            - coverage-report
+          context: slack-notifications 

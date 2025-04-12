@@ -118,6 +118,15 @@ class FileTreeExtractor:
         
         self._traverse_recursive(self.root_path, result)
         return result
+    
+    def extract_tree(self) -> Dict[str, Any]:
+        """
+        Alias for extract() method to maintain backward compatibility.
+        
+        Returns:
+            A dictionary representing the hierarchical file tree
+        """
+        return self.extract()
         
     def _traverse_recursive(self, current_path: Path, current_node: Dict[str, Any], current_depth: int = 0) -> None:
         """Recursively traverse the directory structure."""

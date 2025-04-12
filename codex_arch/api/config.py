@@ -45,12 +45,18 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     """Production environment configuration."""
-    SECRET_KEY = os.environ.get('SECRET_KEY')  # Must be set in production
     CORS_ORIGINS = os.environ.get('CORS_ORIGINS', 'https://yourdomain.com')
     # Use Redis in production if available, otherwise FileSystemCache
     CACHE_TYPE = os.environ.get('CACHE_TYPE', 'FileSystemCache' if os.environ.get('CACHE_DIR') else 'SimpleCache')
     # Longer timeout in production
     CACHE_DEFAULT_TIMEOUT = int(os.environ.get('CACHE_DEFAULT_TIMEOUT', 3600))  # 1 hour
+    
+    def __init__(self):
+        """Initialize production configuration with environment variables."""
+        super().__init__()
+        # Override SECRET_KEY with environment variable
+        if 'SECRET_KEY' in os.environ:
+            self.SECRET_KEY = os.environ['SECRET_KEY']
 
 
 # Configuration dictionary based on environment

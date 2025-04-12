@@ -1,0 +1,109 @@
+site_name: Codex-Arch Documentation
+site_description: Comprehensive documentation for the Codex-Arch project
+site_author: Codex-Arch Team
+repo_url: https://github.com/egouilliard/codex-arch
+repo_name: codex-arch
+
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quick-start.md
+    - Configuration: getting-started/configuration.md
+  - Architecture:
+    - Overview: architecture/overview.md
+    - Components: architecture/components.md
+    - Workflow: architecture/workflow.md
+  - Modules:
+    - Extractors: modules/extractors.md
+    - Metrics: modules/metrics.md
+    - Visualization: modules/visualization.md
+    - Summary: modules/summary.md
+    - Bundler: modules/bundler.md
+    - CLI: modules/cli.md
+    - Change Detection: modules/change-detection.md
+    - API: modules/api.md
+    - Hooks: modules/hooks.md
+  - API Reference:
+    - REST API: api/rest-api.md
+    - Endpoints: api/endpoints.md
+    - Authentication: api/authentication.md
+    - CLI Reference: api/cli-reference.md
+    - Git Hooks: api/git-hooks.md
+    - External Integrations: api/external-integrations.md
+  - Guides:
+    - Command Line Usage: guides/cli-usage.md
+    - API Integration: guides/api-integration.md
+    - Git Hook Setup: guides/git-hook-setup.md
+    - Advanced Use Cases: guides/advanced-use-cases.md
+  - Development:
+    - Testing: development/testing.md
+    - Contributing: development/contributing.md
+    - Roadmap: development/roadmap.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - def_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/egouilliard/codex-arch
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/codex-arch/
+
+copyright: Copyright &copy; 2024 Codex-Arch Team
