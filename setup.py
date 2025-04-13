@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="codex-arch",
-    version="0.2.2",
+    version="0.2.3",
     author="Codex-Arch Team",
     author_email="author@example.com",
     description="A tool for analyzing and visualizing code architecture",

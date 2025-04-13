@@ -1,0 +1,54 @@
+{
+  "file_count": 12,
+  "line_count": 532,
+  "bytes": 42156,
+  "language_distribution": {
+    "Python": {
+      "file_count": 10,
+      "line_count": 490,
+      "bytes": 39257
+    },
+    "Markdown": {
+      "file_count": 1,
+      "line_count": 32,
+      "bytes": 1845
+    },
+    "JSON": {
+      "file_count": 1,
+      "line_count": 10,
+      "bytes": 1054
+    }
+  },
+  "complexity_metrics": {
+    "average_cyclomatic_complexity": 3.2,
+    "max_cyclomatic_complexity": 8,
+    "high_complexity_files": [
+      {
+        "file": "src/core/core_module.py",
+        "complexity": 8
+      },
+      {
+        "file": "src/utils/helpers.py",
+        "complexity": 6
+      }
+    ]
+  },
+  "import_metrics": {
+    "internal_imports": 15,
+    "external_imports": 8,
+    "most_imported_modules": [
+      {
+        "module": "os",
+        "count": 5
+      },
+      {
+        "module": "json",
+        "count": 3
+      },
+      {
+        "module": "logging",
+        "count": 3
+      }
+    ]
+  }
+} 
