@@ -78,9 +78,29 @@ class DependencyExporter:
             'errors': self.errors if self.errors else None
         }
         
+        # Include analysis results if available
+        if hasattr(dependency_graph, 'analysis_results') and dependency_graph.analysis_results:
+            export_data['analysis'] = dependency_graph.analysis_results
+            
+        # Include edge errors if available
+        if hasattr(dependency_graph, 'edge_errors') and dependency_graph.edge_errors:
+            export_data['edge_errors'] = dependency_graph.edge_errors
+            
+            # Collect the errors to add to the general errors list as well
+            for edge_error in dependency_graph.edge_errors:
+                self.add_error(
+                    file_path=edge_error.get('source', 'unknown'),
+                    error_type=edge_error.get('error_type', 'edge_error'),
+                    message=edge_error.get('message', 'Edge error'),
+                    details=edge_error.get('details', None)
+                )
+            
+            # Update the error count
+            export_data['metadata']['error_count'] = len(self.errors)
+        
         try:
             with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(export_data, f, indent=2, sort_keys=True)
+                json.dump(export_data, f, indent=2, sort_keys=True, cls=SafeJSONEncoder)
             logger.info(f"Dependency graph exported to {output_file}")
             return output_file
         except Exception as e:

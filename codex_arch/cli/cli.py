@@ -19,6 +19,7 @@ from codex_arch.query import query_architecture
 from codex_arch.report import generate_report
 from codex_arch.change_detection import detect_changes, summarize_changes
 from codex_arch.hooks import install_hooks, uninstall_hooks
+from codex_arch.extractors.python.extractor import extract_dependencies
 
 logger = logging.getLogger(__name__)
 
@@ -294,6 +295,43 @@ def uninstall_git_hooks():
         click.echo("Git hooks uninstalled successfully.")
     else:
         click.echo(f"Error uninstalling Git hooks: {result.get('error')}")
+
+@cli.command()
+@click.argument('path', type=click.Path(exists=True))
+@click.option('--output', '-o', type=click.Path(), help='Output directory for results')
+@click.option('--file', '-f', default='python_dependencies.json', help='Output filename')
+@click.option('--include-patterns', '-i', multiple=True, default=['**/*.py'], help='Glob patterns for files to include')
+@click.option('--exclude-patterns', '-e', multiple=True, default=['**/venv/**', '**/.git/**', '**/__pycache__/**'], help='Glob patterns for files to exclude')
+@click.option('--debug', is_flag=True, help='Enable debug mode for verbose logging')
+def dependencies(path, output, file, include_patterns, exclude_patterns, debug):
+    """
+    Extract and analyze dependencies from Python code.
+    
+    Analyzes Python imports and generates a dependency graph that shows
+    relationships between modules in your codebase.
+    """
+    click.echo(f"Analyzing Python dependencies in: {path}")
+    
+    output_dir = output or os.path.join(os.getcwd(), 'output')
+    os.makedirs(output_dir, exist_ok=True)
+    
+    click.echo(f"Output will be saved to: {output_dir}")
+    
+    try:
+        json_path = extract_dependencies(
+            root_dir=path,
+            output_dir=output_dir,
+            output_file=file,
+            include_patterns=list(include_patterns),
+            exclude_patterns=list(exclude_patterns),
+            debug=debug
+        )
+        
+        click.echo(f"Successfully generated dependency graph at: {json_path}")
+        return 0
+    except Exception as e:
+        click.echo(f"Error: {str(e)}")
+        return 1
 
 if __name__ == '__main__':
     cli() 

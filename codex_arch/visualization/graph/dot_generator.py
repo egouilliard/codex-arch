@@ -30,6 +30,10 @@ class DotGenerator:
                         (defaults to current directory)
         """
         self.output_dir = output_dir or "output"
+        
+        # Ensure output directory exists
+        os.makedirs(self.output_dir, exist_ok=True)
+        
         self.dot = None
         
         # Default color schemes
@@ -619,8 +623,10 @@ class DotGenerator:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(svg_data)
             
-        logger.info(f"SVG file saved to {filepath}")
-        return filepath
+        # Get absolute path for logging
+        abs_filepath = os.path.abspath(filepath)
+        logger.info(f"SVG file saved to {abs_filepath}")
+        return abs_filepath
 
     def save_rendered_file(self, filename: str, format: str = 'svg') -> str:
         """
@@ -653,9 +659,11 @@ class DotGenerator:
             else:  # Other formats are binary
                 with open(filepath, 'wb') as f:
                     f.write(rendered)
-                
-            logger.info(f"{format.upper()} file saved to {filepath}")
-            return filepath
+            
+            # Get absolute path for logging
+            abs_filepath = os.path.abspath(filepath)
+            logger.info(f"{format.upper()} file saved to {abs_filepath}")
+            return abs_filepath
         except Exception as e:
             logger.error(f"Error saving {format} file: {str(e)}")
             raise

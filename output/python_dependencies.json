@@ -1,0 +1,4795 @@
+{
+  "errors": null,
+  "graph": {
+    "edges": [
+      [
+        "analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "analyzer.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "analyzer.py",
+        "metrics/metrics_collector.py"
+      ],
+      [
+        "analyzer.py",
+        "extractors/file_tree_extractor.py"
+      ],
+      [
+        "analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "api/app.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/app.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "api/app.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "api/app.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/app.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "api/app.py",
+        "../venv/lib/python3.13/site-packages/flask_cors/__init__.py"
+      ],
+      [
+        "api/app.py",
+        "../venv/lib/python3.13/site-packages/flask_caching/__init__.py"
+      ],
+      [
+        "api/app.py",
+        "api/config.py"
+      ],
+      [
+        "api/app.py",
+        "api/cache/stats.py"
+      ],
+      [
+        "api/app.py",
+        "api/utils.py"
+      ],
+      [
+        "api/app.py",
+        "api/routes/__init__.py"
+      ],
+      [
+        "api/app.py",
+        "api/docs.py"
+      ],
+      [
+        "api/auth/__init__.py",
+        "api/auth/token.py"
+      ],
+      [
+        "api/auth/token.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/auth/token.py",
+        "../venv/lib/python3.13/site-packages/jwt/__init__.py"
+      ],
+      [
+        "api/auth/token.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "api/auth/token.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "api/auth/token.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "api/auth/token.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py"
+      ],
+      [
+        "api/auth/token.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/auth/token.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "api/cache/stats.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "api/cache/stats.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/cache/stats.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "api/cache/stats.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py"
+      ],
+      [
+        "api/cache/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/cache/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/hashlib.py"
+      ],
+      [
+        "api/cache/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "api/cache/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "api/cache/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/cache/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py"
+      ],
+      [
+        "api/cache/utils.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "api/cache/utils.py",
+        "api/app.py"
+      ],
+      [
+        "api/config.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/config.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/docs.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/docs.py",
+        "../venv/lib/python3.13/site-packages/apispec/__init__.py"
+      ],
+      [
+        "api/docs.py",
+        "../venv/lib/python3.13/site-packages/apispec/ext/marshmallow/__init__.py"
+      ],
+      [
+        "api/docs.py",
+        "../venv/lib/python3.13/site-packages/apispec_webframeworks/flask.py"
+      ],
+      [
+        "api/docs.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "api/docs.py",
+        "../venv/lib/python3.13/site-packages/flask_swagger_ui/__init__.py"
+      ],
+      [
+        "api/docs.py",
+        "api/routes/__init__.py"
+      ],
+      [
+        "api/routes/__init__.py",
+        "api/routes/__init__.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "../venv/lib/python3.13/site-packages/werkzeug/utils.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "api/utils.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "api/cache/utils.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "extractors/file_tree_extractor.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "extractors/python/extractor.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "metrics/metrics_collector.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "visualization/graph/dot_generator.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "summary/data_collector.py"
+      ],
+      [
+        "api/routes/analysis.py",
+        "bundler/context_bundle_assembler.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "../venv/lib/python3.13/site-packages/werkzeug/utils.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "api/utils.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "api/cache/utils.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "api/auth/__init__.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "api/routes/analysis.py"
+      ],
+      [
+        "api/routes/artifacts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "api/routes/auth.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/routes/auth.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "api/routes/auth.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "api/routes/auth.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/hashlib.py"
+      ],
+      [
+        "api/routes/auth.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/routes/auth.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "api/routes/auth.py",
+        "api/auth/__init__.py"
+      ],
+      [
+        "api/routes/auth.py",
+        "api/utils.py"
+      ],
+      [
+        "api/routes/info.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/routes/info.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "api/routes/info.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/platform.py"
+      ],
+      [
+        "api/routes/info.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "api/routes/info.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/routes/info.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "api/routes/info.py",
+        "api/utils.py"
+      ],
+      [
+        "api/routes/info.py",
+        "api/cache/utils.py"
+      ],
+      [
+        "api/routes/info.py",
+        "api/cache/stats.py"
+      ],
+      [
+        "api/routes/info.py",
+        "api/auth/__init__.py"
+      ],
+      [
+        "api/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "api/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/uuid.py"
+      ],
+      [
+        "api/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "api/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "api/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py"
+      ],
+      [
+        "api/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "api/utils.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "api/utils.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "api/utils.py",
+        "../venv/lib/python3.13/site-packages/werkzeug/utils.py"
+      ],
+      [
+        "api/utils.py",
+        "../venv/lib/python3.13/site-packages/flask/__init__.py"
+      ],
+      [
+        "bundler/__init__.py",
+        "bundler/context_bundle_assembler.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/shutil.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/zipfile/__init__.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/tarfile.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/gzip.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/glob.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "summary/data_collector.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "summary/summary_builder.py"
+      ],
+      [
+        "bundler/context_bundle_assembler.py",
+        "extractors/file_tree_extractor.py"
+      ],
+      [
+        "change_detection/__init__.py",
+        "change_detection/git_changes.py"
+      ],
+      [
+        "change_detection/__init__.py",
+        "change_detection/caching.py"
+      ],
+      [
+        "change_detection/__init__.py",
+        "change_detection/incremental.py"
+      ],
+      [
+        "change_detection/__init__.py",
+        "change_detection/summary.py"
+      ],
+      [
+        "change_detection/caching.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "change_detection/caching.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "change_detection/caching.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/hashlib.py"
+      ],
+      [
+        "change_detection/caching.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "change_detection/caching.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "change_detection/git_changes.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "change_detection/git_changes.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "change_detection/git_changes.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "change_detection/git_changes.py",
+        "../venv/lib/python3.13/site-packages/git/__init__.py"
+      ],
+      [
+        "change_detection/incremental.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "change_detection/incremental.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "change_detection/incremental.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py"
+      ],
+      [
+        "change_detection/incremental.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "change_detection/incremental.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "change_detection/incremental.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "change_detection/incremental.py",
+        "change_detection/git_changes.py"
+      ],
+      [
+        "change_detection/incremental.py",
+        "analyzer.py"
+      ],
+      [
+        "change_detection/incremental.py",
+        "storage.py"
+      ],
+      [
+        "change_detection/summary.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "change_detection/summary.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "change_detection/summary.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "change_detection/summary.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "change_detection/summary.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "change_detection/summary.py",
+        "change_detection/git_changes.py"
+      ],
+      [
+        "cli/__init__.py",
+        "cli/__init__.py"
+      ],
+      [
+        "cli/analyze_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "cli/analyze_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "cli/analyze_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/analyze_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py"
+      ],
+      [
+        "cli/analyze_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/analyze_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "cli/analyze_cmd.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "cli/analyze_cmd.py",
+        "../venv/lib/python3.13/site-packages/tqdm/__init__.py"
+      ],
+      [
+        "cli/analyze_cmd.py",
+        "cli/__init__.py"
+      ],
+      [
+        "cli/api_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "cli/api_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "cli/api_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/api_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/api_cmd.py",
+        "api/app.py"
+      ],
+      [
+        "cli/bundle_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "cli/bundle_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "cli/bundle_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/bundle_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/bundle_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "cli/bundle_cmd.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "cli/bundle_cmd.py",
+        "../venv/lib/python3.13/site-packages/tqdm/__init__.py"
+      ],
+      [
+        "cli/bundle_cmd.py",
+        "bundler/context_bundle_assembler.py"
+      ],
+      [
+        "cli/cli.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "cli/cli.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/cli.py",
+        "../venv/lib/python3.13/site-packages/click/__init__.py"
+      ],
+      [
+        "cli/cli.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "cli/cli.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "cli/cli.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/cli.py",
+        "analyzer.py"
+      ],
+      [
+        "cli/cli.py",
+        "indexer.py"
+      ],
+      [
+        "cli/cli.py",
+        "storage.py"
+      ],
+      [
+        "cli/cli.py",
+        "query.py"
+      ],
+      [
+        "cli/cli.py",
+        "report.py"
+      ],
+      [
+        "cli/cli.py",
+        "change_detection/__init__.py"
+      ],
+      [
+        "cli/cli.py",
+        "hooks/__init__.py"
+      ],
+      [
+        "cli/cli.py",
+        "extractors/python/extractor.py"
+      ],
+      [
+        "cli/cli.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "cli/dependency_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "cli/dependency_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "cli/dependency_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/dependency_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/dependency_cmd.py",
+        "../venv/lib/python3.13/site-packages/tqdm/__init__.py"
+      ],
+      [
+        "cli/dependency_cmd.py",
+        "extractors/python/extractor.py"
+      ],
+      [
+        "cli/file_tree_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "cli/file_tree_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "cli/file_tree_cmd.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "cli/file_tree_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/file_tree_cmd.py",
+        "extractors/file_tree_extractor.py"
+      ],
+      [
+        "cli/main.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "cli/main.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/main.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/warnings.py"
+      ],
+      [
+        "cli/main.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/main.py",
+        "../venv/lib/python3.13/site-packages/click/__init__.py"
+      ],
+      [
+        "cli/main.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "cli/main.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "cli/main.py",
+        "cli/__init__.py"
+      ],
+      [
+        "cli/main.py",
+        "analyzer.py"
+      ],
+      [
+        "cli/main.py",
+        "indexer.py"
+      ],
+      [
+        "cli/main.py",
+        "storage.py"
+      ],
+      [
+        "cli/main.py",
+        "query.py"
+      ],
+      [
+        "cli/main.py",
+        "report.py"
+      ],
+      [
+        "cli/main.py",
+        "change_detection/__init__.py"
+      ],
+      [
+        "cli/main.py",
+        "hooks/__init__.py"
+      ],
+      [
+        "cli/metrics_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "cli/metrics_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "cli/metrics_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/metrics_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/metrics_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "cli/metrics_cmd.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "cli/metrics_cmd.py",
+        "../venv/lib/python3.13/site-packages/tqdm/__init__.py"
+      ],
+      [
+        "cli/metrics_cmd.py",
+        "metrics/metrics_collector.py"
+      ],
+      [
+        "cli/run_all.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "cli/run_all.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/run_all.py",
+        "../venv/lib/python3.13/site-packages/click/__init__.py"
+      ],
+      [
+        "cli/run_all.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "cli/run_all.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "cli/run_all.py",
+        "cli/cli.py"
+      ],
+      [
+        "cli/run_all.py",
+        "analyzer.py"
+      ],
+      [
+        "cli/run_all.py",
+        "extractors/python/extractor.py"
+      ],
+      [
+        "cli/run_all.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py"
+      ],
+      [
+        "cli/summary_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "cli/summary_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "cli/summary_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/summary_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/summary_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "cli/summary_cmd.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "cli/summary_cmd.py",
+        "../venv/lib/python3.13/site-packages/tqdm/__init__.py"
+      ],
+      [
+        "cli/summary_cmd.py",
+        "summary/summary_builder.py"
+      ],
+      [
+        "cli/summary_cmd.py",
+        "summary/data_collector.py"
+      ],
+      [
+        "cli/visualization_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "cli/visualization_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "cli/visualization_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "cli/visualization_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "cli/visualization_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "cli/visualization_cmd.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "cli/visualization_cmd.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "cli/visualization_cmd.py",
+        "../venv/lib/python3.13/site-packages/tqdm/__init__.py"
+      ],
+      [
+        "cli/visualization_cmd.py",
+        "visualization/graph/dot_generator.py"
+      ],
+      [
+        "extractors/file_tree_extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "extractors/file_tree_extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "extractors/file_tree_extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py"
+      ],
+      [
+        "extractors/file_tree_extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "extractors/file_tree_extractor.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "extractors/file_tree_extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "extractors/file_tree_extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/io.py"
+      ],
+      [
+        "extractors/file_tree_extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "extractors/python/dependency_graph.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "extractors/python/dependency_graph.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "extractors/python/dependency_graph.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "extractors/python/dependency_graph.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "extractors/python/dependency_graph.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/collections/__init__.py"
+      ],
+      [
+        "extractors/python/extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "extractors/python/extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "extractors/python/extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/glob.py"
+      ],
+      [
+        "extractors/python/extractor.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "extractors/python/extractor.py",
+        "extractors/python/import_parser.py"
+      ],
+      [
+        "extractors/python/extractor.py",
+        "extractors/python/path_resolver.py"
+      ],
+      [
+        "extractors/python/extractor.py",
+        "extractors/python/dependency_graph.py"
+      ],
+      [
+        "extractors/python/extractor.py",
+        "extractors/python/json_exporter.py"
+      ],
+      [
+        "extractors/python/import_parser.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ast.py"
+      ],
+      [
+        "extractors/python/import_parser.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "extractors/python/import_parser.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "extractors/python/import_parser.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "extractors/python/json_exporter.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "extractors/python/json_exporter.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "extractors/python/json_exporter.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "extractors/python/json_exporter.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "extractors/python/json_exporter.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "extractors/python/path_resolver.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "extractors/python/path_resolver.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "extractors/python/path_resolver.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "extractors/python/path_resolver.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "hooks/__init__.py",
+        "hooks/hook_scripts.py"
+      ],
+      [
+        "hooks/__init__.py",
+        "hooks/config.py"
+      ],
+      [
+        "hooks/__init__.py",
+        "hooks/throttling.py"
+      ],
+      [
+        "hooks/__init__.py",
+        "hooks/notification.py"
+      ],
+      [
+        "hooks/config.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "hooks/config.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "hooks/config.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "hooks/config.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "hooks/config.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "hooks/config.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/dataclasses.py"
+      ],
+      [
+        "hooks/config.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "hooks/config.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/shutil.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "change_detection/git_changes.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "change_detection/incremental.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "hooks/config.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "hooks/throttling.py"
+      ],
+      [
+        "hooks/hook_scripts.py",
+        "hooks/notification.py"
+      ],
+      [
+        "hooks/notification.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "hooks/notification.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "hooks/notification.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/platform.py"
+      ],
+      [
+        "hooks/notification.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py"
+      ],
+      [
+        "hooks/notification.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "hooks/throttling.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "hooks/throttling.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "hooks/throttling.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "hooks/throttling.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "hooks/throttling.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "hooks/throttling.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "hooks/throttling.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "indexer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "indexer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "indexer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "indexer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "indexer.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "indexer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "indexer.py",
+        "storage.py"
+      ],
+      [
+        "indexer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py"
+      ],
+      [
+        "metrics/__init__.py",
+        "metrics/metrics_collector.py"
+      ],
+      [
+        "metrics/__init__.py",
+        "metrics/language_analyzer.py"
+      ],
+      [
+        "metrics/__init__.py",
+        "metrics/complexity_analyzer.py"
+      ],
+      [
+        "metrics/complexity_analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ast.py"
+      ],
+      [
+        "metrics/complexity_analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py"
+      ],
+      [
+        "metrics/complexity_analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "metrics/complexity_analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "metrics/complexity_analyzer.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "metrics/complexity_analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "metrics/language_analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "metrics/language_analyzer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "metrics/language_analyzer.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/collections/__init__.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "metrics/language_analyzer.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "metrics/complexity_analyzer.py"
+      ],
+      [
+        "metrics/metrics_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "query.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "query.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "query.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "query.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py"
+      ],
+      [
+        "query.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "query.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "query.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "query.py",
+        "storage.py"
+      ],
+      [
+        "report.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "report.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "report.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "report.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "report.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "report.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "report.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "report.py",
+        "storage.py"
+      ],
+      [
+        "storage.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "storage.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "storage.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "storage.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "storage.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "storage.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "summary/__init__.py",
+        "summary/data_collector.py"
+      ],
+      [
+        "summary/__init__.py",
+        "summary/summary_builder.py"
+      ],
+      [
+        "summary/data_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "summary/data_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "summary/data_collector.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "summary/data_collector.py",
+        "extractors/file_tree_extractor.py"
+      ],
+      [
+        "summary/data_collector.py",
+        "extractors/python/extractor.py"
+      ],
+      [
+        "summary/data_collector.py",
+        "metrics/metrics_collector.py"
+      ],
+      [
+        "summary/data_collector.py",
+        "visualization/graph/dot_generator.py"
+      ],
+      [
+        "summary/smart_summarizer.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "summary/summary_builder.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "summary/summary_builder.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "summary/summary_builder.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "summary/summary_builder.py",
+        "summary/data_collector.py"
+      ],
+      [
+        "summary/summary_builder.py",
+        "summary/templates.py"
+      ],
+      [
+        "summary/summary_builder.py",
+        "summary/smart_summarizer.py"
+      ],
+      [
+        "summary/summary_builder.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py"
+      ],
+      [
+        "summary/templates.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "summary/templates.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "summary/templates.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py"
+      ],
+      [
+        "summary/templates.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py"
+      ],
+      [
+        "visualization/graph/__init__.py",
+        "visualization/graph/dot_generator.py"
+      ],
+      [
+        "visualization/graph/dot_generator.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "visualization/graph/dot_generator.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "visualization/graph/dot_generator.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/colorsys.py"
+      ],
+      [
+        "visualization/graph/dot_generator.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py"
+      ],
+      [
+        "visualization/graph/dot_generator.py",
+        "../venv/lib/python3.13/site-packages/graphviz/__init__.py"
+      ],
+      [
+        "visualization/graph/dot_generator.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/shutil.py"
+      ],
+      [
+        "visualization/graph/dot_generator.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py"
+      ],
+      [
+        "visualization/graph/test_dot_generator.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py"
+      ],
+      [
+        "visualization/graph/test_dot_generator.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py"
+      ],
+      [
+        "visualization/graph/test_dot_generator.py",
+        "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py"
+      ],
+      [
+        "visualization/graph/test_dot_generator.py",
+        "../venv/lib/python3.13/site-packages/pathlib.py"
+      ],
+      [
+        "visualization/graph/test_dot_generator.py",
+        "visualization/graph/dot_generator.py"
+      ]
+    ],
+    "nodes": {
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ast.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/collections/__init__.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/colorsys.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/dataclasses.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/glob.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/gzip.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/hashlib.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/io.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/platform.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/shutil.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/tarfile.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/uuid.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/warnings.py": {},
+      "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/zipfile/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/apispec/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/apispec/ext/marshmallow/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/apispec_webframeworks/flask.py": {},
+      "../venv/lib/python3.13/site-packages/click/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/flask/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/flask_caching/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/flask_cors/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/flask_swagger_ui/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/git/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/graphviz/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/jwt/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/pathlib.py": {},
+      "../venv/lib/python3.13/site-packages/tqdm/__init__.py": {},
+      "../venv/lib/python3.13/site-packages/werkzeug/utils.py": {},
+      "__init__.py": {
+        "id": "__init__.py",
+        "imports": [],
+        "path": "__init__.py",
+        "type": "python_module"
+      },
+      "analyzer.py": {
+        "id": "analyzer.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Set",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Union",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "codex_arch.metrics.metrics_collector",
+            "name": "MetricsCollector",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.extractors.file_tree_extractor",
+            "name": "FileTreeExtractor",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "line": 104,
+            "module": "json",
+            "type": "import"
+          }
+        ],
+        "path": "analyzer.py",
+        "type": "python_module"
+      },
+      "api/__init__.py": {
+        "id": "api/__init__.py",
+        "imports": [],
+        "path": "api/__init__.py",
+        "type": "python_module"
+      },
+      "api/app.py": {
+        "id": "api/app.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "datetime",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "flask",
+            "name": "Flask",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "flask",
+            "name": "jsonify",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "flask",
+            "name": "g",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "flask",
+            "name": "request",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "flask",
+            "name": "render_template",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "flask_cors",
+            "name": "CORS",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "flask_caching",
+            "name": "Cache",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "codex_arch.api.config",
+            "name": "get_config",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch",
+            "name": "__version__",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 53,
+            "module": "codex_arch.api.cache.stats",
+            "name": "init_request_cache_tracking",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 59,
+            "module": "codex_arch.api.utils",
+            "name": "start_execution_timer",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 65,
+            "module": "codex_arch.api.cache.stats",
+            "name": "track_cache_hit",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 4,
+            "level": 0,
+            "line": 87,
+            "module": "codex_arch.api.routes",
+            "name": "info",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 4,
+            "level": 0,
+            "line": 88,
+            "module": "codex_arch.api.routes",
+            "name": "analysis",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 4,
+            "level": 0,
+            "line": 89,
+            "module": "codex_arch.api.routes",
+            "name": "artifacts",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 4,
+            "level": 0,
+            "line": 90,
+            "module": "codex_arch.api.routes",
+            "name": "auth",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 4,
+            "level": 0,
+            "line": 122,
+            "module": "codex_arch.api.docs",
+            "name": "register_swagger_docs",
+            "type": "from"
+          }
+        ],
+        "path": "api/app.py",
+        "type": "python_module"
+      },
+      "api/auth/__init__.py": {
+        "id": "api/auth/__init__.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 7,
+            "module": "codex_arch.api.auth.token",
+            "name": "generate_token",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 7,
+            "module": "codex_arch.api.auth.token",
+            "name": "validate_token",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 7,
+            "module": "codex_arch.api.auth.token",
+            "name": "token_required",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 7,
+            "module": "codex_arch.api.auth.token",
+            "name": "admin_required",
+            "type": "from"
+          }
+        ],
+        "path": "api/auth/__init__.py",
+        "type": "python_module"
+      },
+      "api/auth/token.py": {},
+      "api/cache/__init__.py": {
+        "id": "api/cache/__init__.py",
+        "imports": [],
+        "path": "api/cache/__init__.py",
+        "type": "python_module"
+      },
+      "api/cache/stats.py": {},
+      "api/cache/utils.py": {
+        "id": "api/cache/utils.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "hashlib",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "json",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 10,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Callable",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "functools",
+            "name": "wraps",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "flask",
+            "name": "request",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "flask",
+            "name": "current_app",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "flask",
+            "name": "g",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.api.app",
+            "name": "cache",
+            "type": "from"
+          }
+        ],
+        "path": "api/cache/utils.py",
+        "type": "python_module"
+      },
+      "api/config.py": {},
+      "api/docs.py": {},
+      "api/routes/__init__.py": {},
+      "api/routes/analysis.py": {
+        "id": "api/routes/analysis.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "json",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "flask",
+            "name": "Blueprint",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "flask",
+            "name": "request",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "flask",
+            "name": "jsonify",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "flask",
+            "name": "current_app",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "flask",
+            "name": "abort",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "flask",
+            "name": "g",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "werkzeug.utils",
+            "name": "secure_filename",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.utils",
+            "name": "json_response",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.utils",
+            "name": "error_response",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.utils",
+            "name": "validate_path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.utils",
+            "name": "measure_execution_time",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.utils",
+            "name": "generate_unique_id",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.utils",
+            "name": "save_uploaded_file",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 18,
+            "module": "codex_arch.api.cache.utils",
+            "name": "cached_endpoint",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 18,
+            "module": "codex_arch.api.cache.utils",
+            "name": "check_repo_modified",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 18,
+            "module": "codex_arch.api.cache.utils",
+            "name": "update_repo_modified_time",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 18,
+            "module": "codex_arch.api.cache.utils",
+            "name": "invalidate_cache",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 18,
+            "module": "codex_arch.api.cache.utils",
+            "name": "get_repo_cache_key",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 22,
+            "module": "codex_arch.extractors.file_tree_extractor",
+            "name": "FileTreeExtractor",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 23,
+            "module": "codex_arch.extractors.python.extractor",
+            "name": "PythonDependencyExtractor",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 24,
+            "module": "codex_arch.metrics.metrics_collector",
+            "name": "MetricsCollector",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 25,
+            "module": "codex_arch.visualization.graph.dot_generator",
+            "name": "DotGenerator",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 26,
+            "module": "codex_arch.summary.data_collector",
+            "name": "DataCollector",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 27,
+            "module": "codex_arch.bundler.context_bundle_assembler",
+            "name": "ContextBundleAssembler",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 27,
+            "module": "codex_arch.bundler.context_bundle_assembler",
+            "name": "BundleConfig",
+            "type": "from"
+          }
+        ],
+        "path": "api/routes/analysis.py",
+        "type": "python_module"
+      },
+      "api/routes/artifacts.py": {
+        "id": "api/routes/artifacts.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "json",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 10,
+            "module": "time",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "Blueprint",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "request",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "jsonify",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "current_app",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "abort",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "g",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "send_file",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "werkzeug.utils",
+            "name": "safe_join",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "werkzeug.utils",
+            "name": "secure_filename",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.api.utils",
+            "name": "json_response",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.api.utils",
+            "name": "error_response",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.api.utils",
+            "name": "validate_path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.api.utils",
+            "name": "measure_execution_time",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.api.utils",
+            "name": "generate_unique_id",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 19,
+            "module": "codex_arch.api.cache.utils",
+            "name": "cached_endpoint",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 19,
+            "module": "codex_arch.api.cache.utils",
+            "name": "invalidate_cache",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 22,
+            "module": "codex_arch.api.auth",
+            "name": "token_required",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 22,
+            "module": "codex_arch.api.auth",
+            "name": "admin_required",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 4,
+            "level": 0,
+            "line": 174,
+            "module": "codex_arch.api.routes.analysis",
+            "name": "analysis_jobs",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "line": 248,
+            "module": "time",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 249,
+            "module": "datetime",
+            "name": "datetime",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 249,
+            "module": "datetime",
+            "name": "timedelta",
+            "type": "from"
+          }
+        ],
+        "path": "api/routes/artifacts.py",
+        "type": "python_module"
+      },
+      "api/routes/auth.py": {
+        "id": "api/routes/auth.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "json",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 10,
+            "module": "hashlib",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "Blueprint",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "request",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "jsonify",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "current_app",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "g",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.auth",
+            "name": "generate_token",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.auth",
+            "name": "validate_token",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.auth",
+            "name": "token_required",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.auth",
+            "name": "admin_required",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.api.utils",
+            "name": "json_response",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.api.utils",
+            "name": "error_response",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.api.utils",
+            "name": "measure_execution_time",
+            "type": "from"
+          }
+        ],
+        "path": "api/routes/auth.py",
+        "type": "python_module"
+      },
+      "api/routes/info.py": {
+        "id": "api/routes/info.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "json",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "platform",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 10,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "Blueprint",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "request",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "jsonify",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "current_app",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "flask",
+            "name": "g",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.utils",
+            "name": "json_response",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.utils",
+            "name": "error_response",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.api.utils",
+            "name": "measure_execution_time",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 17,
+            "module": "codex_arch.api.cache.utils",
+            "name": "invalidate_cache",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 18,
+            "module": "codex_arch.api.cache.stats",
+            "name": "get_cache_stats",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 18,
+            "module": "codex_arch.api.cache.stats",
+            "name": "reset_cache_stats",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 19,
+            "module": "codex_arch.api.auth",
+            "name": "admin_required",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 19,
+            "module": "codex_arch.api.auth",
+            "name": "token_required",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 20,
+            "module": "codex_arch",
+            "name": "__version__",
+            "type": "from"
+          }
+        ],
+        "path": "api/routes/info.py",
+        "type": "python_module"
+      },
+      "api/utils.py": {},
+      "bundler/__init__.py": {
+        "id": "bundler/__init__.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 7,
+            "module": "codex_arch.bundler.context_bundle_assembler",
+            "name": "ContextBundleAssembler",
+            "type": "from"
+          }
+        ],
+        "path": "bundler/__init__.py",
+        "type": "python_module"
+      },
+      "bundler/context_bundle_assembler.py": {},
+      "change_detection/__init__.py": {
+        "id": "change_detection/__init__.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "codex_arch.change_detection.git_changes",
+            "name": "GitChangeDetector",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "codex_arch.change_detection.caching",
+            "name": "CacheManager",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "codex_arch.change_detection.incremental",
+            "name": "IncrementalAnalyzer",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "codex_arch.change_detection.summary",
+            "name": "ChangeSummaryGenerator",
+            "type": "from"
+          }
+        ],
+        "path": "change_detection/__init__.py",
+        "type": "python_module"
+      },
+      "change_detection/caching.py": {},
+      "change_detection/git_changes.py": {},
+      "change_detection/incremental.py": {},
+      "change_detection/summary.py": {},
+      "cli/__init__.py": {
+        "id": "cli/__init__.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "level": 1,
+            "line": 7,
+            "module": null,
+            "name": "cli",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 1,
+            "line": 8,
+            "module": null,
+            "name": "run_all",
+            "type": "from"
+          }
+        ],
+        "path": "cli/__init__.py",
+        "type": "python_module"
+      },
+      "cli/analyze_cmd.py": {
+        "id": "cli/analyze_cmd.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "argparse",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "importlib",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "tqdm",
+            "name": "tqdm",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 106,
+            "module": "codex_arch.cli",
+            "name": "file_tree_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 107,
+            "module": "codex_arch.cli",
+            "name": "dependency_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 108,
+            "module": "codex_arch.cli",
+            "name": "metrics_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 109,
+            "module": "codex_arch.cli",
+            "name": "visualization_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 110,
+            "module": "codex_arch.cli",
+            "name": "summary_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "level": 0,
+            "line": 111,
+            "module": "codex_arch.cli",
+            "name": "bundle_cmd",
+            "type": "from"
+          }
+        ],
+        "path": "cli/analyze_cmd.py",
+        "type": "python_module"
+      },
+      "cli/api_cmd.py": {
+        "id": "cli/api_cmd.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "argparse",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "codex_arch.api.app",
+            "name": "create_app",
+            "type": "from"
+          }
+        ],
+        "path": "cli/api_cmd.py",
+        "type": "python_module"
+      },
+      "cli/bundle_cmd.py": {
+        "id": "cli/bundle_cmd.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "argparse",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "tqdm",
+            "name": "tqdm",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "codex_arch.bundler.context_bundle_assembler",
+            "name": "ContextBundleAssembler",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "codex_arch.bundler.context_bundle_assembler",
+            "name": "BundleConfig",
+            "type": "from"
+          }
+        ],
+        "path": "cli/bundle_cmd.py",
+        "type": "python_module"
+      },
+      "cli/cli.py": {
+        "id": "cli/cli.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 10,
+            "module": "click",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "typing",
+            "name": "Set",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "typing",
+            "name": "Union",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch",
+            "name": "__version__",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.analyzer",
+            "name": "run_analysis",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 16,
+            "module": "codex_arch.indexer",
+            "name": "index_repository",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 17,
+            "module": "codex_arch.storage",
+            "name": "get_storage",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 18,
+            "module": "codex_arch.query",
+            "name": "query_architecture",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 19,
+            "module": "codex_arch.report",
+            "name": "generate_report",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 20,
+            "module": "codex_arch.change_detection",
+            "name": "detect_changes",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 20,
+            "module": "codex_arch.change_detection",
+            "name": "summarize_changes",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 21,
+            "module": "codex_arch.hooks",
+            "name": "install_hooks",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 21,
+            "module": "codex_arch.hooks",
+            "name": "uninstall_hooks",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 22,
+            "module": "codex_arch.extractors.python.extractor",
+            "name": "extract_dependencies",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "line": 226,
+            "module": "json",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "line": 257,
+            "module": "json",
+            "type": "import"
+          }
+        ],
+        "path": "cli/cli.py",
+        "type": "python_module"
+      },
+      "cli/dependency_cmd.py": {
+        "id": "cli/dependency_cmd.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "argparse",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "tqdm",
+            "name": "tqdm",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "codex_arch.extractors.python.extractor",
+            "name": "PythonDependencyExtractor",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "codex_arch.extractors.python.extractor",
+            "name": "extract_dependencies",
+            "type": "from"
+          }
+        ],
+        "path": "cli/dependency_cmd.py",
+        "type": "python_module"
+      },
+      "cli/file_tree_cmd.py": {
+        "id": "cli/file_tree_cmd.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "argparse",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 7,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "codex_arch.extractors.file_tree_extractor",
+            "name": "FileTreeExtractor",
+            "type": "from"
+          }
+        ],
+        "path": "cli/file_tree_cmd.py",
+        "type": "python_module"
+      },
+      "cli/main.py": {
+        "id": "cli/main.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "argparse",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "warnings",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 10,
+            "module": "click",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "codex_arch",
+            "name": "__version__",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.cli",
+            "name": "file_tree_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 15,
+            "module": "codex_arch.analyzer",
+            "name": "run_analysis",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 16,
+            "module": "codex_arch.indexer",
+            "name": "index_repository",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 17,
+            "module": "codex_arch.storage",
+            "name": "get_storage",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 18,
+            "module": "codex_arch.query",
+            "name": "query_architecture",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 19,
+            "module": "codex_arch.report",
+            "name": "generate_report",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 20,
+            "module": "codex_arch.change_detection",
+            "name": "detect_changes",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 20,
+            "module": "codex_arch.change_detection",
+            "name": "summarize_changes",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 21,
+            "module": "codex_arch.hooks",
+            "name": "install_hooks",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 21,
+            "module": "codex_arch.hooks",
+            "name": "uninstall_hooks",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 12,
+            "level": 0,
+            "line": 669,
+            "module": "codex_arch.cli",
+            "name": "dependency_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 12,
+            "level": 0,
+            "line": 676,
+            "module": "codex_arch.cli",
+            "name": "metrics_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 12,
+            "level": 0,
+            "line": 683,
+            "module": "codex_arch.cli",
+            "name": "visualization_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 12,
+            "level": 0,
+            "line": 690,
+            "module": "codex_arch.cli",
+            "name": "summary_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 12,
+            "level": 0,
+            "line": 697,
+            "module": "codex_arch.cli",
+            "name": "bundle_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 12,
+            "level": 0,
+            "line": 704,
+            "module": "codex_arch.cli",
+            "name": "api_cmd",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 12,
+            "level": 0,
+            "line": 711,
+            "module": "codex_arch.cli",
+            "name": "analyze_cmd",
+            "type": "from"
+          }
+        ],
+        "path": "cli/main.py",
+        "type": "python_module"
+      },
+      "cli/metrics_cmd.py": {
+        "id": "cli/metrics_cmd.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "argparse",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "tqdm",
+            "name": "tqdm",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "codex_arch.metrics.metrics_collector",
+            "name": "MetricsCollector",
+            "type": "from"
+          }
+        ],
+        "path": "cli/metrics_cmd.py",
+        "type": "python_module"
+      },
+      "cli/quick_examples.py": {
+        "id": "cli/quick_examples.py",
+        "imports": [],
+        "path": "cli/quick_examples.py",
+        "type": "python_module"
+      },
+      "cli/run_all.py": {
+        "id": "cli/run_all.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "time",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "click",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "codex_arch.cli.cli",
+            "name": "cli",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "codex_arch.analyzer",
+            "name": "run_analysis",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.extractors.python.extractor",
+            "name": "extract_dependencies",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "line": 111,
+            "module": "subprocess",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 8,
+            "line": 130,
+            "module": "subprocess",
+            "type": "import"
+          }
+        ],
+        "path": "cli/run_all.py",
+        "type": "python_module"
+      },
+      "cli/summary_cmd.py": {
+        "id": "cli/summary_cmd.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "argparse",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "tqdm",
+            "name": "tqdm",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "codex_arch.summary.summary_builder",
+            "name": "SummaryBuilder",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 13,
+            "module": "codex_arch.summary.summary_builder",
+            "name": "SummaryConfig",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.summary.data_collector",
+            "name": "DataCollector",
+            "type": "from"
+          }
+        ],
+        "path": "cli/summary_cmd.py",
+        "type": "python_module"
+      },
+      "cli/visualization_cmd.py": {
+        "id": "cli/visualization_cmd.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 5,
+            "module": "argparse",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 6,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "json",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "tqdm",
+            "name": "tqdm",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 14,
+            "module": "codex_arch.visualization.graph.dot_generator",
+            "name": "DotGenerator",
+            "type": "from"
+          }
+        ],
+        "path": "cli/visualization_cmd.py",
+        "type": "python_module"
+      },
+      "extractors/file_tree_extractor.py": {},
+      "extractors/python/__init__.py": {
+        "id": "extractors/python/__init__.py",
+        "imports": [],
+        "path": "extractors/python/__init__.py",
+        "type": "python_module"
+      },
+      "extractors/python/dependency_graph.py": {
+        "id": "extractors/python/dependency_graph.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "json",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 10,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Set",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Tuple",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "Union",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 11,
+            "module": "typing",
+            "name": "DefaultDict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 12,
+            "module": "collections",
+            "name": "defaultdict",
+            "type": "from"
+          }
+        ],
+        "path": "extractors/python/dependency_graph.py",
+        "type": "python_module"
+      },
+      "extractors/python/extractor.py": {},
+      "extractors/python/import_parser.py": {},
+      "extractors/python/json_exporter.py": {},
+      "extractors/python/path_resolver.py": {},
+      "hooks/__init__.py": {},
+      "hooks/config.py": {},
+      "hooks/hook_scripts.py": {},
+      "hooks/notification.py": {},
+      "hooks/throttling.py": {},
+      "indexer.py": {},
+      "metrics/__init__.py": {
+        "id": "metrics/__init__.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "level": 1,
+            "line": 8,
+            "module": "metrics_collector",
+            "name": "MetricsCollector",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 1,
+            "line": 9,
+            "module": "language_analyzer",
+            "name": "analyze_language_distribution",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 1,
+            "line": 9,
+            "module": "language_analyzer",
+            "name": "get_language_for_extension",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 1,
+            "line": 9,
+            "module": "language_analyzer",
+            "name": "get_language_family",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 1,
+            "line": 9,
+            "module": "language_analyzer",
+            "name": "LANGUAGE_MAP",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 1,
+            "line": 9,
+            "module": "language_analyzer",
+            "name": "LANGUAGE_FAMILIES",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 1,
+            "line": 16,
+            "module": "complexity_analyzer",
+            "name": "ComplexityAnalyzer",
+            "type": "from"
+          }
+        ],
+        "path": "metrics/__init__.py",
+        "type": "python_module"
+      },
+      "metrics/complexity_analyzer.py": {},
+      "metrics/language_analyzer.py": {},
+      "metrics/metrics_collector.py": {},
+      "query.py": {},
+      "report.py": {},
+      "storage.py": {},
+      "summary/__init__.py": {
+        "id": "summary/__init__.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "codex_arch.summary.data_collector",
+            "name": "DataCollector",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 9,
+            "module": "codex_arch.summary.summary_builder",
+            "name": "SummaryBuilder",
+            "type": "from"
+          }
+        ],
+        "path": "summary/__init__.py",
+        "type": "python_module"
+      },
+      "summary/data_collector.py": {},
+      "summary/smart_summarizer.py": {
+        "id": "summary/smart_summarizer.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "Dict",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "Any",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "List",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "Optional",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "typing",
+            "name": "Tuple",
+            "type": "from"
+          }
+        ],
+        "path": "summary/smart_summarizer.py",
+        "type": "python_module"
+      },
+      "summary/summary_builder.py": {},
+      "summary/templates.py": {},
+      "visualization/__init__.py": {
+        "id": "visualization/__init__.py",
+        "imports": [],
+        "path": "visualization/__init__.py",
+        "type": "python_module"
+      },
+      "visualization/graph/__init__.py": {
+        "id": "visualization/graph/__init__.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 8,
+            "module": "codex_arch.visualization.graph.dot_generator",
+            "name": "DotGenerator",
+            "type": "from"
+          }
+        ],
+        "path": "visualization/graph/__init__.py",
+        "type": "python_module"
+      },
+      "visualization/graph/dot_generator.py": {},
+      "visualization/graph/test_dot_generator.py": {
+        "id": "visualization/graph/test_dot_generator.py",
+        "imports": [
+          {
+            "alias": null,
+            "col": 0,
+            "line": 7,
+            "module": "os",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 8,
+            "module": "sys",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "line": 9,
+            "module": "logging",
+            "type": "import"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 10,
+            "module": "pathlib",
+            "name": "Path",
+            "type": "from"
+          },
+          {
+            "alias": null,
+            "col": 0,
+            "level": 0,
+            "line": 22,
+            "module": "codex_arch.visualization.graph.dot_generator",
+            "name": "DotGenerator",
+            "type": "from"
+          }
+        ],
+        "path": "visualization/graph/test_dot_generator.py",
+        "type": "python_module"
+      }
+    }
+  },
+  "metadata": {
+    "error_count": 0,
+    "generated_at": "2025-04-13T15:17:55.811174",
+    "version": "1.0"
+  }
+}

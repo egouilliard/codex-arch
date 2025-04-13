@@ -5,6 +5,7 @@ Main CLI entry point for Codex-Arch.
 import argparse
 import logging
 import sys
+import warnings
 from typing import List, Optional
 import click
 from pathlib import Path
@@ -18,7 +19,18 @@ from codex_arch.query import query_architecture
 from codex_arch.report import generate_report
 from codex_arch.change_detection import detect_changes, summarize_changes
 from codex_arch.hooks import install_hooks, uninstall_hooks
+from codex_arch.cli.commands.dependency_query import query
+from codex_arch.visualization.converter import convert_command
+from codex_arch.visualization.graph_generator import visualize
 
+# Show deprecation warning
+def show_deprecation_warning(command_name):
+    warnings.warn(
+        f"\nWARNING: Using '{command_name}' with this command style is deprecated.\n"
+        f"Please use the new CLI format: python -m codex_arch.cli.cli {command_name} [OPTIONS]\n"
+        f"Run 'python -m codex_arch.cli.cli --help' for more information.",
+        DeprecationWarning, stacklevel=2
+    )
 
 def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
     """Parse command line arguments."""
@@ -608,6 +620,71 @@ def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
         help="Directories to exclude from all analyses"
     )
     
+    # Query Dependencies command
+    query_deps_parser = subparsers.add_parser(
+        "query-deps",
+        help="Query dependencies for a specific file",
+        description="Show files that depend on a given file and files that the given file depends on"
+    )
+    
+    query_deps_parser.add_argument(
+        "file_path",
+        type=str,
+        help="Path to the file to query dependencies for"
+    )
+    
+    query_deps_parser.add_argument(
+        "-d", "--dependency-file",
+        type=str,
+        default="output/complete_dependencies.json",
+        help="Path to the dependency JSON file"
+    )
+    
+    query_deps_parser.add_argument(
+        "--direction",
+        choices=["in", "out", "both"],
+        default="both",
+        help="Direction of dependencies to show: in=reverse deps, out=direct deps, both=all"
+    )
+    
+    # Convert Dependencies command
+    convert_deps_parser = subparsers.add_parser(
+        "convert-deps",
+        help="Convert dependency data to visualization format",
+        description="Convert raw dependency data to a format suitable for visualization"
+    )
+    
+    convert_deps_parser.add_argument(
+        "input_file",
+        type=str,
+        help="Input dependency file (e.g., python_dependencies.json)"
+    )
+    
+    convert_deps_parser.add_argument(
+        "output_file",
+        type=str,
+        help="Output file for converted dependencies"
+    )
+    
+    # Generate Graph command
+    graph_parser = subparsers.add_parser(
+        "graph",
+        help="Generate architecture graph from dependency data",
+        description="Create a visual graph representation of dependencies"
+    )
+    
+    graph_parser.add_argument(
+        "input_file",
+        type=str,
+        help="Input dependency file (e.g., complete_dependencies.json)"
+    )
+    
+    graph_parser.add_argument(
+        "output_file",
+        type=str,
+        help="Output file path for the graph (without extension)"
+    )
+    
     return parser.parse_args(args)
 
 
@@ -634,57 +711,95 @@ def setup_logging(args: argparse.Namespace) -> None:
 
 
 def main(args: Optional[List[str]] = None) -> int:
-    """Run the Codex-Arch CLI."""
-    parsed_args = parse_args(args)
-    
-    # Set up logging
-    setup_logging(parsed_args)
-    
-    if parsed_args.command is None:
-        print("No command specified. Use -h for help.")
-        return 1
-    
+    """Main entry point for the CLI."""
     try:
-        # Dispatch to the appropriate command
+        # Parse command line arguments
+        parsed_args = parse_args(args)
+        
+        # Configure logging
+        setup_logging(parsed_args)
+        
+        if parsed_args.command is None:
+            print("No command specified. Use -h for help.")
+            return 1
+            
+        # Execute the requested command
         if parsed_args.command == "filetree":
+            # Show deprecation warning
+            show_deprecation_warning("filetree")
             # Pass all arguments except the command itself to the file tree command
             filetree_args = sys.argv[2:] if args is None else args[1:]
             return file_tree_cmd.main(filetree_args)
         elif parsed_args.command == "dependencies":
+            # Show deprecation warning
+            show_deprecation_warning("dependencies")
             # Import here to avoid circular imports
             from codex_arch.cli import dependency_cmd
             dependency_args = sys.argv[2:] if args is None else args[1:]
             return dependency_cmd.main(dependency_args)
         elif parsed_args.command == "metrics":
+            # Show deprecation warning
+            show_deprecation_warning("metrics")
             # Import here to avoid circular imports
             from codex_arch.cli import metrics_cmd
             metrics_args = sys.argv[2:] if args is None else args[1:]
             return metrics_cmd.main(metrics_args)
         elif parsed_args.command == "visualize":
+            # Show deprecation warning
+            show_deprecation_warning("visualize")
             # Import here to avoid circular imports
             from codex_arch.cli import visualization_cmd
             viz_args = sys.argv[2:] if args is None else args[1:]
             return visualization_cmd.main(viz_args)
         elif parsed_args.command == "summary":
+            # Show deprecation warning
+            show_deprecation_warning("summary")
             # Import here to avoid circular imports
             from codex_arch.cli import summary_cmd
             summary_args = sys.argv[2:] if args is None else args[1:]
             return summary_cmd.main(summary_args)
         elif parsed_args.command == "bundle":
+            # Show deprecation warning
+            show_deprecation_warning("bundle")
             # Import here to avoid circular imports
             from codex_arch.cli import bundle_cmd
             bundle_args = sys.argv[2:] if args is None else args[1:]
             return bundle_cmd.main(bundle_args)
         elif parsed_args.command == "api":
+            # Show deprecation warning
+            show_deprecation_warning("api")
             # Import here to avoid circular imports
             from codex_arch.cli import api_cmd
             api_args = sys.argv[2:] if args is None else args[1:]
             return api_cmd.main(api_args)
         elif parsed_args.command == "analyze":
+            # Show deprecation warning
+            show_deprecation_warning("analyze")
             # Import here to avoid circular imports
             from codex_arch.cli import analyze_cmd
             analyze_args = sys.argv[2:] if args is None else args[1:]
             return analyze_cmd.main(analyze_args)
+        elif parsed_args.command == "query-deps":
+            # Show deprecation warning
+            show_deprecation_warning("query-deps")
+            # Import here to avoid circular imports
+            from codex_arch.cli import query_deps_cmd
+            query_deps_args = sys.argv[2:] if args is None else args[1:]
+            return query_deps_cmd.main(query_deps_args)
+        elif parsed_args.command == "convert-deps":
+            # Show deprecation warning
+            show_deprecation_warning("convert-deps")
+            # Import here to avoid circular imports
+            from codex_arch.cli import convert_deps_cmd
+            convert_deps_args = sys.argv[2:] if args is None else args[1:]
+            return convert_deps_cmd.main(convert_deps_args)
+        elif parsed_args.command == "graph":
+            # Show deprecation warning
+            show_deprecation_warning("graph")
+            # Import here to avoid circular imports
+            from codex_arch.cli import graph_cmd
+            graph_args = sys.argv[2:] if args is None else args[1:]
+            return graph_cmd.main(graph_args)
         
         print(f"Unknown command: {parsed_args.command}")
         return 1
@@ -716,12 +831,96 @@ def uninstall_git_hooks():
 
 
 def create_cli() -> click.Group:
-    """Factory function to create the CLI."""
-    cli = click.Group()
-    cli.add_command(file_tree_cmd)
+    """Create the Click CLI group with all commands."""
+    from codex_arch.cli import file_tree_cmd
+    
+    # Create base CLI
+    cli = click.Group(name="codex-arch")
+    
+    # Add all commands
+    cli.add_command(file_tree_cmd.filetree)
     cli.add_command(hooks)
+    cli.add_command(query, name='query-deps')
+    cli.add_command(convert_command, name='convert-deps')
+    cli.add_command(visualize, name='graph')
     return cli
 
+
+@click.group()
+@click.version_option(version=__version__)
+@click.option('--verbose', '-v', is_flag=True, help='Enable verbose output')
+@click.option('--log-level', type=click.Choice(['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']), 
+              default='INFO', help='Set logging level')
+def cli():
+    """
+    Codex-Arch: A tool for analyzing and visualizing code architecture.
+    
+    Run a command with --help to see command-specific options.
+    """
+    pass
+
+# Create a pipelines command group
+@cli.group('pipeline')
+def pipeline():
+    """Run complete analysis pipelines with a single command."""
+    pass
+
+@pipeline.command('analyze')
+@click.argument('path')
+@click.option('--output', '-o', default='output', help='Output directory for results')
+def complete_analysis(path, output):
+    """
+    Run a complete analysis pipeline on a codebase.
+    
+    This will:
+    1. Extract dependencies with 'codex-arch dependencies'
+    2. Convert dependencies to visualization format
+    3. Generate architecture graph visualization
+    4. Collect metrics
+    
+    Equivalent to running these commands sequentially:
+    - codex-arch dependencies PATH --output OUTPUT
+    - codex-arch convert OUTPUT/python_dependencies.json OUTPUT/complete_dependencies.json
+    - codex-arch visualize OUTPUT/complete_dependencies.json OUTPUT/complete_arch_graph
+    """
+    import os
+    import subprocess
+    from pathlib import Path
+    
+    # Create output directory if needed
+    os.makedirs(output, exist_ok=True)
+    
+    # Step 1: Extract dependencies
+    print("Step 1: Extracting dependencies...")
+    subprocess.run(['codex-arch', 'dependencies', path, '--output', output])
+    
+    # Step 2: Convert dependencies
+    print("\nStep 2: Converting dependencies to visualization format...")
+    deps_file = os.path.join(output, 'python_dependencies.json')
+    complete_deps_file = os.path.join(output, 'complete_dependencies.json')
+    
+    from codex_arch.visualization.converter import convert_dependencies
+    convert_dependencies(deps_file, complete_deps_file)
+    
+    # Step 3: Generate architecture visualization
+    print("\nStep 3: Generating architecture visualization...")
+    arch_graph_path = os.path.join(output, 'complete_arch_graph')
+    
+    from codex_arch.visualization.graph_generator import generate_graph
+    generate_graph(complete_deps_file, arch_graph_path)
+    
+    # Step 4: Generate module-level visualization
+    print("\nStep 4: Generating module-level visualization...")
+    module_graph_path = os.path.join(output, 'architecture_graph')
+    generate_graph(deps_file, module_graph_path)
+    
+    print("\nAnalysis complete! Results are available in the output directory.")
+    print(f"- Dependencies: {deps_file}")
+    print(f"- Complete dependencies: {complete_deps_file}")
+    print(f"- Architecture graph: {module_graph_path}.png and {module_graph_path}.svg")
+    print(f"- Complete architecture graph: {arch_graph_path}.png and {arch_graph_path}.svg")
+    
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main()) 

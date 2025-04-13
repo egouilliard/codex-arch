@@ -6,6 +6,10 @@ yarn-debug.log*
 yarn-error.log*
 dev-debug.log
 
+output/
+
+test_repo/
+
 # Dependency directories
 node_modules/
 
