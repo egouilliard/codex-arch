@@ -9,13 +9,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="codex-arch",
-    version="0.2.0",
+    version="0.2.2",
     author="Codex-Arch Team",
     author_email="author@example.com",
     description="A tool for analyzing and visualizing code architecture",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/username/codex-arch",
+    url="https://github.com/egouilliard/codex-arch",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -27,7 +27,6 @@ setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-        "pathlib",
         "click>=8.0.0",
         "graphviz>=0.20.0",
         "tqdm>=4.66.0",

@@ -859,6 +859,15 @@ def cli():
     """
     pass
 
+@cli.command('find-deps')
+@click.argument('target_file')
+def find_dependencies(target_file):
+    """Find dependencies of a specific file."""
+    from codex_arch.scripts.find_deps import main as find_deps_main
+    sys.argv = ['find_deps.py', target_file]
+    find_deps_main()
+    return 0
+
 # Create a pipelines command group
 @cli.group('pipeline')
 def pipeline():

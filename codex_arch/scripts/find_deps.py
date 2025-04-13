@@ -1,10 +1,21 @@
 import json
 import sys
+import os
+from pathlib import Path
 
 def main():
     target_file = sys.argv[1] if len(sys.argv) > 1 else "cli/cli.py"
     
-    with open('output/complete_dependencies.json') as f:
+    # Get project root path (two directories up from this script)
+    project_root = Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    deps_file = project_root / 'output' / 'complete_dependencies.json'
+    
+    if not deps_file.exists():
+        print(f"Error: Dependencies file not found at {deps_file}")
+        print("Make sure to run the dependency analysis first.")
+        return 1
+    
+    with open(deps_file) as f:
         data = json.load(f)
     
     # Find what the target file depends on
@@ -27,6 +38,8 @@ def main():
             print(f"  - {file}")
     else:
         print("  No files depend on this")
+    
+    return 0
 
 if __name__ == "__main__":
-    main() 
+    sys.exit(main()) 

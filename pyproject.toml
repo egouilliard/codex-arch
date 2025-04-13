@@ -17,3 +17,6 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dynamic = ["version", "dependencies"] 
+
+[project.scripts]
+codex-arch = "codex_arch.cli.main:main" 
