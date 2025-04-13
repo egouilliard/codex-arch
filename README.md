@@ -1,14 +1,3 @@
-# Task Master
-### by [@eyaltoledano](https://x.com/eyaltoledano)
-
-A task management system for AI-driven development with Claude, designed to work seamlessly with Cursor AI.
-
-## Requirements
-
-- Node.js 14.0.0 or higher
-- Anthropic API key (Claude API)
-- Anthropic SDK version 0.39.0 or higher
-
 ## Codex-Arch CLI Usage
 
 Codex-Arch provides a command-line interface for analyzing code architecture. The CLI is built with Click and provides several commands for different types of analysis.
@@ -178,7 +167,52 @@ codex-arch analyze <repo-path> [options]
 codex-arch analyze my_project --output analysis_results --exclude-dirs venv .git node_modules
 ```
 
-### 7. Complete End-to-End Analysis
+### 7. Querying Dependencies
+
+Query dependencies for a specific file to understand what it depends on and what depends on it:
+
+```bash
+codex-arch query-deps <file-path> [options]
+```
+
+**Options**:
+- `-d/--dependency-file`: Path to the dependency JSON file (default: output/complete_dependencies.json)
+- `--direction`: Direction of dependencies to show: in (reverse deps), out (direct deps), both (default)
+
+**Example**:
+```bash
+codex-arch query-deps path/to/file.py
+```
+
+### 8. Converting Dependency Format
+
+Convert raw dependency data to a format optimized for visualization:
+
+```bash
+codex-arch convert-deps <input-file> <output-file>
+```
+
+**Example**:
+```bash
+codex-arch convert-deps output/python_dependencies.json output/complete_dependencies.json
+```
+
+### 9. Generating Architecture Graphs
+
+Generate visual architecture graphs from dependency data:
+
+```bash
+codex-arch graph <input-file> <output-file>
+```
+
+**Example**:
+```bash
+codex-arch graph output/complete_dependencies.json output/architecture_graph
+```
+
+This command generates both SVG and PNG visualizations of your codebase's architecture.
+
+### 10. Complete End-to-End Analysis
 
 The `run-all` command performs all analysis steps in sequence, including dependency extraction, metrics collection, file tree generation, and architecture visualization:
 

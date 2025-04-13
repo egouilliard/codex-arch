@@ -1,4 +1,6 @@
+LICENSE
 README.md
+pyproject.toml
 setup.py
 codex_arch/__init__.py
 codex_arch/analyzer.py
@@ -9,7 +11,6 @@ codex_arch/storage.py
 codex_arch.egg-info/PKG-INFO
 codex_arch.egg-info/SOURCES.txt
 codex_arch.egg-info/dependency_links.txt
-codex_arch.egg-info/entry_points.txt
 codex_arch.egg-info/requires.txt
 codex_arch.egg-info/top_level.txt
 codex_arch/api/__init__.py
