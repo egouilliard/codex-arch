@@ -32,6 +32,9 @@ class DependencyGraph:
         
         # Track standard library and third-party dependencies
         self.external_deps: DefaultDict[str, Set[str]] = defaultdict(set)
+        
+        # Store analysis results
+        self.analysis_results: Dict[str, Any] = {}
 
     def add_node(self, node_id: str, data: Dict[str, Any] = None) -> None:
         """
@@ -47,7 +50,7 @@ class DependencyGraph:
         if node_id not in self.nodes:
             self.nodes[node_id] = data
 
-    def add_edge(self, source: str, target: str, data: Dict[str, Any] = None) -> None:
+    def add_edge(self, source: str, target: str, data: Dict[str, Any] = None) -> bool:
         """
         Add a directed edge from source to target.
         
@@ -55,20 +58,47 @@ class DependencyGraph:
             source: Source node ID
             target: Target node ID
             data: Additional data to store with the edge
+            
+        Returns:
+            Boolean indicating if the edge was successfully added
         """
-        if not data:
+        # Input validation
+        if not source or not isinstance(source, str):
+            logger.error(f"Invalid source node ID: {source}")
+            return False
+            
+        if not target or not isinstance(target, str):
+            logger.error(f"Invalid target node ID: {target}")
+            return False
+            
+        if source == target:
+            logger.warning(f"Self-referential edge detected: {source} -> {target}")
+            # Still allow self-references but warn about them
+            
+        if data is None:
             data = {}
             
         # Make sure both nodes exist
         if source not in self.nodes:
             self.add_node(source)
+            logger.debug(f"Created missing source node: {source}")
+            
         if target not in self.nodes:
             self.add_node(target)
+            logger.debug(f"Created missing target node: {target}")
             
+        # Store edge metadata in a more accessible form (for future enhancements)
+        edge_key = f"{source}:{target}"
+        
         # Add the edge if it doesn't exist
         if target not in self.edges[source]:
             self.edges[source].append(target)
             self.reverse_edges[target].append(source)
+            logger.debug(f"Added edge: {source} -> {target}")
+            return True
+        else:
+            logger.debug(f"Edge already exists: {source} -> {target}")
+            return False
 
     def add_unresolved_import(self, source: str, import_name: str) -> None:
         """
@@ -134,6 +164,31 @@ class DependencyGraph:
             List of all node IDs
         """
         return list(self.nodes.keys())
+
+    def edges_list(self) -> List[Tuple[str, str]]:
+        """
+        Get all edges in the graph as a list of (source, target) tuples.
+        
+        Returns:
+            List of (source, target) tuples representing all edges in the graph
+        """
+        result = []
+        for source, targets in self.edges.items():
+            for target in targets:
+                result.append((source, target))
+        return result
+
+    def edge_count(self) -> int:
+        """
+        Get the total number of edges in the graph.
+        
+        Returns:
+            Integer count of edges in the graph
+        """
+        total = 0
+        for targets in self.edges.values():
+            total += len(targets)
+        return total
 
     def find_cycles(self) -> List[List[str]]:
         """
@@ -215,12 +270,22 @@ class DependencyGraph:
         Returns:
             Dictionary representation of the graph
         """
-        return {
+        result = {
             "nodes": self.nodes,
             "edges": dict(self.edges),
             "unresolved_imports": dict(self.unresolved_imports),
             "external_dependencies": {k: list(v) for k, v in self.external_deps.items()}
         }
+        
+        # Include analysis results if they exist
+        if hasattr(self, 'analysis_results') and self.analysis_results:
+            result["analysis"] = self.analysis_results
+            
+        # Include edge errors if they exist
+        if hasattr(self, 'edge_errors') and self.edge_errors:
+            result["edge_errors"] = self.edge_errors
+            
+        return result
 
     def to_json(self, indent: int = 2) -> str:
         """
@@ -234,13 +299,53 @@ class DependencyGraph:
         """
         return json.dumps(self.to_dict(), indent=indent)
 
+    def record_edge_error(self, source: str, target: str, error_type: str, message: str, details: Any = None) -> None:
+        """
+        Record an edge-related error in the graph for later analysis.
+        
+        Args:
+            source: Source node ID
+            target: Target node ID
+            error_type: Type of error (e.g., 'invalid_edge', 'missing_target')
+            message: Error message
+            details: Additional error details (optional)
+        """
+        if not hasattr(self, 'edge_errors'):
+            self.edge_errors = []
+            
+        self.edge_errors.append({
+            'source': source,
+            'target': target,
+            'error_type': error_type,
+            'message': message,
+            'details': details
+        })
+        
+        # Log the error
+        logger.error(f"Edge error ({error_type}): {message}, {source} -> {target}")
+        
+        # Make sure the error is included in the graph serialization
+        if 'edge_errors' not in self.analysis_results:
+            self.analysis_results['edge_errors'] = []
+            
+        self.analysis_results['edge_errors'].append({
+            'source': source,
+            'target': target,
+            'error_type': error_type,
+            'message': message
+        })
 
-def build_graph_from_dependency_mapping(dependency_mapping: Dict[str, Dict[str, Any]]) -> DependencyGraph:
+
+def build_graph_from_dependency_mapping(
+    dependency_mapping: Dict[str, Dict[str, Any]], 
+    exporter=None
+) -> DependencyGraph:
     """
     Build a dependency graph from the dependency mapping.
     
     Args:
         dependency_mapping: Mapping of files to their dependencies
+        exporter: Optional DependencyExporter for recording errors (default: None)
         
     Returns:
         A DependencyGraph instance
@@ -249,69 +354,214 @@ def build_graph_from_dependency_mapping(dependency_mapping: Dict[str, Dict[str, 
     
     # First pass: add all nodes
     for file_path, data in dependency_mapping.items():
-        graph.add_node(file_path, {
-            "file_path": file_path,
-            "import_details": data.get("import_details", [])
-        })
+        try:
+            graph.add_node(file_path, {
+                "file_path": file_path,
+                "import_details": data.get("import_details", [])
+            })
+        except Exception as e:
+            error_msg = f"Failed to add node for {file_path}"
+            logger.error(f"{error_msg}: {str(e)}")
+            if exporter:
+                exporter.add_error(
+                    file_path=file_path,
+                    error_type='node_creation_error',
+                    message=error_msg,
+                    details=str(e)
+                )
     
     # Second pass: add all edges
     for file_path, data in dependency_mapping.items():
+        if file_path not in graph.nodes:
+            continue  # Skip if source node wasn't created
+            
         dependencies = data.get("dependencies", {})
         
         for import_name, resolved_path in dependencies.items():
-            if resolved_path:
-                # Add an edge for resolved imports
-                graph.add_edge(file_path, resolved_path, {
-                    "import_name": import_name
-                })
-            else:
-                # Track unresolved imports
-                # Check if it's likely an external dependency
-                if "." not in import_name or import_name.startswith("."):
-                    # Likely a standard library or top-level third-party module
-                    graph.add_external_dependency(file_path, import_name)
+            try:
+                if resolved_path:
+                    # Validate the resolved path
+                    if not isinstance(resolved_path, str):
+                        error_msg = f"Invalid resolved path type for import {import_name}"
+                        logger.warning(f"{error_msg} in {file_path}: {type(resolved_path)}")
+                        if exporter:
+                            exporter.add_error(
+                                file_path=file_path,
+                                error_type='invalid_edge_data',
+                                message=error_msg,
+                                details=f"Expected string, got {type(resolved_path).__name__}"
+                            )
+                        graph.record_edge_error(
+                            source=file_path,
+                            target=str(resolved_path),  # Convert to string for safety
+                            error_type='invalid_edge_data',
+                            message=error_msg,
+                            details=f"Expected string, got {type(resolved_path).__name__}"
+                        )
+                        continue
+                        
+                    # Add an edge for resolved imports
+                    success = graph.add_edge(file_path, resolved_path, {
+                        "import_name": import_name
+                    })
+                    
+                    if not success:
+                        # Edge could not be added, record the error
+                        error_msg = f"Failed to add edge for import {import_name}"
+                        graph.record_edge_error(
+                            source=file_path,
+                            target=resolved_path,
+                            error_type='edge_addition_failure',
+                            message=error_msg,
+                            details="The edge could not be added to the graph"
+                        )
                 else:
-                    # Unresolved import path
-                    graph.add_unresolved_import(file_path, import_name)
+                    # Track unresolved imports
+                    # Check if it's likely an external dependency
+                    if "." not in import_name or import_name.startswith("."):
+                        # Likely a standard library or top-level third-party module
+                        graph.add_external_dependency(file_path, import_name)
+                    else:
+                        # Unresolved import path
+                        graph.add_unresolved_import(file_path, import_name)
+                        if exporter:
+                            exporter.add_error(
+                                file_path=file_path,
+                                error_type='unresolved_import',
+                                message=f"Unresolved import: {import_name}",
+                                details="Import could not be resolved to a file path"
+                            )
+                        graph.record_edge_error(
+                            source=file_path,
+                            target=import_name,
+                            error_type='unresolved_import',
+                            message=f"Unresolved import: {import_name}",
+                            details="Import could not be resolved to a file path"
+                        )
+            except Exception as e:
+                error_msg = f"Failed to process edge from {file_path} to {resolved_path} for import {import_name}"
+                logger.error(f"{error_msg}: {str(e)}")
+                if exporter:
+                    exporter.add_error(
+                        file_path=file_path,
+                        error_type='edge_creation_error',
+                        message=error_msg,
+                        details=str(e)
+                    )
+                # Also record in the graph
+                graph.record_edge_error(
+                    source=file_path,
+                    target=str(resolved_path) if resolved_path else import_name,
+                    error_type='edge_creation_error',
+                    message=error_msg,
+                    details=str(e)
+                )
     
     return graph
 
 
-def analyze_dependencies(graph: DependencyGraph) -> Dict[str, Any]:
+def analyze_dependencies(graph: DependencyGraph, exporter=None) -> Dict[str, Any]:
     """
     Analyze the dependency graph and extract useful metrics.
     
     Args:
         graph: The dependency graph to analyze
+        exporter: Optional DependencyExporter for recording errors (default: None)
         
     Returns:
         Dictionary of analysis results
     """
-    nodes = graph.get_all_nodes()
-    cycles = graph.find_cycles()
+    results = {}
     
-    # Calculate dependency metrics
-    dependent_counts = {}
-    dependency_counts = {}
+    try:
+        nodes = graph.get_all_nodes()
+        results["total_modules"] = len(nodes)
+        
+        # Calculate dependency metrics
+        dependent_counts = {}
+        dependency_counts = {}
+        
+        for node in nodes:
+            try:
+                dependents = graph.get_dependents(node)
+                dependencies = graph.get_dependencies(node)
+                dependent_counts[node] = len(dependents)
+                dependency_counts[node] = len(dependencies)
+            except Exception as e:
+                error_msg = f"Failed to analyze node {node}"
+                logger.error(f"{error_msg}: {str(e)}")
+                if exporter:
+                    exporter.add_error(
+                        file_path=node,
+                        error_type='analysis_error',
+                        message=error_msg,
+                        details=str(e)
+                    )
+        
+        # Sort nodes by various metrics
+        most_depended_on = sorted(nodes, key=lambda n: dependent_counts.get(n, 0), reverse=True)
+        most_dependencies = sorted(nodes, key=lambda n: dependency_counts.get(n, 0), reverse=True)
+        
+        # Calculate overall statistics safely
+        try:
+            total_dependencies = sum(dependency_counts.values())
+            avg_dependencies = total_dependencies / len(nodes) if nodes else 0
+            results["total_dependencies"] = total_dependencies
+            results["average_dependencies"] = avg_dependencies
+        except Exception as e:
+            error_msg = "Failed to calculate dependency statistics"
+            logger.error(f"{error_msg}: {str(e)}")
+            if exporter:
+                exporter.add_error(
+                    file_path='graph_analysis',
+                    error_type='statistics_error',
+                    message=error_msg,
+                    details=str(e)
+                )
+            results["total_dependencies"] = 0
+            results["average_dependencies"] = 0
+        
+        # Find cycles with error handling
+        try:
+            cycles = graph.find_cycles()
+            results["cycles"] = cycles
+            results["has_cycles"] = len(cycles) > 0
+        except Exception as e:
+            error_msg = "Failed to detect dependency cycles"
+            logger.error(f"{error_msg}: {str(e)}")
+            if exporter:
+                exporter.add_error(
+                    file_path='graph_analysis',
+                    error_type='cycle_detection_error',
+                    message=error_msg,
+                    details=str(e)
+                )
+            results["cycles"] = []
+            results["has_cycles"] = False
+        
+        # Add dependency metrics to results
+        results["most_depended_on"] = [(node, dependent_counts.get(node, 0)) for node in most_depended_on[:10]]
+        results["most_dependencies"] = [(node, dependency_counts.get(node, 0)) for node in most_dependencies[:10]]
+        
+        # Additional analysis metrics
+        results["unresolved_import_counts"] = {node: len(imports) for node, imports in graph.unresolved_imports.items() if imports}
+        results["external_dependency_counts"] = {node: len(deps) for node, deps in graph.external_deps.items() if deps}
+        results["orphaned_modules"] = [node for node in nodes if not graph.get_dependents(node) and not graph.get_dependencies(node)]
+        
+    except Exception as e:
+        error_msg = "Failed to complete dependency analysis"
+        logger.error(f"{error_msg}: {str(e)}")
+        if exporter:
+            exporter.add_error(
+                file_path='graph_analysis',
+                error_type='analysis_error',
+                message=error_msg,
+                details=str(e)
+            )
+        # Return minimal results in case of a major failure
+        if "total_modules" not in results:
+            results["total_modules"] = 0
+        if "total_dependencies" not in results:
+            results["total_dependencies"] = 0
     
-    for node in nodes:
-        dependent_counts[node] = len(graph.get_dependents(node))
-        dependency_counts[node] = len(graph.get_dependencies(node))
-    
-    # Sort nodes by various metrics
-    most_depended_on = sorted(nodes, key=lambda n: dependent_counts[n], reverse=True)
-    most_dependencies = sorted(nodes, key=lambda n: dependency_counts[n], reverse=True)
-    
-    # Calculate overall statistics
-    total_dependencies = sum(dependency_counts.values())
-    avg_dependencies = total_dependencies / len(nodes) if nodes else 0
-    
-    return {
-        "total_modules": len(nodes),
-        "total_dependencies": total_dependencies,
-        "average_dependencies": avg_dependencies,
-        "most_depended_on": [(node, dependent_counts[node]) for node in most_depended_on[:10]],
-        "most_dependencies": [(node, dependency_counts[node]) for node in most_dependencies[:10]],
-        "cycles": cycles,
-        "has_cycles": len(cycles) > 0
-    } 
+    return results 

@@ -5,6 +5,7 @@ Main CLI entry point for Codex-Arch.
 import argparse
 import logging
 import sys
+import warnings
 from typing import List, Optional
 import click
 from pathlib import Path
@@ -19,6 +20,14 @@ from codex_arch.report import generate_report
 from codex_arch.change_detection import detect_changes, summarize_changes
 from codex_arch.hooks import install_hooks, uninstall_hooks
 
+# Show deprecation warning
+def show_deprecation_warning(command_name):
+    warnings.warn(
+        f"\nWARNING: Using '{command_name}' with this command style is deprecated.\n"
+        f"Please use the new CLI format: python -m codex_arch.cli.cli {command_name} [OPTIONS]\n"
+        f"Run 'python -m codex_arch.cli.cli --help' for more information.",
+        DeprecationWarning, stacklevel=2
+    )
 
 def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
     """Parse command line arguments."""
@@ -634,53 +643,70 @@ def setup_logging(args: argparse.Namespace) -> None:
 
 
 def main(args: Optional[List[str]] = None) -> int:
-    """Run the Codex-Arch CLI."""
-    parsed_args = parse_args(args)
-    
-    # Set up logging
-    setup_logging(parsed_args)
-    
-    if parsed_args.command is None:
-        print("No command specified. Use -h for help.")
-        return 1
-    
+    """Main entry point for the CLI."""
     try:
-        # Dispatch to the appropriate command
+        # Parse command line arguments
+        parsed_args = parse_args(args)
+        
+        # Configure logging
+        setup_logging(parsed_args)
+        
+        if parsed_args.command is None:
+            print("No command specified. Use -h for help.")
+            return 1
+            
+        # Execute the requested command
         if parsed_args.command == "filetree":
+            # Show deprecation warning
+            show_deprecation_warning("filetree")
             # Pass all arguments except the command itself to the file tree command
             filetree_args = sys.argv[2:] if args is None else args[1:]
             return file_tree_cmd.main(filetree_args)
         elif parsed_args.command == "dependencies":
+            # Show deprecation warning
+            show_deprecation_warning("dependencies")
             # Import here to avoid circular imports
             from codex_arch.cli import dependency_cmd
             dependency_args = sys.argv[2:] if args is None else args[1:]
             return dependency_cmd.main(dependency_args)
         elif parsed_args.command == "metrics":
+            # Show deprecation warning
+            show_deprecation_warning("metrics")
             # Import here to avoid circular imports
             from codex_arch.cli import metrics_cmd
             metrics_args = sys.argv[2:] if args is None else args[1:]
             return metrics_cmd.main(metrics_args)
         elif parsed_args.command == "visualize":
+            # Show deprecation warning
+            show_deprecation_warning("visualize")
             # Import here to avoid circular imports
             from codex_arch.cli import visualization_cmd
             viz_args = sys.argv[2:] if args is None else args[1:]
             return visualization_cmd.main(viz_args)
         elif parsed_args.command == "summary":
+            # Show deprecation warning
+            show_deprecation_warning("summary")
             # Import here to avoid circular imports
             from codex_arch.cli import summary_cmd
             summary_args = sys.argv[2:] if args is None else args[1:]
             return summary_cmd.main(summary_args)
         elif parsed_args.command == "bundle":
+            # Show deprecation warning
+            show_deprecation_warning("bundle")
             # Import here to avoid circular imports
             from codex_arch.cli import bundle_cmd
             bundle_args = sys.argv[2:] if args is None else args[1:]
             return bundle_cmd.main(bundle_args)
         elif parsed_args.command == "api":
+            # Show deprecation warning
+            show_deprecation_warning("api")
             # Import here to avoid circular imports
             from codex_arch.cli import api_cmd
             api_args = sys.argv[2:] if args is None else args[1:]
             return api_cmd.main(api_args)
         elif parsed_args.command == "analyze":
+            # Show deprecation warning
+            show_deprecation_warning("analyze")
             # Import here to avoid circular imports
             from codex_arch.cli import analyze_cmd
             analyze_args = sys.argv[2:] if args is None else args[1:]

@@ -125,14 +125,23 @@ def main(args: Optional[List[str]] = None) -> int:
             'include_external': parsed_args.include_external
         }
         
-        # Create dot generator
-        generator = DotGenerator(dependency_data, settings)
+        # Create dot generator (fixed initialization)
+        generator = DotGenerator(output_dir=str(output_path.parent))
+        
+        # Apply settings
+        if settings['theme']:
+            # Map 'colorful' to 'light' since DotGenerator only supports 'light' and 'dark'
+            theme = settings['theme']
+            if theme == 'colorful':
+                theme = 'light'
+            generator.set_theme(theme)
         
         # Generate visualization with progress reporting
         print("Generating graph visualization...")
         with tqdm(total=100, desc="Generating") as pbar:
             # Generate DOT (30%)
-            dot_content = generator.generate_dot()
+            dot_graph = generator.generate_from_dependency_graph(dependency_data)
+            dot_content = generator.to_dot_string()
             pbar.update(30)
             
             # First save DOT file if requested
@@ -142,18 +151,22 @@ def main(args: Optional[List[str]] = None) -> int:
                 pbar.update(70)
             else:
                 # Render to the requested format (70%)
-                generator.render(
-                    dot_content, 
-                    output_path=str(output_path),
-                    format=parsed_args.format
-                )
+                actual_output_path = None
+                if parsed_args.format == 'svg':
+                    actual_output_path = generator.save_svg_file(str(output_path.stem))
+                else:
+                    actual_output_path = generator.save_rendered_file(str(output_path.stem), format=parsed_args.format)
+                # Update output_path if the generator returned a different path
+                if actual_output_path:
+                    output_path = Path(actual_output_path)
                 pbar.update(70)
         
         print(f"\nVisualization generated successfully: {output_path}")
         
         # Print some stats
-        node_count = len(dependency_data.get('nodes', []))
-        edge_count = len(dependency_data.get('edges', []))
+        node_count = len(dependency_data.get('nodes', {}).keys())
+        edge_count = sum(len(targets) if isinstance(targets, list) else len(targets.keys()) 
+                        for targets in dependency_data.get('edges', {}).values())
         print(f"Graph contains {node_count} nodes and {edge_count} edges")
         
         if parsed_args.max_nodes and node_count > parsed_args.max_nodes:

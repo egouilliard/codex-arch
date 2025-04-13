@@ -1,6 +1,11 @@
 README.md
 setup.py
 codex_arch/__init__.py
+codex_arch/analyzer.py
+codex_arch/indexer.py
+codex_arch/query.py
+codex_arch/report.py
+codex_arch/storage.py
 codex_arch.egg-info/PKG-INFO
 codex_arch.egg-info/SOURCES.txt
 codex_arch.egg-info/dependency_links.txt
@@ -33,6 +38,7 @@ codex_arch/cli/__init__.py
 codex_arch/cli/analyze_cmd.py
 codex_arch/cli/api_cmd.py
 codex_arch/cli/bundle_cmd.py
+codex_arch/cli/cli.py
 codex_arch/cli/dependency_cmd.py
 codex_arch/cli/file_tree_cmd.py
 codex_arch/cli/main.py

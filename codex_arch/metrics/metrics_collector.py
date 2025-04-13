@@ -163,6 +163,8 @@ class MetricsCollector:
                     self.complexity_metrics["total_complexity"] / 
                     self.complexity_metrics["files_analyzed"], 2
                 )
+            else:
+                self.complexity_metrics["average_complexity"] = 0
             
             # Sort most complex files by complexity
             self.complexity_metrics["most_complex_files"] = sorted(
@@ -172,13 +174,33 @@ class MetricsCollector:
             )[:10]  # Limit to top 10
             
             # Calculate overall comment ratio
-            if self.metrics["line_counts"]["total"] > 0:
+            total_lines = self.metrics["line_counts"]["total"]
+            if total_lines > 0:
                 self.complexity_metrics["comment_metrics"]["overall_comment_ratio"] = round(
                     self.complexity_metrics["comment_metrics"]["total_comment_lines"] /
-                    self.metrics["line_counts"]["total"] * 100, 2
+                    total_lines * 100, 2
                 )
+            else:
+                self.complexity_metrics["comment_metrics"]["overall_comment_ratio"] = 0
             
             self.metrics["complexity_metrics"] = self.complexity_metrics
+        
+        # Restore original language distribution calculation
+        # Calculate language distribution by files
+        total_files = self.metrics["file_counts"]["total"]
+        if total_files > 0:
+            for ext, count in self.metrics["file_counts"]["by_extension"].items():
+                self.metrics["language_distribution"]["by_files"][ext] = round(
+                    (count / total_files) * 100, 2
+                )
+                
+        # Calculate language distribution by lines
+        total_lines = self.metrics["line_counts"]["total"]
+        if total_lines > 0:
+            for ext, count in self.metrics["line_counts"]["by_extension"].items():
+                self.metrics["language_distribution"]["by_lines"][ext] = round(
+                    (count / total_lines) * 100, 2
+                )
         
         return self.metrics
     
@@ -339,42 +361,48 @@ class MetricsCollector:
             )
             
             # Calculate comment ratio for the language
-            if metrics.get("total_lines", 0) > 0:
+            total_lines_for_lang = sum(self.metrics["line_counts"]["by_extension"].get(ext, 0) 
+                                         for ext in self.metrics["line_counts"]["by_extension"]
+                                         if self.complexity_analyzer._detect_language(ext) == language)
+            
+            # Prevent division by zero
+            if total_lines_for_lang > 0:
                 lang_metrics["comment_ratio"] = round(
-                    lang_metrics["total_comments"] / 
-                    sum(self.metrics["line_counts"]["by_extension"].get(ext, 0) 
-                        for ext in self.metrics["line_counts"]["by_extension"]
-                        if self.complexity_analyzer._detect_language(ext) == language) * 100, 2
+                    lang_metrics["total_comments"] / total_lines_for_lang * 100, 2
                 )
+            else:
+                lang_metrics["comment_ratio"] = 0
+        else:
+            lang_metrics["average_complexity"] = 0
+            lang_metrics["comment_ratio"] = 0
     
     def _calculate_derived_metrics(self) -> None:
-        """Calculate derived metrics like averages and percentages."""
+        """Calculate averages and percentages for metrics that require file and line counts."""
         # Average lines per file
-        if self.metrics["file_counts"]["total"] > 0:
+        if self.metrics["file_counts"]["total"] > 0:  # Prevent division by zero
             self.metrics["line_counts"]["average_per_file"] = round(
                 self.metrics["line_counts"]["total"] / self.metrics["file_counts"]["total"], 2
             )
+        else:
+            self.metrics["line_counts"]["average_per_file"] = 0
             
-            # Average file size
+        # Average file size
+        if self.metrics["file_counts"]["total"] > 0:  # Prevent division by zero
             self.metrics["size_metrics"]["average_file_size"] = round(
                 self.metrics["size_metrics"]["total_bytes"] / self.metrics["file_counts"]["total"], 2
             )
-        
-        # Calculate language distribution by files
+        else:
+            self.metrics["size_metrics"]["average_file_size"] = 0
+            
+        # Calculate percentage distributions for file extensions
         total_files = self.metrics["file_counts"]["total"]
-        if total_files > 0:
+        extension_percentages = {}
+        
+        if total_files > 0:  # Prevent division by zero
             for ext, count in self.metrics["file_counts"]["by_extension"].items():
-                self.metrics["language_distribution"]["by_files"][ext] = round(
-                    (count / total_files) * 100, 2
-                )
-                
-        # Calculate language distribution by lines
-        total_lines = self.metrics["line_counts"]["total"]
-        if total_lines > 0:
-            for ext, count in self.metrics["line_counts"]["by_extension"].items():
-                self.metrics["language_distribution"]["by_lines"][ext] = round(
-                    (count / total_lines) * 100, 2
-                )
+                extension_percentages[ext] = round((count / total_files) * 100, 2)
+        
+        self.metrics["file_counts"]["extension_percentages"] = extension_percentages
     
     def to_json(
         self, 

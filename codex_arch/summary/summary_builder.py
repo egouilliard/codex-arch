@@ -29,7 +29,13 @@ class SummaryConfig:
         focus_areas: Optional[List[str]] = None,
         output_dir: Optional[str] = None,
         include_visualizations: bool = True,
-        custom_templates: Optional[Dict[str, str]] = None
+        custom_templates: Optional[Dict[str, str]] = None,
+        # Additional parameters used by CLI
+        template: str = 'standard',
+        include_metrics: bool = True,
+        include_dependencies: bool = True,
+        use_smart_summarization: bool = True,
+        exclude_dirs: Optional[List[str]] = None
     ):
         """
         Initialize SummaryConfig.
@@ -42,6 +48,11 @@ class SummaryConfig:
             output_dir: Directory to store output files
             include_visualizations: Whether to include visualizations
             custom_templates: Custom templates for summary generation
+            template: Template to use for summary generation (CLI parameter)
+            include_metrics: Whether to include metrics in the summary (CLI parameter)
+            include_dependencies: Whether to include dependencies in the summary (CLI parameter)
+            use_smart_summarization: Whether to use smart summarization (CLI parameter)
+            exclude_dirs: Directories to exclude from analysis (CLI parameter)
         """
         self.detail_level = detail_level
         self.output_formats = output_formats or ['markdown', 'json']
@@ -53,6 +64,19 @@ class SummaryConfig:
         self.output_dir = output_dir
         self.include_visualizations = include_visualizations
         self.custom_templates = custom_templates or {}
+        
+        # Set CLI-specific parameters
+        self.template = template
+        self.include_metrics = include_metrics
+        self.include_dependencies = include_dependencies
+        self.use_smart_summarization = use_smart_summarization
+        self.exclude_dirs = exclude_dirs or []
+        
+        # If exclude_dirs is provided, add them to ignore_patterns
+        if exclude_dirs:
+            for dir_name in exclude_dirs:
+                if dir_name not in self.ignore_patterns:
+                    self.ignore_patterns.append(dir_name)
 
     @classmethod
     def from_dict(cls, config_dict: Dict[str, Any]) -> 'SummaryConfig':
@@ -65,14 +89,29 @@ class SummaryConfig:
         Returns:
             SummaryConfig instance
         """
+        # Get default ignore patterns if not provided
+        default_ignore_patterns = [
+            '.git', '__pycache__', '*.pyc', '*.pyo', '*.pyd',
+            'venv', 'env', '.env', 'node_modules'
+        ]
+        
+        # Get default focus areas if not provided
+        default_focus_areas = ['dependencies', 'complexity', 'structure']
+        
+        # Use the same defaults as in __init__ for consistent behavior
         return cls(
             detail_level=config_dict.get('detail_level', 'standard'),
             output_formats=config_dict.get('output_formats', ['markdown', 'json']),
-            ignore_patterns=config_dict.get('ignore_patterns'),
-            focus_areas=config_dict.get('focus_areas'),
+            ignore_patterns=config_dict.get('ignore_patterns', default_ignore_patterns),
+            focus_areas=config_dict.get('focus_areas', default_focus_areas),
             output_dir=config_dict.get('output_dir'),
             include_visualizations=config_dict.get('include_visualizations', True),
-            custom_templates=config_dict.get('custom_templates')
+            custom_templates=config_dict.get('custom_templates', {}),
+            template=config_dict.get('template', 'standard'),
+            include_metrics=config_dict.get('include_metrics', True),
+            include_dependencies=config_dict.get('include_dependencies', True),
+            use_smart_summarization=config_dict.get('use_smart_summarization', True),
+            exclude_dirs=config_dict.get('exclude_dirs', [])
         )
 
     @classmethod
@@ -104,7 +143,12 @@ class SummaryConfig:
             'focus_areas': self.focus_areas,
             'output_dir': self.output_dir,
             'include_visualizations': self.include_visualizations,
-            'custom_templates': self.custom_templates
+            'custom_templates': self.custom_templates,
+            'template': self.template,
+            'include_metrics': self.include_metrics,
+            'include_dependencies': self.include_dependencies,
+            'use_smart_summarization': self.use_smart_summarization,
+            'exclude_dirs': self.exclude_dirs
         }
 
     def to_json_file(self, file_path: str) -> None:
