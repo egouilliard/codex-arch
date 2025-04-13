@@ -1,5 +1,5 @@
 """
-Visualization Package.
+Visualization tools for Codex-Arch.
 
-This package provides modules for visualizing code architecture and dependencies.
+This module provides tools for converting and visualizing code architecture.
 """ 

@@ -1,0 +1,1250 @@
+{
+  "nodes": {
+    "python3.13/argparse.py": {
+      "id": "python3.13/argparse.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py",
+      "type": "external",
+      "label": "python3.13/argparse.py"
+    },
+    "python3.13/ast.py": {
+      "id": "python3.13/ast.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ast.py",
+      "type": "external",
+      "label": "python3.13/ast.py"
+    },
+    "collections/__init__.py": {
+      "id": "collections/__init__.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/collections/__init__.py",
+      "type": "external",
+      "label": "collections/__init__.py"
+    },
+    "python3.13/colorsys.py": {
+      "id": "python3.13/colorsys.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/colorsys.py",
+      "type": "external",
+      "label": "python3.13/colorsys.py"
+    },
+    "python3.13/dataclasses.py": {
+      "id": "python3.13/dataclasses.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/dataclasses.py",
+      "type": "external",
+      "label": "python3.13/dataclasses.py"
+    },
+    "python3.13/datetime.py": {
+      "id": "python3.13/datetime.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/datetime.py",
+      "type": "external",
+      "label": "python3.13/datetime.py"
+    },
+    "python3.13/functools.py": {
+      "id": "python3.13/functools.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py",
+      "type": "external",
+      "label": "python3.13/functools.py"
+    },
+    "python3.13/glob.py": {
+      "id": "python3.13/glob.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/glob.py",
+      "type": "external",
+      "label": "python3.13/glob.py"
+    },
+    "python3.13/gzip.py": {
+      "id": "python3.13/gzip.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/gzip.py",
+      "type": "external",
+      "label": "python3.13/gzip.py"
+    },
+    "python3.13/hashlib.py": {
+      "id": "python3.13/hashlib.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/hashlib.py",
+      "type": "external",
+      "label": "python3.13/hashlib.py"
+    },
+    "importlib/__init__.py": {
+      "id": "importlib/__init__.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py",
+      "type": "external",
+      "label": "importlib/__init__.py"
+    },
+    "python3.13/io.py": {
+      "id": "python3.13/io.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/io.py",
+      "type": "external",
+      "label": "python3.13/io.py"
+    },
+    "json/__init__.py": {
+      "id": "json/__init__.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py",
+      "type": "external",
+      "label": "json/__init__.py"
+    },
+    "logging/__init__.py": {
+      "id": "logging/__init__.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/logging/__init__.py",
+      "type": "external",
+      "label": "logging/__init__.py"
+    },
+    "python3.13/os.py": {
+      "id": "python3.13/os.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/os.py",
+      "type": "external",
+      "label": "python3.13/os.py"
+    },
+    "pathlib/__init__.py": {
+      "id": "pathlib/__init__.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/__init__.py",
+      "type": "external",
+      "label": "pathlib/__init__.py"
+    },
+    "python3.13/platform.py": {
+      "id": "python3.13/platform.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/platform.py",
+      "type": "external",
+      "label": "python3.13/platform.py"
+    },
+    "re/__init__.py": {
+      "id": "re/__init__.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/re/__init__.py",
+      "type": "external",
+      "label": "re/__init__.py"
+    },
+    "python3.13/shutil.py": {
+      "id": "python3.13/shutil.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/shutil.py",
+      "type": "external",
+      "label": "python3.13/shutil.py"
+    },
+    "python3.13/subprocess.py": {
+      "id": "python3.13/subprocess.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py",
+      "type": "external",
+      "label": "python3.13/subprocess.py"
+    },
+    "python3.13/tarfile.py": {
+      "id": "python3.13/tarfile.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/tarfile.py",
+      "type": "external",
+      "label": "python3.13/tarfile.py"
+    },
+    "python3.13/typing.py": {
+      "id": "python3.13/typing.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/typing.py",
+      "type": "external",
+      "label": "python3.13/typing.py"
+    },
+    "python3.13/uuid.py": {
+      "id": "python3.13/uuid.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/uuid.py",
+      "type": "external",
+      "label": "python3.13/uuid.py"
+    },
+    "python3.13/warnings.py": {
+      "id": "python3.13/warnings.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/warnings.py",
+      "type": "external",
+      "label": "python3.13/warnings.py"
+    },
+    "zipfile/__init__.py": {
+      "id": "zipfile/__init__.py",
+      "path": "../../../../../../Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/zipfile/__init__.py",
+      "type": "external",
+      "label": "zipfile/__init__.py"
+    },
+    "apispec/__init__.py": {
+      "id": "apispec/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/apispec/__init__.py",
+      "type": "external",
+      "label": "apispec/__init__.py"
+    },
+    "marshmallow/__init__.py": {
+      "id": "marshmallow/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/apispec/ext/marshmallow/__init__.py",
+      "type": "external",
+      "label": "marshmallow/__init__.py"
+    },
+    "apispec_webframeworks/flask.py": {
+      "id": "apispec_webframeworks/flask.py",
+      "path": "../venv/lib/python3.13/site-packages/apispec_webframeworks/flask.py",
+      "type": "external",
+      "label": "apispec_webframeworks/flask.py"
+    },
+    "click/__init__.py": {
+      "id": "click/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/click/__init__.py",
+      "type": "external",
+      "label": "click/__init__.py"
+    },
+    "flask/__init__.py": {
+      "id": "flask/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/flask/__init__.py",
+      "type": "external",
+      "label": "flask/__init__.py"
+    },
+    "flask_caching/__init__.py": {
+      "id": "flask_caching/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/flask_caching/__init__.py",
+      "type": "external",
+      "label": "flask_caching/__init__.py"
+    },
+    "flask_cors/__init__.py": {
+      "id": "flask_cors/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/flask_cors/__init__.py",
+      "type": "external",
+      "label": "flask_cors/__init__.py"
+    },
+    "flask_swagger_ui/__init__.py": {
+      "id": "flask_swagger_ui/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/flask_swagger_ui/__init__.py",
+      "type": "external",
+      "label": "flask_swagger_ui/__init__.py"
+    },
+    "git/__init__.py": {
+      "id": "git/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/git/__init__.py",
+      "type": "external",
+      "label": "git/__init__.py"
+    },
+    "graphviz/__init__.py": {
+      "id": "graphviz/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/graphviz/__init__.py",
+      "type": "external",
+      "label": "graphviz/__init__.py"
+    },
+    "jwt/__init__.py": {
+      "id": "jwt/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/jwt/__init__.py",
+      "type": "external",
+      "label": "jwt/__init__.py"
+    },
+    "site-packages/pathlib.py": {
+      "id": "site-packages/pathlib.py",
+      "path": "../venv/lib/python3.13/site-packages/pathlib.py",
+      "type": "external",
+      "label": "site-packages/pathlib.py"
+    },
+    "tqdm/__init__.py": {
+      "id": "tqdm/__init__.py",
+      "path": "../venv/lib/python3.13/site-packages/tqdm/__init__.py",
+      "type": "external",
+      "label": "tqdm/__init__.py"
+    },
+    "werkzeug/utils.py": {
+      "id": "werkzeug/utils.py",
+      "path": "../venv/lib/python3.13/site-packages/werkzeug/utils.py",
+      "type": "external",
+      "label": "werkzeug/utils.py"
+    },
+    "__init__.py": {
+      "id": "__init__.py",
+      "path": "__init__.py",
+      "type": "internal",
+      "label": "__init__.py"
+    },
+    "analyzer.py": {
+      "id": "analyzer.py",
+      "path": "analyzer.py",
+      "type": "internal",
+      "label": "analyzer.py"
+    },
+    "api/__init__.py": {
+      "id": "api/__init__.py",
+      "path": "api/__init__.py",
+      "type": "internal",
+      "label": "api/__init__.py"
+    },
+    "api/app.py": {
+      "id": "api/app.py",
+      "path": "api/app.py",
+      "type": "internal",
+      "label": "api/app.py"
+    },
+    "auth/__init__.py": {
+      "id": "auth/__init__.py",
+      "path": "api/auth/__init__.py",
+      "type": "internal",
+      "label": "auth/__init__.py"
+    },
+    "auth/token.py": {
+      "id": "auth/token.py",
+      "path": "api/auth/token.py",
+      "type": "internal",
+      "label": "auth/token.py"
+    },
+    "cache/__init__.py": {
+      "id": "cache/__init__.py",
+      "path": "api/cache/__init__.py",
+      "type": "internal",
+      "label": "cache/__init__.py"
+    },
+    "cache/stats.py": {
+      "id": "cache/stats.py",
+      "path": "api/cache/stats.py",
+      "type": "internal",
+      "label": "cache/stats.py"
+    },
+    "cache/utils.py": {
+      "id": "cache/utils.py",
+      "path": "api/cache/utils.py",
+      "type": "internal",
+      "label": "cache/utils.py"
+    },
+    "api/config.py": {
+      "id": "api/config.py",
+      "path": "api/config.py",
+      "type": "internal",
+      "label": "api/config.py"
+    },
+    "api/docs.py": {
+      "id": "api/docs.py",
+      "path": "api/docs.py",
+      "type": "internal",
+      "label": "api/docs.py"
+    },
+    "routes/__init__.py": {
+      "id": "routes/__init__.py",
+      "path": "api/routes/__init__.py",
+      "type": "internal",
+      "label": "routes/__init__.py"
+    },
+    "routes/analysis.py": {
+      "id": "routes/analysis.py",
+      "path": "api/routes/analysis.py",
+      "type": "internal",
+      "label": "routes/analysis.py"
+    },
+    "routes/artifacts.py": {
+      "id": "routes/artifacts.py",
+      "path": "api/routes/artifacts.py",
+      "type": "internal",
+      "label": "routes/artifacts.py"
+    },
+    "routes/auth.py": {
+      "id": "routes/auth.py",
+      "path": "api/routes/auth.py",
+      "type": "internal",
+      "label": "routes/auth.py"
+    },
+    "routes/info.py": {
+      "id": "routes/info.py",
+      "path": "api/routes/info.py",
+      "type": "internal",
+      "label": "routes/info.py"
+    },
+    "api/utils.py": {
+      "id": "api/utils.py",
+      "path": "api/utils.py",
+      "type": "internal",
+      "label": "api/utils.py"
+    },
+    "bundler/__init__.py": {
+      "id": "bundler/__init__.py",
+      "path": "bundler/__init__.py",
+      "type": "internal",
+      "label": "bundler/__init__.py"
+    },
+    "bundler/context_bundle_assembler.py": {
+      "id": "bundler/context_bundle_assembler.py",
+      "path": "bundler/context_bundle_assembler.py",
+      "type": "internal",
+      "label": "bundler/context_bundle_assembler.py"
+    },
+    "change_detection/__init__.py": {
+      "id": "change_detection/__init__.py",
+      "path": "change_detection/__init__.py",
+      "type": "internal",
+      "label": "change_detection/__init__.py"
+    },
+    "change_detection/caching.py": {
+      "id": "change_detection/caching.py",
+      "path": "change_detection/caching.py",
+      "type": "internal",
+      "label": "change_detection/caching.py"
+    },
+    "change_detection/git_changes.py": {
+      "id": "change_detection/git_changes.py",
+      "path": "change_detection/git_changes.py",
+      "type": "internal",
+      "label": "change_detection/git_changes.py"
+    },
+    "change_detection/incremental.py": {
+      "id": "change_detection/incremental.py",
+      "path": "change_detection/incremental.py",
+      "type": "internal",
+      "label": "change_detection/incremental.py"
+    },
+    "change_detection/summary.py": {
+      "id": "change_detection/summary.py",
+      "path": "change_detection/summary.py",
+      "type": "internal",
+      "label": "change_detection/summary.py"
+    },
+    "cli/__init__.py": {
+      "id": "cli/__init__.py",
+      "path": "cli/__init__.py",
+      "type": "internal",
+      "label": "cli/__init__.py"
+    },
+    "cli/analyze_cmd.py": {
+      "id": "cli/analyze_cmd.py",
+      "path": "cli/analyze_cmd.py",
+      "type": "internal",
+      "label": "cli/analyze_cmd.py"
+    },
+    "cli/api_cmd.py": {
+      "id": "cli/api_cmd.py",
+      "path": "cli/api_cmd.py",
+      "type": "internal",
+      "label": "cli/api_cmd.py"
+    },
+    "cli/bundle_cmd.py": {
+      "id": "cli/bundle_cmd.py",
+      "path": "cli/bundle_cmd.py",
+      "type": "internal",
+      "label": "cli/bundle_cmd.py"
+    },
+    "cli/cli.py": {
+      "id": "cli/cli.py",
+      "path": "cli/cli.py",
+      "type": "internal",
+      "label": "cli/cli.py"
+    },
+    "commands/__init__.py": {
+      "id": "commands/__init__.py",
+      "path": "cli/commands/__init__.py",
+      "type": "internal",
+      "label": "commands/__init__.py"
+    },
+    "commands/dependency_query.py": {
+      "id": "commands/dependency_query.py",
+      "path": "cli/commands/dependency_query.py",
+      "type": "internal",
+      "label": "commands/dependency_query.py"
+    },
+    "cli/convert_deps_cmd.py": {
+      "id": "cli/convert_deps_cmd.py",
+      "path": "cli/convert_deps_cmd.py",
+      "type": "internal",
+      "label": "cli/convert_deps_cmd.py"
+    },
+    "cli/dependency_cmd.py": {
+      "id": "cli/dependency_cmd.py",
+      "path": "cli/dependency_cmd.py",
+      "type": "internal",
+      "label": "cli/dependency_cmd.py"
+    },
+    "cli/file_tree_cmd.py": {
+      "id": "cli/file_tree_cmd.py",
+      "path": "cli/file_tree_cmd.py",
+      "type": "internal",
+      "label": "cli/file_tree_cmd.py"
+    },
+    "cli/graph_cmd.py": {
+      "id": "cli/graph_cmd.py",
+      "path": "cli/graph_cmd.py",
+      "type": "internal",
+      "label": "cli/graph_cmd.py"
+    },
+    "cli/main.py": {
+      "id": "cli/main.py",
+      "path": "cli/main.py",
+      "type": "internal",
+      "label": "cli/main.py"
+    },
+    "cli/metrics_cmd.py": {
+      "id": "cli/metrics_cmd.py",
+      "path": "cli/metrics_cmd.py",
+      "type": "internal",
+      "label": "cli/metrics_cmd.py"
+    },
+    "cli/query_deps_cmd.py": {
+      "id": "cli/query_deps_cmd.py",
+      "path": "cli/query_deps_cmd.py",
+      "type": "internal",
+      "label": "cli/query_deps_cmd.py"
+    },
+    "cli/quick_examples.py": {
+      "id": "cli/quick_examples.py",
+      "path": "cli/quick_examples.py",
+      "type": "internal",
+      "label": "cli/quick_examples.py"
+    },
+    "cli/run_all.py": {
+      "id": "cli/run_all.py",
+      "path": "cli/run_all.py",
+      "type": "internal",
+      "label": "cli/run_all.py"
+    },
+    "cli/summary_cmd.py": {
+      "id": "cli/summary_cmd.py",
+      "path": "cli/summary_cmd.py",
+      "type": "internal",
+      "label": "cli/summary_cmd.py"
+    },
+    "cli/visualization_cmd.py": {
+      "id": "cli/visualization_cmd.py",
+      "path": "cli/visualization_cmd.py",
+      "type": "internal",
+      "label": "cli/visualization_cmd.py"
+    },
+    "extractors/file_tree_extractor.py": {
+      "id": "extractors/file_tree_extractor.py",
+      "path": "extractors/file_tree_extractor.py",
+      "type": "internal",
+      "label": "extractors/file_tree_extractor.py"
+    },
+    "python/__init__.py": {
+      "id": "python/__init__.py",
+      "path": "extractors/python/__init__.py",
+      "type": "internal",
+      "label": "python/__init__.py"
+    },
+    "python/dependency_graph.py": {
+      "id": "python/dependency_graph.py",
+      "path": "extractors/python/dependency_graph.py",
+      "type": "internal",
+      "label": "python/dependency_graph.py"
+    },
+    "python/extractor.py": {
+      "id": "python/extractor.py",
+      "path": "extractors/python/extractor.py",
+      "type": "internal",
+      "label": "python/extractor.py"
+    },
+    "python/import_parser.py": {
+      "id": "python/import_parser.py",
+      "path": "extractors/python/import_parser.py",
+      "type": "internal",
+      "label": "python/import_parser.py"
+    },
+    "python/json_exporter.py": {
+      "id": "python/json_exporter.py",
+      "path": "extractors/python/json_exporter.py",
+      "type": "internal",
+      "label": "python/json_exporter.py"
+    },
+    "python/path_resolver.py": {
+      "id": "python/path_resolver.py",
+      "path": "extractors/python/path_resolver.py",
+      "type": "internal",
+      "label": "python/path_resolver.py"
+    },
+    "hooks/__init__.py": {
+      "id": "hooks/__init__.py",
+      "path": "hooks/__init__.py",
+      "type": "internal",
+      "label": "hooks/__init__.py"
+    },
+    "hooks/config.py": {
+      "id": "hooks/config.py",
+      "path": "hooks/config.py",
+      "type": "internal",
+      "label": "hooks/config.py"
+    },
+    "hooks/hook_scripts.py": {
+      "id": "hooks/hook_scripts.py",
+      "path": "hooks/hook_scripts.py",
+      "type": "internal",
+      "label": "hooks/hook_scripts.py"
+    },
+    "hooks/notification.py": {
+      "id": "hooks/notification.py",
+      "path": "hooks/notification.py",
+      "type": "internal",
+      "label": "hooks/notification.py"
+    },
+    "hooks/throttling.py": {
+      "id": "hooks/throttling.py",
+      "path": "hooks/throttling.py",
+      "type": "internal",
+      "label": "hooks/throttling.py"
+    },
+    "indexer.py": {
+      "id": "indexer.py",
+      "path": "indexer.py",
+      "type": "internal",
+      "label": "indexer.py"
+    },
+    "metrics/__init__.py": {
+      "id": "metrics/__init__.py",
+      "path": "metrics/__init__.py",
+      "type": "internal",
+      "label": "metrics/__init__.py"
+    },
+    "metrics/complexity_analyzer.py": {
+      "id": "metrics/complexity_analyzer.py",
+      "path": "metrics/complexity_analyzer.py",
+      "type": "internal",
+      "label": "metrics/complexity_analyzer.py"
+    },
+    "metrics/language_analyzer.py": {
+      "id": "metrics/language_analyzer.py",
+      "path": "metrics/language_analyzer.py",
+      "type": "internal",
+      "label": "metrics/language_analyzer.py"
+    },
+    "metrics/metrics_collector.py": {
+      "id": "metrics/metrics_collector.py",
+      "path": "metrics/metrics_collector.py",
+      "type": "internal",
+      "label": "metrics/metrics_collector.py"
+    },
+    "query.py": {
+      "id": "query.py",
+      "path": "query.py",
+      "type": "internal",
+      "label": "query.py"
+    },
+    "report.py": {
+      "id": "report.py",
+      "path": "report.py",
+      "type": "internal",
+      "label": "report.py"
+    },
+    "storage.py": {
+      "id": "storage.py",
+      "path": "storage.py",
+      "type": "internal",
+      "label": "storage.py"
+    },
+    "summary/__init__.py": {
+      "id": "summary/__init__.py",
+      "path": "summary/__init__.py",
+      "type": "internal",
+      "label": "summary/__init__.py"
+    },
+    "summary/data_collector.py": {
+      "id": "summary/data_collector.py",
+      "path": "summary/data_collector.py",
+      "type": "internal",
+      "label": "summary/data_collector.py"
+    },
+    "summary/smart_summarizer.py": {
+      "id": "summary/smart_summarizer.py",
+      "path": "summary/smart_summarizer.py",
+      "type": "internal",
+      "label": "summary/smart_summarizer.py"
+    },
+    "summary/summary_builder.py": {
+      "id": "summary/summary_builder.py",
+      "path": "summary/summary_builder.py",
+      "type": "internal",
+      "label": "summary/summary_builder.py"
+    },
+    "summary/templates.py": {
+      "id": "summary/templates.py",
+      "path": "summary/templates.py",
+      "type": "internal",
+      "label": "summary/templates.py"
+    },
+    "visualization/__init__.py": {
+      "id": "visualization/__init__.py",
+      "path": "visualization/__init__.py",
+      "type": "internal",
+      "label": "visualization/__init__.py"
+    },
+    "visualization/converter.py": {
+      "id": "visualization/converter.py",
+      "path": "visualization/converter.py",
+      "type": "internal",
+      "label": "visualization/converter.py"
+    },
+    "graph/__init__.py": {
+      "id": "graph/__init__.py",
+      "path": "visualization/graph/__init__.py",
+      "type": "internal",
+      "label": "graph/__init__.py"
+    },
+    "graph/dot_generator.py": {
+      "id": "graph/dot_generator.py",
+      "path": "visualization/graph/dot_generator.py",
+      "type": "internal",
+      "label": "graph/dot_generator.py"
+    },
+    "graph/test_dot_generator.py": {
+      "id": "graph/test_dot_generator.py",
+      "path": "visualization/graph/test_dot_generator.py",
+      "type": "internal",
+      "label": "graph/test_dot_generator.py"
+    },
+    "visualization/graph_generator.py": {
+      "id": "visualization/graph_generator.py",
+      "path": "visualization/graph_generator.py",
+      "type": "internal",
+      "label": "visualization/graph_generator.py"
+    }
+  },
+  "edges": {
+    "analyzer.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py",
+      "metrics/metrics_collector.py",
+      "extractors/file_tree_extractor.py",
+      "json/__init__.py"
+    ],
+    "api/app.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/datetime.py",
+      "python3.13/typing.py",
+      "flask/__init__.py",
+      "flask_cors/__init__.py",
+      "flask_caching/__init__.py",
+      "api/config.py",
+      "cache/stats.py",
+      "api/utils.py",
+      "routes/__init__.py",
+      "api/docs.py",
+      "apispec_webframeworks/flask.py"
+    ],
+    "auth/__init__.py": [
+      "auth/token.py"
+    ],
+    "auth/token.py": [
+      "python3.13/os.py",
+      "jwt/__init__.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "python3.13/datetime.py",
+      "python3.13/functools.py",
+      "python3.13/typing.py",
+      "flask/__init__.py"
+    ],
+    "cache/stats.py": [
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "flask/__init__.py",
+      "python3.13/functools.py"
+    ],
+    "cache/utils.py": [
+      "python3.13/os.py",
+      "python3.13/hashlib.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "python3.13/functools.py",
+      "flask/__init__.py",
+      "api/app.py",
+      "apispec_webframeworks/flask.py"
+    ],
+    "api/config.py": [
+      "python3.13/os.py",
+      "python3.13/typing.py"
+    ],
+    "api/docs.py": [
+      "python3.13/os.py",
+      "apispec/__init__.py",
+      "marshmallow/__init__.py",
+      "apispec_webframeworks/flask.py",
+      "flask/__init__.py",
+      "flask_swagger_ui/__init__.py",
+      "routes/__init__.py"
+    ],
+    "routes/__init__.py": [
+      "routes/__init__.py"
+    ],
+    "routes/analysis.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "flask/__init__.py",
+      "werkzeug/utils.py",
+      "api/utils.py",
+      "cache/utils.py",
+      "extractors/file_tree_extractor.py",
+      "python/extractor.py",
+      "metrics/metrics_collector.py",
+      "graph/dot_generator.py",
+      "summary/data_collector.py",
+      "bundler/context_bundle_assembler.py",
+      "apispec_webframeworks/flask.py"
+    ],
+    "routes/artifacts.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "flask/__init__.py",
+      "werkzeug/utils.py",
+      "api/utils.py",
+      "cache/utils.py",
+      "auth/__init__.py",
+      "routes/analysis.py",
+      "python3.13/datetime.py",
+      "apispec_webframeworks/flask.py"
+    ],
+    "routes/auth.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "json/__init__.py",
+      "python3.13/hashlib.py",
+      "python3.13/typing.py",
+      "flask/__init__.py",
+      "auth/__init__.py",
+      "api/utils.py",
+      "apispec_webframeworks/flask.py"
+    ],
+    "routes/info.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "python3.13/platform.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "flask/__init__.py",
+      "api/utils.py",
+      "cache/utils.py",
+      "cache/stats.py",
+      "auth/__init__.py",
+      "apispec_webframeworks/flask.py"
+    ],
+    "api/utils.py": [
+      "python3.13/os.py",
+      "python3.13/uuid.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "python3.13/functools.py",
+      "python3.13/typing.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "werkzeug/utils.py",
+      "flask/__init__.py"
+    ],
+    "bundler/__init__.py": [
+      "bundler/context_bundle_assembler.py"
+    ],
+    "bundler/context_bundle_assembler.py": [
+      "json/__init__.py",
+      "python3.13/os.py",
+      "python3.13/shutil.py",
+      "zipfile/__init__.py",
+      "python3.13/tarfile.py",
+      "python3.13/gzip.py",
+      "python3.13/glob.py",
+      "python3.13/typing.py",
+      "python3.13/datetime.py",
+      "summary/data_collector.py",
+      "summary/summary_builder.py",
+      "extractors/file_tree_extractor.py"
+    ],
+    "change_detection/__init__.py": [
+      "change_detection/git_changes.py",
+      "change_detection/caching.py",
+      "change_detection/incremental.py",
+      "change_detection/summary.py"
+    ],
+    "change_detection/caching.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "python3.13/hashlib.py",
+      "logging/__init__.py",
+      "python3.13/typing.py"
+    ],
+    "change_detection/git_changes.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "git/__init__.py"
+    ],
+    "change_detection/incremental.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/subprocess.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py",
+      "change_detection/git_changes.py",
+      "analyzer.py",
+      "storage.py"
+    ],
+    "change_detection/summary.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "json/__init__.py",
+      "python3.13/typing.py",
+      "python3.13/datetime.py",
+      "change_detection/git_changes.py"
+    ],
+    "cli/__init__.py": [
+      "cli/__init__.py"
+    ],
+    "cli/analyze_cmd.py": [
+      "python3.13/argparse.py",
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "importlib/__init__.py",
+      "python3.13/typing.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "tqdm/__init__.py",
+      "cli/__init__.py"
+    ],
+    "cli/api_cmd.py": [
+      "python3.13/argparse.py",
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "api/app.py"
+    ],
+    "cli/bundle_cmd.py": [
+      "python3.13/argparse.py",
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "tqdm/__init__.py",
+      "bundler/context_bundle_assembler.py"
+    ],
+    "cli/cli.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "click/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py",
+      "analyzer.py",
+      "indexer.py",
+      "storage.py",
+      "query.py",
+      "report.py",
+      "change_detection/__init__.py",
+      "hooks/__init__.py",
+      "python/extractor.py",
+      "json/__init__.py"
+    ],
+    "commands/dependency_query.py": [
+      "json/__init__.py",
+      "click/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py"
+    ],
+    "cli/convert_deps_cmd.py": [
+      "python3.13/argparse.py",
+      "visualization/converter.py"
+    ],
+    "cli/dependency_cmd.py": [
+      "python3.13/argparse.py",
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "tqdm/__init__.py",
+      "python/extractor.py"
+    ],
+    "cli/file_tree_cmd.py": [
+      "python3.13/argparse.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py",
+      "extractors/file_tree_extractor.py"
+    ],
+    "cli/graph_cmd.py": [
+      "python3.13/argparse.py",
+      "visualization/graph_generator.py"
+    ],
+    "cli/main.py": [
+      "python3.13/argparse.py",
+      "logging/__init__.py",
+      "python3.13/warnings.py",
+      "python3.13/typing.py",
+      "click/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "cli/__init__.py",
+      "analyzer.py",
+      "indexer.py",
+      "storage.py",
+      "query.py",
+      "report.py",
+      "change_detection/__init__.py",
+      "hooks/__init__.py",
+      "commands/dependency_query.py",
+      "visualization/converter.py",
+      "visualization/graph_generator.py",
+      "python3.13/os.py",
+      "python3.13/subprocess.py"
+    ],
+    "cli/metrics_cmd.py": [
+      "python3.13/argparse.py",
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "tqdm/__init__.py",
+      "metrics/metrics_collector.py"
+    ],
+    "cli/query_deps_cmd.py": [
+      "python3.13/argparse.py",
+      "json/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py"
+    ],
+    "cli/run_all.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "click/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "cli/cli.py",
+      "analyzer.py",
+      "python/extractor.py",
+      "python3.13/subprocess.py"
+    ],
+    "cli/summary_cmd.py": [
+      "python3.13/argparse.py",
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "tqdm/__init__.py",
+      "summary/summary_builder.py",
+      "summary/data_collector.py"
+    ],
+    "cli/visualization_cmd.py": [
+      "python3.13/argparse.py",
+      "python3.13/os.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "tqdm/__init__.py",
+      "graph/dot_generator.py"
+    ],
+    "extractors/file_tree_extractor.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "re/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py",
+      "python3.13/io.py",
+      "python3.13/datetime.py"
+    ],
+    "python/dependency_graph.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "collections/__init__.py"
+    ],
+    "python/extractor.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/glob.py",
+      "python3.13/typing.py",
+      "python/import_parser.py",
+      "python/path_resolver.py",
+      "python/dependency_graph.py",
+      "python/json_exporter.py"
+    ],
+    "python/import_parser.py": [
+      "python3.13/ast.py",
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/typing.py"
+    ],
+    "python/json_exporter.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "python3.13/typing.py",
+      "python3.13/datetime.py"
+    ],
+    "python/path_resolver.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "json/__init__.py",
+      "python3.13/typing.py"
+    ],
+    "hooks/__init__.py": [
+      "hooks/hook_scripts.py",
+      "hooks/config.py",
+      "hooks/throttling.py",
+      "hooks/notification.py"
+    ],
+    "hooks/config.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/dataclasses.py",
+      "python3.13/typing.py",
+      "python3.13/subprocess.py"
+    ],
+    "hooks/hook_scripts.py": [
+      "python3.13/os.py",
+      "python3.13/shutil.py",
+      "logging/__init__.py",
+      "python3.13/subprocess.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py",
+      "change_detection/git_changes.py",
+      "change_detection/incremental.py",
+      "hooks/config.py",
+      "hooks/throttling.py",
+      "hooks/notification.py"
+    ],
+    "hooks/notification.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/platform.py",
+      "python3.13/subprocess.py",
+      "python3.13/typing.py"
+    ],
+    "hooks/throttling.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/datetime.py",
+      "python3.13/typing.py"
+    ],
+    "indexer.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "json/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py",
+      "storage.py",
+      "re/__init__.py"
+    ],
+    "metrics/__init__.py": [
+      "metrics/metrics_collector.py",
+      "metrics/language_analyzer.py",
+      "metrics/complexity_analyzer.py"
+    ],
+    "metrics/complexity_analyzer.py": [
+      "python3.13/ast.py",
+      "re/__init__.py",
+      "python3.13/os.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py"
+    ],
+    "metrics/language_analyzer.py": [
+      "python3.13/typing.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py"
+    ],
+    "metrics/metrics_collector.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "re/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "collections/__init__.py",
+      "python3.13/typing.py",
+      "metrics/language_analyzer.py",
+      "metrics/complexity_analyzer.py",
+      "python3.13/datetime.py"
+    ],
+    "query.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "json/__init__.py",
+      "re/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py",
+      "storage.py"
+    ],
+    "report.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "json/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py",
+      "python3.13/datetime.py",
+      "storage.py"
+    ],
+    "storage.py": [
+      "python3.13/os.py",
+      "json/__init__.py",
+      "logging/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "python3.13/typing.py"
+    ],
+    "summary/__init__.py": [
+      "summary/data_collector.py",
+      "summary/summary_builder.py"
+    ],
+    "summary/data_collector.py": [
+      "json/__init__.py",
+      "python3.13/os.py",
+      "python3.13/typing.py",
+      "extractors/file_tree_extractor.py",
+      "python/extractor.py",
+      "metrics/metrics_collector.py",
+      "graph/dot_generator.py"
+    ],
+    "summary/smart_summarizer.py": [
+      "python3.13/typing.py"
+    ],
+    "summary/summary_builder.py": [
+      "json/__init__.py",
+      "python3.13/os.py",
+      "python3.13/typing.py",
+      "summary/data_collector.py",
+      "summary/templates.py",
+      "summary/smart_summarizer.py",
+      "python3.13/argparse.py"
+    ],
+    "summary/templates.py": [
+      "python3.13/os.py",
+      "python3.13/typing.py",
+      "python3.13/datetime.py",
+      "json/__init__.py"
+    ],
+    "visualization/converter.py": [
+      "json/__init__.py",
+      "python3.13/os.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "click/__init__.py"
+    ],
+    "graph/__init__.py": [
+      "graph/dot_generator.py"
+    ],
+    "graph/dot_generator.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "python3.13/colorsys.py",
+      "python3.13/typing.py",
+      "graphviz/__init__.py",
+      "python3.13/shutil.py",
+      "python3.13/subprocess.py"
+    ],
+    "graph/test_dot_generator.py": [
+      "python3.13/os.py",
+      "logging/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "graph/dot_generator.py"
+    ],
+    "visualization/graph_generator.py": [
+      "json/__init__.py",
+      "python3.13/os.py",
+      "re/__init__.py",
+      "pathlib/__init__.py",
+      "site-packages/pathlib.py",
+      "click/__init__.py",
+      "graphviz/__init__.py"
+    ]
+  },
+  "metadata": {
+    "title": "Complete Dependency Graph",
+    "description": "Visualization of all module dependencies including external libraries",
+    "format_version": "1.0"
+  }
+}

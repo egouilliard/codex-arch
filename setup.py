@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="codex-arch",
-    version="0.1.0",
+    version="0.2.0",
     author="Codex-Arch Team",
     author_email="author@example.com",
     description="A tool for analyzing and visualizing code architecture",
@@ -28,6 +28,12 @@ setup(
     python_requires=">=3.7",
     install_requires=[
         "pathlib",
+        "click>=8.0.0",
+        "graphviz>=0.20.0",
+        "tqdm>=4.66.0",
+        "Flask>=2.3.0",
+        "Flask-Cors>=4.0.0",
+        "GitPython>=3.1.40",
     ],
     entry_points={
         "console_scripts": [
