@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "declaration": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@codex-arch/core/*": ["packages/core/src/*"],
+      "@codex-arch/parsers-typescript/*": ["packages/parsers-typescript/src/*"],
+      "@codex-arch/mcp/*": ["packages/mcp/src/*"],
+      "@codex-arch/cli/*": ["packages/cli/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+} 
