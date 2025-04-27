@@ -96,7 +96,7 @@ interface FindPathResult extends ActionResult {
  * Create MCP actions for codex-arch
  * @param graphClient GraphitiClient instance to use for database operations
  */
-export function createMCPActions(graphClient: GraphitiClient): MCPAction[] {
+export function createMCPActions(graphClient: GraphitiClient): MCPAction<ActionParams, ActionResult>[] {
   // Analyze repository action
   const analyzeRepository: MCPAction<AnalyzeRepositoryParams, AnalyzeRepositoryResult> = {
     name: 'analyze_repository',
@@ -184,5 +184,5 @@ export function createMCPActions(graphClient: GraphitiClient): MCPAction[] {
     analyzeRepository,
     queryGraph,
     findPath
-  ];
+  ] as MCPAction<ActionParams, ActionResult>[];
 } 
