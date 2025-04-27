@@ -202,4 +202,109 @@ export class GraphitiClient {
   public async close(): Promise<void> {
     await this.driver.close();
   }
+
+  /**
+   * Clear the database (for fresh imports)
+   */
+  public async clearDatabase(): Promise<void> {
+    const query = `
+      MATCH (n)
+      DETACH DELETE n
+    `;
+    await this.runQuery(query);
+  }
+
+  /**
+   * Create a file node directly from a CodeEntity object
+   */
+  public async createFileNodeFromEntity(entity: any): Promise<string> {
+    const metadata: FileMetadata = {
+      name: entity.name,
+      extension: entity.properties.ext || '',
+      size: entity.properties.size || 0
+    };
+    
+    return this.createFileNode(entity.filePath, metadata);
+  }
+
+  /**
+   * Create an import relationship directly from a CodeRelationship object
+   */
+  public async createImportRelationshipFromRelationship(relationship: any): Promise<void> {
+    const importType = relationship.properties.importType as ImportType;
+    await this.createImportRelationship(
+      relationship.source,
+      relationship.target,
+      importType
+    );
+  }
+
+  /**
+   * Query all files in the database
+   */
+  public async queryFiles(): Promise<any[]> {
+    const query = `
+      MATCH (f:File)
+      RETURN f.path as id, f.name as name, f.extension as extension, f.path as filePath
+    `;
+    return this.runQuery(query);
+  }
+
+  /**
+   * Query all relationships of a specific type
+   */
+  public async queryAllRelationships(type: string): Promise<any[]> {
+    const query = `
+      MATCH (source)-[r:${type}]->(target)
+      RETURN source.path as source, target.path as target, type(r) as type, r.type as importType
+    `;
+    return this.runQuery(query);
+  }
+
+  /**
+   * Query relationships from a source node
+   */
+  public async queryRelationships(sourceId: string, type: string): Promise<any[]> {
+    const query = `
+      MATCH (source:File {path: $sourceId})-[r:${type}]->(target)
+      RETURN source.path as source, target.path as target, type(r) as type, r.type as importType
+    `;
+    return this.runQuery(query, { sourceId });
+  }
+
+  /**
+   * Query relationships to a target node
+   */
+  public async queryReverseRelationships(targetId: string, type: string): Promise<any[]> {
+    const query = `
+      MATCH (source)-[r:${type}]->(target:File {path: $targetId})
+      RETURN source.path as source, target.path as target, type(r) as type, r.type as importType
+    `;
+    return this.runQuery(query, { targetId });
+  }
+
+  /**
+   * Generate visualization data with D3.js compatible format
+   */
+  public async generateVisualizationData(): Promise<{
+    nodes: any[],
+    links: any[]
+  }> {
+    const files = await this.queryFiles();
+    const relationships = await this.queryAllRelationships('IMPORTS');
+    
+    return {
+      nodes: files.map(file => ({
+        id: file.id,
+        name: file.name,
+        group: file.filePath.split('/').slice(-2)[0] // Group by folder
+      })),
+      links: relationships.map(rel => ({
+        source: rel.source,
+        target: rel.target,
+        value: 1,
+        type: rel.importType
+      }))
+    };
+  }
 } 

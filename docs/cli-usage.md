@@ -49,20 +49,30 @@ codex-arch query <query-type> [options]
 - `function`: Query function information
 - `relationship`: Query relationships between entities
 - `context`: Query contextual information
+- `dependencies`: Query direct file dependencies
+- `reverse-dependencies`: Query files that depend on a specific file
+- `dependency-chain`: Query dependency chain for a file
+- `path`: Find connection paths between files
 
 **Options:**
 - `-p, --path <path>`: Path to entity
-- `-n, --name <name>`: Name of entity
+- `-n, --name <n>`: Name of entity
 - `-t, --type <type>`: Type of relationship
 - `-d, --depth <number>`: Depth of relationships to traverse
 - `-l, --limit <number>`: Limit number of results
 - `-f, --format <format>`: Output format (json, table, text)
+- `--source <path>`: Source file path (for path queries)
+- `--target <path>`: Target file path (for path queries)
+- `--max-path-length <number>`: Maximum path length to consider (default: 5)
 
 **Examples:**
 ```bash
 codex-arch query file --path "./src/index.ts"
 codex-arch query function --path "./src/utils.ts" --name "parseConfig"
 codex-arch query relationship --path "./src/components/Button.tsx" --type "imports" --depth 2
+codex-arch query dependencies --path "./src/components/App.tsx"
+codex-arch query reverse-dependencies --path "./src/types/index.ts" --depth 2
+codex-arch query path --source "./src/index.tsx" --target "./src/services/auth.ts" --max-path-length 5
 ```
 
 ### visualize
@@ -110,6 +120,43 @@ codex-arch context add --key "primaryColor" --value "#3366FF" --category "design
 codex-arch context get --category "design"
 ```
 
+### graphiti
+
+Interacts with Graphiti-powered knowledge graph for advanced code analysis.
+
+```bash
+codex-arch graphiti <command> [options]
+```
+
+**Commands:**
+- `init`: Initialize the Neo4j database and schema
+- `query`: Run a Cypher query against the knowledge graph
+- `analyze`: Analyze codebase and store in the knowledge graph
+- `html`: Generate HTML visualization of the knowledge graph
+- `test-queries`: Run a suite of test queries to validate the knowledge graph
+
+**Options:**
+- `--cypher <query>`: Cypher query string (for query command)
+- `--file <path>`: Path to file containing Cypher query (for query command)
+- `--output <path>`: Output file path (for html command)
+- `--target-file <path>`: Target file to analyze (for test-queries command)
+- `--depth <number>`: Depth of analysis (for test-queries command)
+
+**Examples:**
+```bash
+# Initialize Graphiti database
+codex-arch graphiti init
+
+# Run custom Cypher query
+codex-arch graphiti query --cypher "MATCH (f:File) RETURN count(f) as fileCount"
+
+# Generate HTML visualization
+codex-arch graphiti html --output "./knowledge-graph.html"
+
+# Run test queries for a specific file
+codex-arch graphiti test-queries --target-file "./src/components/App.tsx" --depth 3
+```
+
 ## Configuration File
 
 Codex-Arch can be configured using a `.codexarchrc.json` file:
@@ -128,6 +175,17 @@ Codex-Arch can be configured using a `.codexarchrc.json` file:
       "uri": "bolt://localhost:7687",
       "user": "neo4j",
       "password": "password"
+    }
+  },
+  "graphiti": {
+    "html": {
+      "defaultDepth": 2,
+      "defaultRootFile": "./src/index.ts",
+      "outputPath": "./architecture-visualization.html"
+    },
+    "queries": {
+      "defaultLimit": 10,
+      "defaultDepth": 3
     }
   }
 }
@@ -149,3 +207,4 @@ The CLI respects the following environment variables:
 - `2`: Configuration error
 - `3`: Parser error
 - `4`: Graph error
+- `5`: Graphiti connection error
