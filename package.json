@@ -16,7 +16,8 @@
     "graphiti:query": "ts-node scripts/query-typescript-analysis.ts",
     "graphiti:visualize": "ts-node scripts/visualize-typescript-analysis.ts",
     "graphiti:html": "ts-node scripts/generate-html-visualization.ts",
-    "graphiti:all": "ts-node scripts/run-graphiti-visualization.ts"
+    "graphiti:all": "ts-node scripts/run-graphiti-visualization.ts",
+    "graphiti:test-queries": "ts-node scripts/test-graphiti-queries.ts"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.31.0",
