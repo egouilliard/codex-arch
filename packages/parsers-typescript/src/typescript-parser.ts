@@ -1,6 +1,7 @@
 import * as ts from 'typescript';
 import * as path from 'path';
 import * as fs from 'fs/promises';
+import * as fsSync from 'fs';
 import { glob } from 'glob';
 import {
   CodeEntity,
@@ -8,8 +9,27 @@ import {
   CodeLocation,
   CodeRelationship,
   CodeRelationshipType,
-  Parser
+  Parser,
+  ImportType
 } from '@codex-arch/core';
+
+/**
+ * Information about an import statement
+ */
+interface ImportInfo {
+  path: string;
+  type: ImportType;
+  names?: string[];
+  alias?: string;
+}
+
+/**
+ * Result of parsing a file
+ */
+interface ParseResult {
+  entities: CodeEntity[];
+  relationships: CodeRelationship[];
+}
 
 /**
  * Implementation of the Parser interface for TypeScript code
@@ -19,18 +39,25 @@ export class TypeScriptParser implements Parser {
   private entities: Map<string, CodeEntity> = new Map();
   private relationships: CodeRelationship[] = [];
   private program: ts.Program | null = null;
+  private basePath: string = '';
 
   /**
    * Parse a single TypeScript file
    */
-  public async parseFile(filePath: string): Promise<{
-    entities: CodeEntity[];
-    relationships: CodeRelationship[];
-  }> {
+  public async parseFile(filePath: string): Promise<ParseResult> {
     // Reset collections
     this.entities = new Map();
     this.relationships = [];
     this.sourceFiles = new Map();
+    
+    // Set basePath to directory containing the file
+    this.basePath = path.dirname(filePath);
+    
+    // Find workspace root by looking for test-repositories directory
+    const testRepoIndex = filePath.indexOf('test-repositories');
+    if (testRepoIndex !== -1) {
+      this.basePath = filePath.substring(0, testRepoIndex);
+    }
 
     // Create a program for the single file
     const content = await fs.readFile(filePath, 'utf-8');
@@ -43,8 +70,11 @@ export class TypeScriptParser implements Parser {
     
     this.sourceFiles.set(filePath, sourceFile);
     
-    // Process the source file
-    this.processSourceFile(sourceFile);
+    // Process the source file to create the file entity
+    const fileId = this.processFileEntity(sourceFile);
+    
+    // Extract imports from the source file
+    this.extractImports(sourceFile, fileId);
     
     return {
       entities: Array.from(this.entities.values()),
@@ -62,21 +92,26 @@ export class TypeScriptParser implements Parser {
       include?: string[];
       recursive?: boolean;
     }
-  ): Promise<{
-    entities: CodeEntity[];
-    relationships: CodeRelationship[];
-  }> {
+  ): Promise<ParseResult> {
     // Reset collections
     this.entities = new Map();
     this.relationships = [];
     this.sourceFiles = new Map();
+    
+    // Set basePath to the directory being parsed
+    this.basePath = dirPath;
+    
+    // Find workspace root by looking for test-repositories directory
+    const testRepoIndex = dirPath.indexOf('test-repositories');
+    if (testRepoIndex !== -1) {
+      this.basePath = dirPath.substring(0, testRepoIndex);
+    }
 
     const globPattern = options?.recursive !== false
       ? path.join(dirPath, '**/*.{ts,tsx}')
       : path.join(dirPath, '*.{ts,tsx}');
     
     const excludePatterns = options?.exclude || [];
-    const includePatterns = options?.include || ['**/*.ts', '**/*.tsx'];
     
     // Find all TypeScript files
     const files = await glob(globPattern, {
@@ -86,7 +121,9 @@ export class TypeScriptParser implements Parser {
     // Create a program for all files
     const compilerOptions = {
       target: ts.ScriptTarget.Latest,
-      module: ts.ModuleKind.CommonJS
+      module: ts.ModuleKind.CommonJS,
+      baseUrl: dirPath,
+      allowJs: true
     };
     
     this.program = ts.createProgram(files, compilerOptions);
@@ -95,7 +132,8 @@ export class TypeScriptParser implements Parser {
     for (const sourceFile of this.program.getSourceFiles()) {
       if (!sourceFile.isDeclarationFile) {
         this.sourceFiles.set(sourceFile.fileName, sourceFile);
-        this.processSourceFile(sourceFile);
+        const fileId = this.processFileEntity(sourceFile);
+        this.extractImports(sourceFile, fileId);
       }
     }
     
@@ -106,18 +144,28 @@ export class TypeScriptParser implements Parser {
   }
 
   /**
-   * Process a TypeScript source file to extract entities and relationships
+   * Process a source file to create a file entity
    */
-  private processSourceFile(sourceFile: ts.SourceFile): void {
+  private processFileEntity(sourceFile: ts.SourceFile): string {
     const filePath = sourceFile.fileName;
+    const normalizedPath = this.normalizeFilePath(filePath);
     
     // Create a file entity
     const fileId = this.createId(filePath, 'file');
+    
+    // Get file size synchronously
+    let fileSize: number | undefined;
+    try {
+      fileSize = fsSync.statSync(filePath).size;
+    } catch (error) {
+      fileSize = undefined;
+    }
+    
     const fileEntity: CodeEntity = {
       id: fileId,
       type: CodeEntityType.File,
       name: path.basename(filePath),
-      filePath,
+      filePath: normalizedPath,
       location: {
         startLine: 1,
         startColumn: 1,
@@ -125,61 +173,152 @@ export class TypeScriptParser implements Parser {
         endColumn: sourceFile.getLineAndCharacterOfPosition(sourceFile.getEnd()).character + 1
       },
       properties: {
-        ext: path.extname(filePath)
+        ext: path.extname(filePath),
+        size: fileSize
       }
     };
     
     this.entities.set(fileId, fileEntity);
-    
-    // Visit all nodes in the file
+    return fileId;
+  }
+
+  /**
+   * Extract imports from a source file
+   */
+  private extractImports(sourceFile: ts.SourceFile, fileId: string): void {
     ts.forEachChild(sourceFile, (node) => {
-      this.visitNode(node, fileId, sourceFile);
+      if (ts.isImportDeclaration(node)) {
+        this.processImportDeclaration(node, sourceFile, fileId);
+      }
     });
   }
 
   /**
-   * Visit a TypeScript AST node and extract entities/relationships
+   * Process an import declaration and create relationships
    */
-  private visitNode(node: ts.Node, parentId: string, sourceFile: ts.SourceFile): void {
-    // Placeholder implementation - in a real implementation,
-    // this would extract various entity types and relationships
+  private processImportDeclaration(
+    node: ts.ImportDeclaration, 
+    sourceFile: ts.SourceFile, 
+    fileId: string
+  ): void {
+    // Get the import path
+    if (!node.moduleSpecifier || !ts.isStringLiteral(node.moduleSpecifier)) {
+      return;
+    }
     
-    // Example: Extract classes
-    if (ts.isClassDeclaration(node) && node.name) {
-      const name = node.name.getText();
-      const location = this.getNodeLocation(node, sourceFile);
-      const id = this.createId(sourceFile.fileName, 'class', name);
-      
-      // Create the class entity
-      const classEntity: CodeEntity = {
-        id,
-        type: CodeEntityType.Class,
-        name,
-        filePath: sourceFile.fileName,
-        location,
+    const importPath = node.moduleSpecifier.text;
+    const sourceFilePath = sourceFile.fileName;
+    
+    // Resolve the actual file path
+    const resolvedPath = this.resolveImportPath(importPath, sourceFilePath);
+    if (!resolvedPath) {
+      return; // Skip if we can't resolve the import
+    }
+    
+    const normalizedResolvedPath = this.normalizeFilePath(resolvedPath);
+    
+    // Create a file entity for the imported file if it doesn't exist
+    const targetFileId = this.createId(resolvedPath, 'file');
+    
+    if (!this.entities.has(targetFileId)) {
+      // Create a placeholder file entity
+      const fileEntity: CodeEntity = {
+        id: targetFileId,
+        type: CodeEntityType.File,
+        name: path.basename(resolvedPath),
+        filePath: normalizedResolvedPath,
+        location: {
+          startLine: 0,
+          startColumn: 0,
+          endLine: 0,
+          endColumn: 0
+        },
         properties: {
-          isExported: this.hasExportModifier(node)
+          ext: path.extname(resolvedPath),
+          isPlaceholder: true
         }
       };
       
-      this.entities.set(id, classEntity);
-      
-      // Create a CONTAINS relationship from the file to the class
-      this.relationships.push({
-        source: parentId,
-        target: id,
-        type: CodeRelationshipType.Contains,
-        properties: {}
-      });
-      
-      // Process class members
-      node.members.forEach(member => {
-        this.visitNode(member, id, sourceFile);
-      });
+      this.entities.set(targetFileId, fileEntity);
     }
     
-    // Recursively visit children
-    node.forEachChild(child => this.visitNode(child, parentId, sourceFile));
+    // Determine the import type
+    let importType = ImportType.SideEffect; // Default for "import 'module'"
+    
+    if (node.importClause) {
+      if (node.importClause.name) {
+        importType = ImportType.Default; // import Default from 'module'
+      } else if (node.importClause.namedBindings) {
+        if (ts.isNamespaceImport(node.importClause.namedBindings)) {
+          importType = ImportType.Namespace; // import * as Namespace from 'module'
+        } else if (ts.isNamedImports(node.importClause.namedBindings)) {
+          importType = ImportType.Named; // import { Named } from 'module'
+        }
+      }
+    }
+    
+    // Create the relationship
+    this.relationships.push({
+      source: fileId,
+      target: targetFileId,
+      type: CodeRelationshipType.Imports,
+      properties: {
+        importType,
+        importPath
+      }
+    });
+  }
+
+  /**
+   * Resolve an import path to an absolute file path
+   */
+  private resolveImportPath(importPath: string, containingFile: string): string | null {
+    // If it's a relative path, resolve it relative to the containing file
+    if (importPath.startsWith('.')) {
+      const dirName = path.dirname(containingFile);
+      let resolvedPath = path.resolve(dirName, importPath);
+      
+      // Check various extensions
+      const extensions = ['.ts', '.tsx', '.js', '.jsx', '.d.ts'];
+      
+      // First check if the exact path exists
+      if (this.fileExistsSync(resolvedPath)) {
+        return resolvedPath;
+      }
+      
+      // Then check with extensions if no extension provided
+      if (!path.extname(resolvedPath)) {
+        for (const ext of extensions) {
+          const pathWithExt = resolvedPath + ext;
+          if (this.fileExistsSync(pathWithExt)) {
+            return pathWithExt;
+          }
+          
+          // Also check for index files
+          const indexFile = path.join(resolvedPath, `index${ext}`);
+          if (this.fileExistsSync(indexFile)) {
+            return indexFile;
+          }
+        }
+      }
+      return null;
+    }
+    
+    // For non-relative imports, we can't resolve them easily without full TS compiler context
+    // This would usually involve checking node_modules or tsconfig paths
+    // For now, just return null to indicate we couldn't resolve it
+    return null;
+  }
+
+  /**
+   * Check if a file exists
+   */
+  private fileExistsSync(filePath: string): boolean {
+    try {
+      return fsSync.statSync(filePath).isFile();
+    } catch (error) {
+      return false;
+    }
   }
 
   /**
@@ -202,13 +341,13 @@ export class TypeScriptParser implements Parser {
   /**
    * Check if a node has the 'export' modifier
    */
-  private hasExportModifier(node: ts.Node): boolean {
+  private hasExportModifier(node: ts.HasModifiers): boolean {
     if (!node.modifiers) {
       return false;
     }
     
     return node.modifiers.some(
-      modifier => modifier.kind === ts.SyntaxKind.ExportKeyword
+      (modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword
     );
   }
 
@@ -216,7 +355,56 @@ export class TypeScriptParser implements Parser {
    * Create a unique ID for an entity
    */
   private createId(filePath: string, type: string, name?: string): string {
-    const base = `${filePath}:${type}`;
+    // Convert absolute path to relative path format
+    const normalizedPath = this.normalizeFilePath(filePath);
+    const base = `${normalizedPath}:${type}`;
     return name ? `${base}:${name}` : base;
+  }
+
+  /**
+   * Normalize file path to a consistent relative format
+   * Converts absolute paths to the same relative format used for source paths
+   */
+  private normalizeFilePath(filePath: string): string {
+    // If it's already a relative path with the expected format, return as is
+    if (filePath.startsWith('test-repositories/')) {
+      return filePath;
+    }
+    
+    // Check if it's an absolute path
+    if (path.isAbsolute(filePath)) {
+      // Look for 'test-repositories' directory as a marker for the relative path start
+      const testRepoIndex = filePath.indexOf('test-repositories');
+      if (testRepoIndex !== -1) {
+        return filePath.substring(testRepoIndex);
+      }
+      
+      // If we can't find the marker but have a basePath set
+      if (this.basePath && this.basePath !== '') {
+        try {
+          // First, check if basePath contains 'test-repositories'
+          const baseTestRepoIndex = this.basePath.indexOf('test-repositories');
+          if (baseTestRepoIndex !== -1) {
+            const workspaceRoot = this.basePath.substring(0, baseTestRepoIndex);
+            // Get path relative to workspace root
+            if (filePath.startsWith(workspaceRoot)) {
+              return filePath.substring(workspaceRoot.length);
+            }
+          }
+          
+          // Otherwise, make it relative to basePath
+          const relativePath = path.relative(this.basePath, filePath);
+          // Avoid paths starting with .. which indicates going up from basePath
+          if (!relativePath.startsWith('..')) {
+            return relativePath;
+          }
+        } catch (error) {
+          // If there's an error, continue to return the original path
+        }
+      }
+    }
+    
+    // If we couldn't normalize it or it's already a non-absolute path, return as is
+    return filePath;
   }
 } 

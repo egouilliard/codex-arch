@@ -4,7 +4,7 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import * as path from 'path';
 import * as fs from 'fs/promises';
-import { GraphitiClient } from '@codex-arch/core';
+import { GraphitiClient, FileMetadata, ImportType } from '@codex-arch/core';
 import { TypeScriptParser } from '@codex-arch/parsers-typescript';
 
 const program = new Command();
@@ -55,6 +55,7 @@ program
   .option('--no-imports', 'Exclude imports analysis')
   .option('--no-inheritance', 'Exclude inheritance analysis')
   .option('--no-calls', 'Exclude function calls analysis')
+  .option('-o, --output <file>', 'Save analysis results to file (JSON)')
   .action(async (dir, options) => {
     try {
       console.log(chalk.blue('Analyzing codebase at:'), dir);
@@ -83,24 +84,94 @@ program
       const graphClient = new GraphitiClient(config.neo4j);
       console.log(chalk.blue('Connected to Neo4j at:'), config.neo4j.uri);
       
+      // Initialize schema
+      console.log(chalk.blue('Initializing schema...'));
+      await graphClient.initSchema();
+      
       // Initialize TypeScript parser
       const parser = new TypeScriptParser();
       
       // Parse the codebase
       console.log(chalk.blue('Parsing TypeScript files...'));
-      const result = await parser.parseDirectory(dir, {
+      const parseResult = await parser.parseDirectory(dir, {
         exclude: options.exclude,
         include: options.include,
         recursive: true
       });
       
-      console.log(chalk.green(`✓ Analysis complete. Found ${result.entities.length} entities and ${result.relationships.length} relationships.`));
+      console.log(chalk.green(`✓ Analysis complete. Found ${parseResult.entities.length} entities and ${parseResult.relationships.length} relationships.`));
       
-      // Store in the graph database
-      console.log(chalk.blue('Storing results in Neo4j...'));
+      // Save analysis results to file if requested
+      if (options.output) {
+        await fs.writeFile(options.output, JSON.stringify({
+          entities: parseResult.entities,
+          relationships: parseResult.relationships,
+          summary: {
+            entityCount: parseResult.entities.length,
+            relationshipCount: parseResult.relationships.length,
+            timestamp: new Date().toISOString(),
+            repository: path.resolve(dir)
+          }
+        }, null, 2));
+        console.log(chalk.blue(`Analysis results saved to ${options.output}`));
+      }
       
-      // Placeholder for actual storing implementation
-      console.log(chalk.green('✓ Data stored successfully in the graph database'));
+      // Store file entities in Neo4j
+      console.log(chalk.blue('Storing files in Neo4j...'));
+      let filesCreated = 0;
+      
+      for (const entity of parseResult.entities) {
+        if (entity.type === 'File') {
+          const metadata: FileMetadata = {
+            name: entity.name,
+            extension: entity.properties.ext || '',
+            size: entity.properties.size || 0
+          };
+          
+          await graphClient.createFileNode(entity.filePath, metadata);
+          filesCreated++;
+          
+          // Show progress
+          if (filesCreated % 10 === 0 || filesCreated === parseResult.entities.length) {
+            process.stdout.write(`\r${chalk.green('✓')} Created ${filesCreated}/${parseResult.entities.length} file nodes`);
+          }
+        }
+      }
+      console.log(); // New line after progress
+      
+      // Store import relationships
+      console.log(chalk.blue('Storing import relationships in Neo4j...'));
+      let importsCreated = 0;
+      
+      if (options.imports) {
+        for (const relationship of parseResult.relationships) {
+          if (relationship.type === 'IMPORTS') {
+            const sourceEntity = parseResult.entities.find(e => e.id === relationship.source);
+            const targetEntity = parseResult.entities.find(e => e.id === relationship.target);
+            
+            if (sourceEntity && targetEntity) {
+              await graphClient.createImportRelationship(
+                sourceEntity.filePath,
+                targetEntity.filePath,
+                relationship.properties.importType || ImportType.Named
+              );
+              importsCreated++;
+              
+              // Show progress
+              if (importsCreated % 10 === 0 || importsCreated === parseResult.relationships.length) {
+                process.stdout.write(`\r${chalk.green('✓')} Created ${importsCreated}/${parseResult.relationships.length} import relationships`);
+              }
+            }
+          }
+        }
+      } else {
+        console.log(chalk.yellow('! Import analysis skipped'));
+      }
+      console.log(); // New line after progress
+      
+      console.log(chalk.green(`✓ Data stored successfully in the graph database`));
+      console.log(chalk.green(`  - ${filesCreated} file nodes created`));
+      console.log(chalk.green(`  - ${importsCreated} import relationships created`));
       
       // Cleanup
       await graphClient.close();
