@@ -350,3 +350,295 @@
    - Add visualization capabilities for the graph
    - Implement impact analysis for code changes
    - Develop metrics for codebase complexity and coupling 
+
+## Graphiti Integration and Visualization Implementation (April 27, 2025)
+
+### Components Implemented
+
+1. **GraphitiClient Enhancements**
+   - Extended with additional methods for visualization workflows
+   - Added database clearing functionality for fresh imports
+   - Implemented methods to handle CodeEntity objects directly
+   - Added query methods for relationship traversal
+   - Developed visualization data generation in D3.js compatible format
+
+   ```typescript
+   /**
+    * Generate visualization data with D3.js compatible format
+    */
+   public async generateVisualizationData(): Promise<{
+     nodes: any[],
+     links: any[]
+   }> {
+     const files = await this.queryFiles();
+     const relationships = await this.queryAllRelationships('IMPORTS');
+     
+     return {
+       nodes: files.map(file => ({
+         id: file.id,
+         name: file.name,
+         group: file.filePath.split('/').slice(-2)[0] // Group by folder
+       })),
+       links: relationships.map(rel => ({
+         source: rel.source,
+         target: rel.target,
+         value: 1,
+         type: rel.importType
+       }))
+     };
+   }
+   ```
+
+2. **Import Scripts**
+   - TypeScript analysis data importer for Neo4j
+   - Entity and relationship mapping to graph database schemas
+   - ID resolution for proper relationship creation
+   - Progress tracking and error handling
+
+   ```typescript
+   // Create a map to store entity IDs and their corresponding file paths
+   const entityMap = new Map();
+   
+   // Create file nodes
+   console.log(`Importing ${data.entities.length} entities...`);
+   for (const entity of data.entities) {
+     if (entity.type === 'File') {
+       try {
+         // Store the mapping between entity ID and file path
+         entityMap.set(entity.id, entity.filePath);
+         
+         await client.createFileNodeFromEntity(entity);
+         process.stdout.write('.');
+       } catch (error) {
+         console.error(`Error creating entity ${entity.id}:`, error);
+       }
+     }
+   }
+   ```
+
+3. **Query Scripts**
+   - Implemented testing and verification queries
+   - Most imported file identification
+   - Isolated file detection
+   - Import relationship queries
+   - Custom Cypher query execution
+
+   ```typescript
+   // Run a custom Cypher query to find most imported file
+   console.log('\nFinding most commonly imported files...');
+   const mostImportedQuery = `
+     MATCH (f:File)<-[r:IMPORTS]-()
+     WITH f, count(r) as importCount
+     ORDER BY importCount DESC
+     LIMIT 5
+     RETURN f.path as file, importCount
+   `;
+   const mostImported = await client.runQuery(mostImportedQuery);
+   ```
+
+4. **Visualization Generation**
+   - D3.js compatible data format generation
+   - Interactive HTML visualization template creation
+   - Dynamic graph visualization with zooming and filtering
+   - Node grouping by folder and file type
+   - Tooltip information for detailed node inspection
+
+   ```javascript
+   // Create the visualization
+   function createVisualization() {
+     // Clear existing SVG content
+     svg.selectAll("*").remove();
+     
+     // Add zoom behavior
+     const zoom = d3.zoom()
+       .scaleExtent([0.1, 4])
+       .on("zoom", (event) => {
+         g.attr("transform", event.transform);
+       });
+     
+     svg.call(zoom);
+     
+     // Create main group for zooming
+     const g = svg.append("g");
+     
+     // Create links
+     const link = g.append("g")
+       .attr("class", "links")
+       .selectAll("line")
+       .data(data.links)
+       .enter().append("line")
+       .attr("stroke-width", d => Math.sqrt(d.value));
+     
+     // Create nodes
+     const node = g.append("g")
+       .attr("class", "nodes")
+       .selectAll("circle")
+       .data(data.nodes)
+       .enter().append("circle")
+       .attr("r", 8)
+       .attr("fill", d => color(d.group))
+       .call(d3.drag()
+         .on("start", dragstarted)
+         .on("drag", dragged)
+         .on("end", dragended));
+   }
+   ```
+
+5. **Workflow Orchestration**
+   - End-to-end workflow automation
+   - Neo4j Docker container management
+   - Dependency checking and environment setup
+   - Script sequencing and process monitoring
+   - Error handling and reporting
+
+   ```typescript
+   // Main workflow function
+   async function runWorkflow() {
+     try {
+       // Create docker directory if it doesn't exist
+       const dockerDir = path.join(process.cwd(), 'docker');
+       if (!fs.existsSync(dockerDir)) {
+         fs.mkdirSync(dockerDir, { recursive: true });
+         
+         // Create docker-compose.yml
+         const dockerCompose = `
+   version: '3'
+   services:
+     neo4j:
+       image: neo4j:4.4
+       ports:
+         - "7474:7474"
+         - "7687:7687"
+       environment:
+         - NEO4J_AUTH=neo4j/password
+         - NEO4J_dbms_memory_heap_max__size=2G
+       volumes:
+         - neo4j_data:/data
+         - neo4j_logs:/logs
+   
+   volumes:
+     neo4j_data:
+     neo4j_logs:
+   `;
+         fs.writeFileSync(path.join(dockerDir, 'docker-compose.yml'), dockerCompose);
+       }
+     } catch (error) {
+       console.error('Workflow failed:', error);
+       process.exit(1);
+     }
+   }
+   ```
+
+### Testing Process
+
+1. **Workflow Verification**
+   - End-to-end testing of the complete graph visualization pipeline
+   - Verified Docker container setup and Neo4j database connectivity
+   - Tested TypeScript analysis data import into Neo4j
+   - Validated query functionality for verification
+   - Confirmed generation of visualization data and HTML output
+
+2. **Data Import Testing**
+   - Successfully imported 16 entities from the TypeScript analysis
+   - Created 18 import relationships between files
+   - Verified proper ID resolution between files
+   - Confirmed data integrity in Neo4j database
+
+3. **Visualization Testing**
+   - Verified interactive visualization in browser
+   - Tested zooming, panning, and node interaction
+   - Validated filtering by folder and file type
+   - Confirmed proper rendering of nodes and links
+   - Tested tooltips and information display
+
+### Issues and Resolutions
+
+1. **Identified Issues**
+   - Missing ts-node dependency
+     - Error: `ts-node: command not found`
+     - Impact: Unable to run TypeScript scripts directly
+   
+   - ID format mismatch in data import
+     - Error: No import relationships were being displayed
+     - Root cause: Entity IDs in analysis data included a `:file` suffix not handled in GraphitiClient
+   
+   - Query path inconsistencies
+     - Error: Queries were returning zero results for files with imports
+     - Root cause: Path format in queries didn't match the database storage format
+
+2. **Applied Fixes**
+   - Added ts-node as a development dependency
+     ```json
+     "devDependencies": {
+       // ... existing dependencies
+       "ts-node": "^10.9.2"
+     }
+     ```
+   
+   - Implemented entity ID to file path mapping in import script
+     ```typescript
+     // Create a map to store entity IDs and their corresponding file paths
+     const entityMap = new Map();
+     
+     // Store the mapping between entity ID and file path
+     entityMap.set(entity.id, entity.filePath);
+     
+     // Use the mapped paths for relationship creation
+     await client.createImportRelationship(
+       sourcePath,
+       targetPath,
+       rel.properties.importType
+     );
+     ```
+   
+   - Updated query script to use correct file path format
+     ```typescript
+     // Remove the ":file" suffix from the IDs
+     const appFilePath = 'test-repositories/typescript-repo/src/components/App.tsx';
+     console.log(`\nQuerying imports for ${appFilePath}...`);
+     const imports = await client.queryRelationships(appFilePath, 'IMPORTS');
+     ```
+
+### Current Limitations
+
+1. **Relationship Level**
+   - Currently only supports file-level dependencies
+   - No function or class-level relationship tracking
+   - Method calls between classes not yet represented
+   - Internal file structure not captured in the visualization
+
+2. **Analysis Scope**
+   - Limited to static imports in TypeScript
+   - Dynamic imports not yet supported
+   - Doesn't track runtime dependencies
+   - No analysis of external npm dependencies
+
+3. **Visualization Capabilities**
+   - Basic force-directed graph only
+   - Limited layout options
+   - No hierarchical view
+   - No timeline or version comparison
+   - No inline code preview
+
+### Future Improvements
+
+1. **Enhanced Analysis**
+   - Add function and class-level entity extraction
+   - Implement method call tracking
+   - Add inheritance relationship visualization
+   - Support for interface implementation relationships
+   - Track type usage across files
+
+2. **Advanced Visualization**
+   - Implement hierarchical visualization options
+   - Add dependency matrix view
+   - Create architectural layer visualization
+   - Implement package boundary visualization
+   - Add metrics overlay (coupling, cohesion, complexity)
+
+3. **Performance Optimizations**
+   - Implement incremental analysis to avoid full reprocessing
+   - Add batch database operations for faster imports
+   - Optimize visualization for large codebases with filtering
+   - Add caching of previous analysis results
+   - Implement parallel processing for large repositories 
