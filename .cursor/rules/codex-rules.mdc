@@ -1,0 +1,45 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Codex-Arch Cursor Rules
+
+## Environment Setup
+
+- Always initialize a virtual TypeScript environment for all new chats related to this project  
+- Use TypeScript version 4.9+ for all code generation and analysis  
+- Respect the monorepo structure using Lerna and Yarn workspaces  
+
+## Code Standards
+
+- Follow the project's TypeScript configuration from the root `tsconfig.json`  
+- Maintain consistent import structure with absolute paths for inter-package imports  
+- Use async/await patterns for all asynchronous operations, especially Neo4j interactions  
+- Include proper type definitions for all functions, classes, and variables  
+- Follow existing naming conventions: camelCase for variables/functions, PascalCase for classes/interfaces  
+
+## Documentation
+
+- Include JSDoc comments for all public functions and classes  
+- Document parameters, return types, and thrown exceptions  
+- Keep documentation up-to-date with code changes  
+
+## Architecture Rules
+
+- Maintain clear separation between core, parsers, MCP, and CLI packages  
+- All graph operations must go through the `GraphitiClient`  
+- Parser implementations must follow the defined `Parser` interface  
+- MCP actions should align with CLI commands for consistency  
+
+## Development Workflow
+
+- Suggest unit tests for any significant new functionality  
+- Prioritize incremental implementation for large codebase handling  
+- Reference the appropriate project documentation for domain-specific implementations  
+
+## Neo4j Integration
+
+- Validate all Cypher queries before execution  
+- Use parameterization for all dynamic values in queries  
+- Handle database connection errors gracefully  
