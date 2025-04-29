@@ -908,3 +908,302 @@ We have implemented a comprehensive knowledge graph-based code analysis system u
    - Optimize visualization for large codebases with filtering
    - Add caching of previous analysis results
    - Implement parallel processing for large repositories 
+
+## CLI Implementation (April 29, 2025)
+
+### Overview
+
+We have implemented the foundation of our CLI interface, providing a user-friendly way to interact with the Codex-Arch analysis engine. The CLI is built using Commander.js for command structure and argument parsing, with additional utilities for configuration management, output formatting, and visualization generation. This milestone marks a significant step toward making the tool more accessible to users.
+
+### Components Implemented
+
+1. **Core CLI Infrastructure**
+   - Command-line interface built with Commander.js
+   - Proper argument and option handling
+   - Error management and helpful messaging
+   - Consistent logging with color-coded output
+   
+   ```typescript
+   // Main CLI setup
+   const program = new Command();
+
+   program
+     .name('codex-arch')
+     .description('Codebase architecture analysis tool that builds a knowledge graph of code relationships')
+     .version('0.1.0');
+   ```
+
+2. **Directory Structure**
+   - Organized modular code structure for maintainability:
+   ```
+   packages/cli/
+   ├── src/
+   │   ├── index.ts                      # Main CLI entry point
+   │   ├── commands/                     # Commands directory
+   │   │   └── query/                    # Query subcommands
+   │   ├── utils/                        # Utilities directory
+   │   │   ├── config.ts                 # Configuration utilities
+   │   │   ├── database.ts               # Database connection utilities
+   │   │   ├── formatters.ts             # Output formatting utilities
+   │   │   └── visualization.ts          # Visualization utilities
+   │   └── types/                        # Types directory
+   │       └── index.ts                  # Type definitions
+   ```
+
+3. **Analysis Command**
+   - Fully implemented `analyze` command for analyzing TypeScript codebases
+   - Directory scanning and file processing
+   - Neo4j integration for storing analysis results
+   - Progress reporting and detailed result summaries
+   
+   ```typescript
+   // Analyze command implementation
+   program
+     .command('analyze')
+     .description('Analyze a codebase and build a knowledge graph')
+     .argument('<dir>', 'Directory to analyze')
+     .option('-e, --exclude <patterns...>', 'Glob patterns to exclude')
+     .option('-i, --include <patterns...>', 'Glob patterns to include')
+     .option('--no-imports', 'Exclude imports analysis')
+     .option('--no-inheritance', 'Exclude inheritance analysis')
+     .option('--no-calls', 'Exclude function calls analysis')
+     .option('-o, --output <file>', 'Save analysis results to file (JSON)')
+     .action(async (dir, options) => {
+       try {
+         console.log(chalk.blue('Analyzing codebase at:'), dir);
+         
+         // Load configuration
+         const configDir = path.join(process.env.HOME || process.env.USERPROFILE || '', '.codex-arch');
+         const configPath = path.join(configDir, 'config.json');
+         
+         // Initialize parser and execute analysis
+         const parser = new TypeScriptParser();
+         const parseResult = await parser.parseDirectory(dir, {
+           exclude: options.exclude,
+           include: options.include,
+           recursive: true
+         });
+         
+         // Store analysis results in Neo4j and output file
+         // ...
+       } catch (error) {
+         console.error(chalk.red('✗ Analysis failed:'), error);
+         process.exit(1);
+       }
+     });
+   ```
+
+4. **Configuration Management**
+   - Configuration file handling with defaults
+   - Command-line option overrides
+   - Environment variable support
+   - Output directory management
+   
+   ```typescript
+   export function applyCommandOptions(
+     config: CodexConfig,
+     options: Record<string, any>
+   ): CodexConfig {
+     const result = { ...config };
+     
+     // Apply output options
+     if (options.outputDir) {
+       result.output.root = options.outputDir;
+       result.output.typescript = path.join(options.outputDir, 'typescript');
+       result.output.visualizations = path.join(options.outputDir, 'visualizations');
+     }
+     
+     // Apply analysis options
+     if (options.exclude) {
+       result.analysis.exclude = Array.isArray(options.exclude)
+         ? options.exclude
+         : [options.exclude];
+     }
+     
+     // ... more configuration options
+     
+     return result;
+   }
+   ```
+
+5. **Type Definitions**
+   - Strong TypeScript typing for all components
+   - Well-defined interfaces for configuration
+   - Type definitions for query results
+   - Command status and progress reporting types
+   
+   ```typescript
+   /**
+    * Configuration interface for Codex-Arch
+    */
+   export interface CodexConfig {
+     neo4j: {
+       uri: string;
+       username: string;
+       password: string;
+       database?: string;
+       useDocker?: boolean;
+     };
+     output: {
+       root: string;
+       typescript: string;
+       visualizations: string;
+     };
+     analysis: {
+       exclude: string[];
+       include?: string[];
+       maxDepth?: number;
+     };
+   }
+
+   /**
+    * CLI command status types for progress reporting
+    */
+   export type CommandStatus = 'success' | 'error' | 'warning' | 'info';
+   ```
+
+6. **Output Handling and Visualization Utilities**
+   - JSON file generation for analysis results
+   - Consistent output directory structure
+   - Directory creation and file management
+   - Visualization template support
+   
+   ```typescript
+   /**
+    * Save visualization to a file
+    * 
+    * @param content - Visualization content
+    * @param outputPath - Output file path
+    * @returns Absolute path to the saved file
+    */
+   export function saveVisualization(content: string, outputPath: string): string {
+     // Create directory if it doesn't exist
+     const outputDir = path.dirname(outputPath);
+     if (!fs.existsSync(outputDir)) {
+       fs.mkdirSync(outputDir, { recursive: true });
+     }
+     
+     // Write content to file
+     fs.writeFileSync(outputPath, content);
+     
+     return path.resolve(outputPath);
+   }
+   ```
+
+### Testing and Verification
+
+1. **Command Structure Testing**
+   - Tested command registration and option parsing
+   - Verified help text generation
+   - Validated argument handling
+   - Confirmed command execution flow
+
+2. **Output Directory Functionality**
+   - Verified automatic creation of output directories:
+     ```
+     outputs/
+     ├── typescript/                # TypeScript analysis files
+     │   └── typescript-analysis-*.json  # Analysis output files
+     └── visualizations/            # Visualization files
+         ├── typescript-visualization-data.json  # Visualization data
+         └── typescript-visualization.html       # HTML visualization
+     ```
+   - Tested file generation with proper naming conventions
+   - Confirmed JSON output structure and content
+
+3. **ESM/CommonJS Compatibility**
+   - Resolved module import issues between ESM and CommonJS
+   - Added appropriate TypeScript configuration
+   - Used consistent import patterns across packages
+   - Added module interoperability flags
+
+4. **Neo4j Integration Testing**
+   - Verified database connection handling
+   - Tested schema initialization
+   - Validated entity and relationship creation
+   - Confirmed query execution functionality
+
+### Example Usage
+
+1. **Analyzing a TypeScript Repository**
+   ```bash
+   # Basic analysis of a TypeScript repository
+   node packages/cli/dist/index.js analyze test-repositories/typescript-repo --exclude "node_modules" "dist" --output outputs/typescript/typescript-analysis-test.json
+   
+   # Output:
+   Analyzing codebase at: test-repositories/typescript-repo
+   Connected to Neo4j at: bolt://localhost:7687
+   Initializing schema...
+   Parsing TypeScript files...
+   ✓ Analysis complete. Found 16 entities and 18 relationships.
+   Analysis results saved to outputs/typescript/typescript-analysis-test.json
+   Storing files in Neo4j...
+   ✓ Created 16/16 file nodes
+   Storing import relationships in Neo4j...
+   ✓ Created 18/18 import relationships
+   ✓ Data stored successfully in the graph database
+     - 16 file nodes created
+     - 18 import relationships created
+   ```
+
+2. **Visualization Generation Using Scripts**
+   Though visualization is not yet integrated into the CLI, the analyze command works seamlessly with existing visualization scripts:
+   
+   ```bash
+   # Generate visualization data from analysis
+   ANALYSIS_FILE=outputs/typescript/typescript-analysis-test.json npx ts-node scripts/visualize-typescript-analysis.ts
+   
+   # Generate HTML visualization
+   npx ts-node scripts/generate-html-visualization.ts
+   ```
+
+### Current Limitations
+
+1. **Command Implementation Status**
+   - `analyze` command: ✅ Fully implemented
+   - `query` command: ✅ Basic implementation with custom Cypher queries
+   - `visualize` command: ❌ Not yet implemented
+   - `run` command: ❌ Not yet implemented (would combine analyze, import, and visualize steps)
+
+2. **Documentation Status**
+   - Command usage documentation: Partially complete
+   - Configuration options: Partially documented
+   - Examples: Limited set available
+
+3. **Testing Coverage**
+   - Unit tests: Implemented for utility functions
+   - Integration tests: Limited coverage
+   - End-to-end tests: Not yet implemented
+
+### Next Steps
+
+1. **Pending Command Implementations**
+   - Implement `visualize` command to generate visualizations from analysis data
+   - Create subcommands for `query` to access specific graph information:
+     - dependencies
+     - importers
+     - most-imported
+     - isolated
+     - connection-path
+   - Implement `run` command for end-to-end workflow execution
+
+2. **CLI Enhancement Plan**
+   - Add interactive mode with user prompts
+   - Implement better progress reporting with spinners
+   - Add command completion for shells
+   - Improve error handling and recovery
+   - Add template generation capabilities
+
+3. **Testing and Documentation Expansion**
+   - Create comprehensive test suite for all commands
+   - Develop integration tests for Neo4j interactions
+   - Write detailed documentation with examples
+   - Create tutorial guides for common use cases
+   - Add configuration file documentation
+
+4. **Workflow Integration**
+   - Integrate with existing visualization scripts
+   - Provide seamless workflow from analysis to visualization
+   - Support for different output formats
+   - Add browser opening capability for visualizations
+   - Enable continuous monitoring mode 

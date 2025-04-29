@@ -15,10 +15,16 @@
   "dependencies": {
     "@codex-arch/core": "^0.1.0",
     "@codex-arch/parsers-typescript": "^0.1.0",
-    "commander": "^10.0.1",
+    "boxen": "^8.0.1",
     "chalk": "^4.1.2",
+    "commander": "^10.0.1",
+    "conf": "^13.1.0",
+    "figlet": "^1.8.1",
     "inquirer": "^8.2.5",
-    "ora": "^5.4.1"
+    "neo4j-driver": "^5.28.1",
+    "open": "^10.1.1",
+    "ora": "^5.4.1",
+    "table": "^6.9.0"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.3",
@@ -29,4 +35,4 @@
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
   }
-} 
+}
